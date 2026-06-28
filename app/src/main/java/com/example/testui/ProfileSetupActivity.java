@@ -1,5 +1,6 @@
 package com.example.testui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -64,6 +65,7 @@ public class ProfileSetupActivity extends AppCompatActivity {
 
         finishButton.setOnClickListener(v -> {
             // Finalize and go to main app
+            startActivity(new Intent(ProfileSetupActivity.this, MainActivity.class));
             finish();
         });
     }

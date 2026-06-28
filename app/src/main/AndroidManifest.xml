@@ -11,24 +11,45 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.TestUI">
+
         <activity
-            android:name=".MainActivity"
-            android:exported="true">
+            android:name=".SplashActivity"
+            android:exported="true"
+            android:theme="@style/Theme.TestUI.Splash">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
-
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false" />
+
         <activity
             android:name=".RegisterActivity"
             android:exported="false" />
+
         <activity
             android:name=".LoginActivity"
             android:exported="false" />
+
         <activity
             android:name=".ProfileSetupActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".AnswerActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".ExpandedAnswerActivity"
+            android:exported="false" />
+
+        <activity
+            android:name=".AskQuestionActivity"
+            android:exported="false" />
+
     </application>
 
 </manifest>
