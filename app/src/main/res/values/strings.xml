@@ -1,0 +1,335 @@
+<resources>
+    <string name="app_name">testUI</string>
+    <string name="glacier_edu">Glacier Edu</string>
+    <string name="unlock_potential">MỞ KHÓA TIỀM NĂNG</string>
+    <string name="checking_session">Đang kiểm tra phiên đăng nhập…</string>
+    <string name="register_title">Khám phá Glacier</string>
+    <string name="register_subtitle">Bắt đầu hành trình giáo dục đỉnh cao</string>
+    <string name="email_hint">name@example.com</string>
+    <string name="password_hint">••••••••</string>
+    <string name="email_label">Email</string>
+    <string name="password_label">Mật khẩu</string>
+    <string name="confirm_password_label">Xác nhận mật khẩu</string>
+    <string name="password_strength_label">Độ mạnh mật khẩu</string>
+    <string name="strength_none">-</string>
+    <string name="strength_weak">Yếu</string>
+    <string name="strength_medium">Trung bình</string>
+    <string name="strength_strong">Mạnh</string>
+    <string name="strength_very_strong">Rất mạnh</string>
+    <string name="terms_agreement">Tôi đồng ý với Điều khoản sử dụng và Chính sách bảo mật.</string>
+    <string name="register_button">Đăng ký ngay</string>
+    <string name="already_have_account">Đã có tài khoản? Đăng nhập</string>
+    <string name="password_mismatch">Mật khẩu không khớp.</string>
+    <string name="login_title">Glacier Edu</string>
+    <string name="login_subtitle">Đăng nhập vào hệ thống học tập</string>
+    <string name="email_placeholder">nhap@email.com</string>
+    <string name="remember_me">Ghi nhớ đăng nhập</string>
+    <string name="forgot_password">Quên mật khẩu?</string>
+    <string name="two_fa_label">Sử dụng xác thực 2 lớp (2FA)</string>
+    <string name="login_button">Đăng nhập</string>
+    <string name="social_login_divider">Hoặc tiếp tục với</string>
+    <string name="google_login">Google</string>
+    <string name="github_login">GitHub</string>
+    <string name="legal_notice">Bằng việc đăng nhập, bạn đồng ý với Điều khoản dịch vụ và Chính sách bảo mật của chúng tôi.</string>
+    <string name="dont_have_account">Chưa có tài khoản? Đăng ký</string>
+    <string name="profile_setup_title">Thiết lập hồ sơ</string>
+    <string name="profile_setup_subtitle">Cá nhân hóa trải nghiệm học tập của bạn.</string>
+    <string name="step_level">Cấp học</string>
+    <string name="step_subjects">Môn học</string>
+    <string name="step_style">Phong cách</string>
+    <string name="choose_level">Chọn cấp học của bạn</string>
+    <string name="favorite_subjects">Môn học yêu thích</string>
+    <string name="favorite_subjects_desc">Chọn các môn học bạn quan tâm (có thể chọn nhiều)</string>
+    <string name="explanation_style">Phong cách giải thích mong muốn</string>
+    <string name="skip">Bỏ qua</string>
+    <string name="continue_text">Tiếp tục</string>
+    <string name="finish">Hoàn tất</string>
+    <string name="level_thcs">THCS</string>
+    <string name="level_thpt">THPT</string>
+    <string name="level_uni">Đại học</string>
+    <string name="style_concise">Ngắn gọn</string>
+    <string name="style_concise_desc">Trực tiếp vào vấn đề chính, tiết kiệm thời gian.</string>
+    <string name="style_detailed">Chi tiết</string>
+    <string name="style_detailed_desc">Giải thích sâu xa nguồn gốc và nguyên lý.</string>
+    <string name="style_step">Từng bước</string>
+    <string name="style_step_desc">Hướng dẫn cụ thể theo từng quy trình nhỏ.</string>
+
+    <!-- AI Answer Screen -->
+    <string name="ai_answer_title">Giải phương trình bậc 2</string>
+    <string name="math_tag">Toán học</string>
+    <string name="medium_tag">Trung bình</string>
+    <string name="time_ago">2 phút trước</string>
+    <string name="you_label">Bạn</string>
+    <string name="question_text">Hãy giải phương trình sau và giải thích từng bước:</string>
+    <string name="equation_text">2x² - 5x + 3 = 0</string>
+    <string name="ai_answering">Glacier AI đang trả lời…</string>
+    <string name="intro_method">Để giải phương trình bậc 2 có dạng ax² + bx + c = 0, chúng ta sẽ sử dụng công thức nghiệm (Delta). Dưới đây là các bước giải chi tiết:</string>
+    <string name="step_1_title">Xác định các hệ số a, b, c</string>
+    <string name="step_1_desc">Từ phương trình đã cho: 2x² - 5x + 3 = 0, ta có:</string>
+    <string name="math_1">a = 2\nb = -5\nc = 3</string>
+    <string name="math_2">Δ = (-5)² - 4 × 2 × 3\nΔ = 25 - 24\nΔ = 1</string>
+    <string name="math_x1">x₁ = (5 + √1) / (2 × 2)\nx₁ = (5 + 1) / 4\nx₁ = 6 / 4 = 1.5</string>
+    <string name="math_x2">x₂ = (5 - √1) / (2 × 2)\nx₂ = (5 - 1) / 4\nx₂ = 4 / 4 = 1</string>
+    <string name="step_2_title">Tính biệt thức Delta (Δ)</string>
+    <string name="step_2_desc">Công thức tính Delta: Δ = b² - 4ac</string>
+    <string name="delta_info">Vì Δ > 0 nên phương trình có 2 nghiệm phân biệt.</string>
+    <string name="step_3_title">Tính các nghiệm x₁, x₂</string>
+    <string name="step_3_desc">Sử dụng công thức nghiệm: x = (-b ± √Δ) / 2a</string>
+    <string name="root_1_label">Nghiệm thứ nhất (x₁):</string>
+    <string name="root_2_label">Nghiệm thứ hai (x₂):</string>
+    <string name="useful_button">Hữu ích</string>
+    <string name="more_solutions">Xem thêm cách giải khác</string>
+    <string name="share_label">Chia sẻ</string>
+    <string name="bookmark_label">Đánh dấu</string>
+    <string name="nav_home">Home</string>
+    <string name="nav_assistant">Assistant</string>
+    <string name="nav_badges">Badges</string>
+    <string name="nav_profile">Profile</string>
+    <string name="glacier_ai">Glacier AI</string>
+    <string name="step_1">1</string>
+    <string name="step_2">2</string>
+    <string name="step_3">3</string>
+
+    <!-- Expanded Answer Screen -->
+    <string name="expanded_answer_title">Mở rộng đáp án</string>
+    <string name="original_question_label">Câu hỏi gốc</string>
+    <string name="original_question_content">Giải phương trình bậc hai:</string>
+    <string name="tab_alternative">Cách giải thay thế</string>
+    <string name="tab_concepts">Khái niệm chính</string>
+    <string name="tab_errors">Lỗi thường gặp</string>
+    <string name="tab_practice">Luyện tập</string>
+    <string name="alt_method_title">Phương pháp phân tích đa thức thành nhân tử</string>
+    <string name="alt_method_desc">Thay vì dùng công thức nghiệm Delta, ta có thể tách hạng tử bậc nhất để nhóm nhân tử chung.</string>
+    <string name="alt_math_step">2x² - 5x + 3 = 0\nTách -5x = -2x - 3x:\n2x² - 2x - 3x + 3 = 0\n2x(x - 1) - 3(x - 1) = 0\n(2x - 3)(x - 1) = 0\nTừ đó suy ra hai nghiệm:\nx = 3/2 hoặc x = 1</string>
+    <string name="placeholder_content">Nội dung sẽ hiển thị ở đây.</string>
+
+    <!-- Home Screen -->
+    <string name="home_greeting">Xin chào, học sinh!</string>
+    <string name="home_subtitle">Hôm nay bạn muốn học gì?</string>
+    <string name="search_hint">Tìm kiếm câu hỏi, chủ đề…</string>
+    <string name="ask_ai">Hỏi AI</string>
+    <string name="subject_math">Toán học</string>
+    <string name="subject_physics">Vật lý</string>
+    <string name="subject_biology">Sinh học</string>
+    <string name="subject_history">Lịch sử</string>
+    <string name="recent_activity">Hoạt động gần đây</string>
+    <string name="view_all">Xem tất cả</string>
+    <string name="math_equation_title">Giải phương trình bậc 2: 2x² - 5x + 3 = 0</string>
+    <string name="math_meta">Toán học · 2 phút trước</string>
+    <string name="physics_title">Giải thích hiện tượng lượng tử</string>
+    <string name="physics_meta">Vật lý · Hôm qua</string>
+    <string name="progress_title">Tiến độ của bạn</string>
+    <string name="accuracy_label">Độ chính xác</string>
+    <string name="questions_label">Câu hỏi</string>
+    <string name="streak_label">Ngày liên tiếp</string>
+    <string name="accuracy_value">87%</string>
+    <string name="questions_value">1,245</string>
+    <string name="streak_value">12</string>
+
+    <!-- Ask Question Screen -->
+    <string name="ask_ai_title">Ask AI</string>
+    <string name="ask_heading">What do you need help with?</string>
+    <string name="ask_subheading">Describe your problem, paste an equation, or upload a photo of your homework.</string>
+    <string name="subject_math_full">Mathematics</string>
+    <string name="subject_physics_full">Physics</string>
+    <string name="subject_chemistry">Chemistry</string>
+    <string name="subject_biology_full">Biology</string>
+    <string name="subject_history_full">History</string>
+    <string name="subject_general">General Question</string>
+    <string name="question_placeholder">Type your question here… E.g., \'Explain quantum entanglement simply\' or \'Solve for x: 2x + 5 = 15\'</string>
+    <string name="ask_ai_button">Ask AI</string>
+
+    <!-- Notifications Screen -->
+    <string name="notifications_title">Thông báo</string>
+    <string name="notifications_subtitle">Bạn có %1$d tin nhắn chưa đọc.</string>
+    <string name="mark_all_read">Đánh dấu tất cả đã đọc</string>
+    <string name="category_new_alerts">Cảnh báo mới</string>
+    <string name="category_earlier">Trước đó</string>
+    <string name="notif_overdue_title">Bài tập quá hạn</string>
+    <string name="notif_overdue_msg">Bài nộp cho \'Cơ học lượng tử nâng cao\' đã quá hạn 2 giờ. Hình phạt nộp muộn có thể được áp dụng.</string>
+    <string name="notif_reminder_title">Nhắc nhở buổi học</string>
+    <string name="notif_reminder_msg">Nhóm học tập ảo cho \'Giải tích III\' sẽ bắt đầu sau 15 phút.</string>
+    <string name="notif_summary_title">Tóm tắt hiệu suất hàng tuần</string>
+    <string name="notif_summary_msg">Bạn đã duy trì tỷ lệ hoàn thành 92% trong tuần này. Sự tập trung tuyệt vời.</string>
+    <string name="notif_maintenance_title">Bảo trì hệ thống</string>
+    <string name="notif_maintenance_msg">Glacier Edu sẽ tiến hành bảo trì định kỳ vào Chủ Nhật từ 2 giờ sáng đến 4 giờ sáng EST.</string>
+    <string name="just_now">Vừa xong</string>
+    <string name="time_45m_ago">45 phút trước</string>
+    <string name="yesterday">Hôm qua</string>
+    <string name="days_ago_2">2 ngày trước</string>
+    <string name="nav_history_label">Lịch sử</string>
+    <string name="nav_saved_label">Đã lưu</string>
+    <string name="nav_alerts_label">Thông báo</string>
+    <string name="nav_ai_tutor_label">AI Tutor</string>
+
+    <!-- Quiz Screen -->
+    <string name="quiz_title">Practice Quiz</string>
+    <string name="quiz_timer_initial">20:15</string>
+    <string name="quiz_question_count">Câu %1$d / %2$d</string>
+    <string name="quiz_chapter">Chương 3: Phương trình bậc hai</string>
+    <string name="quiz_question_type_mcq">Chọn đáp án đúng</string>
+    <string name="quiz_question_type_fib">Điền vào chỗ trống</string>
+    <string name="quiz_difficulty_medium">Trung bình</string>
+    <string name="quiz_difficulty_hard">Khó</string>
+    <string name="quiz_hint">Gợi ý</string>
+    <string name="quiz_check_answer">Kiểm tra đáp án</string>
+    <string name="quiz_previous">Câu trước</string>
+    <string name="quiz_next">Tiếp theo</string>
+    <string name="quiz_exit_confirm">Bạn có chắc muốn thoát? Tiến trình sẽ không được lưu.</string>
+
+    <!-- Quiz Result Screen -->
+    <string name="result_title">Kết quả Quiz</string>
+    <string name="result_success_msg">Xuất sắc! Bạn đã hoàn thành bài quiz!</string>
+    <string name="result_score_label">Điểm số</string>
+    <string name="result_grade_label">Xếp loại: Giỏi</string>
+    <string name="result_correct_label">Câu đúng</string>
+    <string name="result_incorrect_label">Câu sai</string>
+    <string name="result_time_label">Thời gian</string>
+    <string name="result_better_than_last">Cao hơn lần trước</string>
+    <string name="result_above_avg">Trên trung bình lớp</string>
+    <string name="result_detailed_review">Xem lại chi tiết</string>
+    <string name="result_filter_all">Tất cả (%1$d)</string>
+    <string name="result_filter_correct">Đúng (%1$d)</string>
+    <string name="result_filter_incorrect">Sai (%1$d)</string>
+    <string name="result_your_answer">Đáp án của bạn:</string>
+    <string name="result_correct_answer">Đáp án đúng:</string>
+    <string name="result_ai_recommend">Gợi ý từ AI</string>
+    <string name="result_ai_recommend_text">Bạn cần ôn lại chủ đề &lt;b&gt;Hệ phương trình bậc nhất&lt;/b&gt; và &lt;b&gt;Hình học phẳng&lt;/b&gt;. AI đề xuất luyện tập thêm 15 phút mỗi ngày trong 3 ngày tới.</string>
+    <string name="result_practice_now">Bắt đầu ôn tập ngay →</string>
+    <string name="result_retake">Retake Quiz</string>
+    <string name="result_continue">Continue Learning</string>
+    <string name="result_review_q_label">Câu %1$d</string>
+
+    <!-- AI Insights Screen -->
+    <string name="insight_title">AI Insights</string>
+    <string name="insight_subtitle">Phân tích thông minh từ dữ liệu học tập của bạn</string>
+    <string name="insight_ai_suggestion">Gợi ý từ AI</string>
+    <string name="insight_focus_title">Optimal Focus Shift</string>
+    <string name="insight_focus_desc">AI phát hiện hiệu suất học Toán của bạn tăng 24% khi chuyển sang học sau 20 phút nghỉ. Hãy áp dụng chu kỳ học 45 phút và nghỉ 15 phút để tối ưu hóa khả năng ghi nhớ.</string>
+    <string name="insight_view_schedule">Xem lịch học →</string>
+    <string name="insight_momentum_title">Momentum</string>
+    <string name="insight_momentum_label">Chuỗi học tập</string>
+    <string name="insight_momentum_target">Mục tiêu: 10 ngày liên tiếp</string>
+    <string name="insight_cognitive_title">Cognitive Load</string>
+    <string name="insight_cognitive_label">Tải nhận thức</string>
+    <string name="insight_cognitive_desc">Số lượng chủ đề học trong ngày vượt ngưỡng khuyến nghị. Hãy giảm còn 3 môn mỗi ngày để tránh quá tải não bộ.</string>
+    <string name="insight_cognitive_warning">⚠ Cảnh báo</string>
+    <string name="insight_cognitive_rec">Nghỉ ngơi 10 phút mỗi 30 phút học</string>
+    <string name="insight_skill_title">Skill Progression</string>
+    <string name="insight_skill_label">Tiến trình kỹ năng</string>
+    <string name="insight_view_path">Xem lộ trình đầy đủ →</string>
+    <string name="insight_weekly_summary">Tóm tắt tuần này</string>
+    <string name="insight_study_time">Thời gian học</string>
+    <string name="insight_tasks_done">Bài tập hoàn thành</string>
+    <string name="insight_avg_score">Điểm trung bình</string>
+    <string name="insight_math">Toán học</string>
+    <string name="insight_physics">Vật lý</string>
+    <string name="insight_english">Tiếng Anh</string>
+    <string name="insight_chemistry">Hóa học</string>
+
+    <!-- Progress Stats Screen -->
+    <string name="progress_stats_title">Thống kê tiến độ</string>
+    <string name="period_week">Tuần này</string>
+    <string name="period_month">Tháng này</string>
+    <string name="period_year">Năm nay</string>
+    <string name="period_all">Tất cả</string>
+    <string name="stat_total_questions">Tổng câu hỏi</string>
+    <string name="stat_accuracy">Độ chính xác</string>
+    <string name="stat_total_time">Tổng thời gian</string>
+    <string name="trend_questions">+127 so với tuần trước</string>
+    <string name="trend_accuracy">+3% so với tuần trước</string>
+    <string name="trend_time">+5h 30m so với tuần trước</string>
+    <string name="weekly_perf_title">Hiệu suất tuần này</string>
+    <string name="legend_correct">Câu đúng</string>
+    <string name="legend_incorrect">Câu sai</string>
+    <string name="chart_summary_total">Tổng số câu tuần này: 295</string>
+    <string name="chart_summary_avg">Trung bình mỗi ngày: 42</string>
+    <string name="chart_summary_best">Ngày tốt nhất: Thứ 7 (59)</string>
+    <string name="streak_title">Chuỗi học tập</string>
+    <string name="streak_unit">ngày</string>
+    <string name="streak_current">Chuỗi hiện tại</string>
+    <string name="streak_longest">Chuỗi dài nhất</string>
+    <string name="streak_active_days">Ngày hoạt động</string>
+    <string name="streak_motivation">Tiếp tục học hôm nay để duy trì chuỗi 12 ngày của bạn!</string>
+    <string name="subject_progress_title">Tiến độ theo môn</string>
+    <string name="sub_stat_done">Câu đã làm</string>
+
+    <!-- Answer History Extra -->
+    <string name="saved_questions_title">Saved Questions</string>
+    <string name="saved_questions_subtitle">Organize and review your bookmarked materials.</string>
+    <string name="grid_view">Grid view</string>
+    <string name="list_view">List view</string>
+    <string name="collections_label">Collections</string>
+    <string name="new_collection">+ New</string>
+    <string name="collection_icon_desc">Collection icon</string>
+    <string name="midterm_exam">Midterm Exam</string>
+    <string name="calculus_label">Calculus</string>
+    <string name="questions_count_24">24 questions</string>
+    <string name="questions_count_12">12 questions</string>
+    <string name="recent_bookmarks">Recent Bookmarks</string>
+    <string name="physics_label">Physics</string>
+    <string name="q_mars_velocity">Calculate the escape velocity of a projectile launched from the surface of Mars.</string>
+    <string name="q_calculus_integral">Evaluate the integral of e^(2x) * sin(3x) dx using integration by parts.</string>
+
+    <!-- Quiz Extra -->
+    <string name="q4_text">Phương trình x² - 5x + 6 = 0 có nghiệm là:</string>
+    <string name="opt_a_text">x = 1 và x = 6</string>
+    <string name="opt_b_text">x = 2 và x = 3</string>
+    <string name="opt_c_text">x = -2 và x = -3</string>
+    <string name="q5_text">Cho tam giác ABC vuông tại A, biết AB = 3cm và BC = 5cm. Độ dài cạnh AC = ___ cm. Diện tích tam giác = ___ cm².</string>
+    <string name="ac_label">Cạnh AC (cm)</string>
+    <string name="area_label">Diện tích (cm²)</string>
+    <string name="placeholder_value">Nhập giá trị&#8230;</string>
+
+    <!-- Quiz Result Extra -->
+    <string name="stat_correct_count">8</string>
+    <string name="stat_incorrect_count">2</string>
+    <string name="stat_time_value">18:45</string>
+    <string name="trend_percentage_15">+15%</string>
+    <string name="trend_percentage_8">+8%</string>
+    <string name="q1_preview">Phương trình bậc nhất ax + b = 0&#8230;</string>
+    <string name="q1_text">Câu 1</string>
+    <string name="q2_text">Câu 2</string>
+    <string name="q2_full">Hệ hai phương trình bậc nhất hai ẩn có nghiệm duy nhất khi nào?</string>
+    <string name="ans_c">C. Khi hai đường thẳng song song</string>
+    <string name="ans_b">B. Khi hai đường thẳng cắt nhau</string>
+    <string name="exp_q2">Hệ hai phương trình bậc nhất có nghiệm duy nhất khi hai đường thẳng tương ứng cắt nhau tại một điểm. Song song &#8594; vô nghiệm. Trùng nhau &#8594; vô số nghiệm.</string>
+    <string name="learn_more">Ôn lại bài học &#8594;</string>
+
+    <!-- AI Insights Extra -->
+    <string name="momentum_8_days">8 Days</string>
+    <string name="cognitive_high">High</string>
+    <string name="skill_math_level">Advanced</string>
+    <string name="skill_math_val">82%</string>
+    <string name="skill_physics_level">Intermediate</string>
+    <string name="skill_physics_val">65%</string>
+    <string name="stat_time_14h">14h 30m</string>
+    <string name="stat_done_47">47</string>
+    <string name="stat_score_8_6">8.6 / 10</string>
+
+    <!-- Progress Stats Extra -->
+    <string name="stat_val_q">1,245</string>
+    <string name="stat_val_a">87%</string>
+    <string name="stat_val_time">42h 15m</string>
+    <string name="legend_correct_label"> Đúng</string>
+    <string name="legend_incorrect_label"> Sai</string>
+    <string name="day_t2">T2</string>
+    <string name="day_t3">T3</string>
+    <string name="day_t4">T4</string>
+    <string name="day_t5">T5</string>
+    <string name="day_t6">T6</string>
+    <string name="day_t7">T7</string>
+    <string name="day_cn">CN</string>
+    <string name="streak_val">12 ngày</string>
+    <string name="sub_math_val">342 câu</string>
+    <string name="sub_math_perc">91%</string>
+    <string name="sub_phys_val">285 câu</string>
+    <string name="sub_phys_perc">83%</string>
+
+    <!-- Profile Setup Extra -->
+    <string name="subj_math_short">Toán học</string>
+    <string name="subj_phys_short">Vật lý</string>
+    <string name="subj_chem_short">Hóa học</string>
+    <string name="subj_it_short">Tin học</string>
+    <string name="subj_lang_short">Ngoại ngữ</string>
+</resources>

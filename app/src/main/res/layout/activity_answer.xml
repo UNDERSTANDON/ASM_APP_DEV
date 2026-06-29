@@ -1,0 +1,590 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background"
+    tools:context=".AnswerActivity">
+
+    <!-- Header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@drawable/bg_glass_panel_elevated"
+        android:elevation="4dp"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/back_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/skip"
+            android:padding="8dp"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/primary" />
+
+        <TextView
+            android:id="@+id/brand_name"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_snowflake"
+            android:drawablePadding="16dp"
+            app:drawableTint="@color/primary"
+            android:text="@string/glacier_ai"
+            android:textColor="@color/primary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/back_button"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/bookmark_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/bookmark_label"
+            android:padding="8dp"
+            android:src="@drawable/ic_bookmark"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/primary" />
+
+        <ImageView
+            android:id="@+id/share_button"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="8dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="@string/share_label"
+            android:padding="8dp"
+            android:src="@drawable/ic_share"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/bookmark_button"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/on_surface_variant" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <!-- Content -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Title & Tags -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/ai_answer_title"
+                android:textColor="@color/on_surface"
+                android:textSize="24sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_glass_panel"
+                    app:drawableStartCompat="@drawable/ic_calculate"
+                    android:drawablePadding="4dp"
+                    app:drawableTint="@color/primary"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:text="@string/math_tag"
+                    android:textColor="@color/primary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/bg_glass_panel"
+                    app:drawableStartCompat="@drawable/ic_signal_cellular"
+                    android:drawablePadding="4dp"
+                    app:drawableTint="@color/tertiary"
+                    android:paddingHorizontal="12dp"
+                    android:paddingVertical="4dp"
+                    android:text="@string/medium_tag"
+                    android:textColor="@color/tertiary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    app:drawableStartCompat="@drawable/ic_schedule"
+                    android:drawablePadding="4dp"
+                    app:drawableTint="@color/on_surface_variant"
+                    android:text="@string/time_ago"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="12sp" />
+
+            </LinearLayout>
+
+            <!-- Question Card -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_glass_panel"
+                android:padding="16dp">
+
+                <View
+                    android:id="@+id/avatar"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/surface_container"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_person"
+                    android:contentDescription="@string/nav_profile"
+                    app:layout_constraintBottom_toBottomOf="@id/avatar"
+                    app:layout_constraintEnd_toEndOf="@id/avatar"
+                    app:layout_constraintStart_toStartOf="@id/avatar"
+                    app:layout_constraintTop_toTopOf="@id/avatar"
+                    app:tint="@color/on_surface_variant" />
+
+                <TextView
+                    android:id="@+id/sender_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/you_label"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toEndOf="@id/avatar"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/question_text_view"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/question_text"
+                    android:textColor="@color/on_surface"
+                    android:textSize="16sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/sender_name"
+                    app:layout_constraintTop_toBottomOf="@id/sender_name" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="monospace"
+                    android:text="@string/equation_text"
+                    android:textColor="@color/primary"
+                    android:textSize="18sp"
+                    app:layout_constraintStart_toStartOf="@id/sender_name"
+                    app:layout_constraintTop_toBottomOf="@id/question_text_view" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- AI Answer Header -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="@string/ai_answering"
+                    android:src="@drawable/ic_snowflake"
+                    app:tint="@color/primary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="@string/ai_answering"
+                    android:textColor="@color/primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- Steps Container -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_glass_panel_elevated"
+                android:padding="16dp">
+
+                <View
+                    android:layout_width="200dp"
+                    android:layout_height="200dp"
+                    android:background="@drawable/bg_ambient_glow"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    android:layout_marginTop="-50dp"
+                    android:layout_marginEnd="-50dp"/>
+
+                <TextView
+                    android:id="@+id/intro_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="@string/intro_method"
+                    android:textColor="@color/on_surface"
+                    android:textSize="15sp"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <!-- Step 1 -->
+                <View
+                    android:id="@+id/connector_1"
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="#337DD3FC"
+                    app:layout_constraintBottom_toTopOf="@id/step_2_number"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/step_1_number" />
+
+                <TextView
+                    android:id="@+id/step_1_number"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/surface_container_highest"
+                    android:gravity="center"
+                    android:text="@string/step_1"
+                    android:textColor="@color/primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/intro_text" />
+
+                <TextView
+                    android:id="@+id/step_1_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/step_1_title"
+                    android:textColor="@color/on_surface"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/step_1_number"
+                    app:layout_constraintTop_toTopOf="@id/step_1_number" />
+
+                <TextView
+                    android:id="@+id/step_1_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/step_1_desc"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/step_1_title"
+                    app:layout_constraintTop_toBottomOf="@id/step_1_title" />
+
+                <TextView
+                    android:id="@+id/math_1_block"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_math_block"
+                    android:fontFamily="monospace"
+                    android:padding="12dp"
+                    android:text="@string/math_1"
+                    android:textColor="@color/on_primary_container"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/step_1_title"
+                    app:layout_constraintTop_toBottomOf="@id/step_1_desc" />
+
+                <!-- Step 2 -->
+                <View
+                    android:id="@+id/connector_2"
+                    android:layout_width="2dp"
+                    android:layout_height="0dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="#337DD3FC"
+                    app:layout_constraintBottom_toTopOf="@id/step_3_number"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/step_2_number" />
+
+                <TextView
+                    android:id="@+id/step_2_number"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/surface_container"
+                    android:gravity="center"
+                    android:text="@string/step_2"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/math_1_block" />
+
+                <TextView
+                    android:id="@+id/step_2_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/step_2_title"
+                    android:textColor="@color/on_surface"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/step_2_number"
+                    app:layout_constraintTop_toTopOf="@id/step_2_number" />
+
+                <TextView
+                    android:id="@+id/step_2_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/step_2_desc"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/step_2_title"
+                    app:layout_constraintTop_toBottomOf="@id/step_2_title" />
+
+                <TextView
+                    android:id="@+id/math_2_block"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_math_block"
+                    android:fontFamily="monospace"
+                    android:padding="12dp"
+                    android:text="@string/math_2"
+                    android:textColor="@color/on_primary_container"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/step_2_title"
+                    app:layout_constraintTop_toBottomOf="@id/step_2_desc" />
+
+                <TextView
+                    android:id="@+id/delta_info"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    app:drawableStartCompat="@drawable/ic_info"
+                    android:drawablePadding="8dp"
+                    app:drawableTint="@color/primary"
+                    android:text="@string/delta_info"
+                    android:textColor="@color/primary"
+                    android:textSize="13sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/step_2_title"
+                    app:layout_constraintTop_toBottomOf="@id/math_2_block" />
+
+                <!-- Step 3 -->
+                <TextView
+                    android:id="@+id/step_3_number"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="32dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="@color/surface_container"
+                    android:gravity="center"
+                    android:text="@string/step_3"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="16sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/delta_info" />
+
+                <TextView
+                    android:id="@+id/step_3_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="@string/step_3_title"
+                    android:textColor="@color/on_surface"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/step_3_number"
+                    app:layout_constraintTop_toTopOf="@id/step_3_number" />
+
+                <TextView
+                    android:id="@+id/step_3_desc"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/step_3_desc"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/step_3_title"
+                    app:layout_constraintTop_toBottomOf="@id/step_3_title" />
+
+                <LinearLayout
+                    android:id="@+id/solution_grid"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="@id/step_3_title"
+                    app:layout_constraintTop_toBottomOf="@id/step_3_desc">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_math_block"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/root_1_label"
+                            android:textColor="@color/on_surface_variant"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="monospace"
+                            android:text="@string/math_x1"
+                            android:textColor="@color/on_primary_container"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_math_block"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/root_2_label"
+                            android:textColor="@color/on_surface_variant"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="monospace"
+                            android:text="@string/math_x2"
+                            android:textColor="@color/on_primary_container"
+                            android:textSize="14sp" />
+                    </LinearLayout>
+
+                </LinearLayout>
+
+                <View
+                    android:id="@+id/divider"
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="24dp"
+                    android:background="#1A7DD3FC"
+                    app:layout_constraintTop_toBottomOf="@id/solution_grid" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:orientation="horizontal"
+                    android:baselineAligned="false"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/divider">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="?attr/selectableItemBackground"
+                        app:drawableStartCompat="@drawable/ic_thumb_up"
+                        android:drawablePadding="8dp"
+                        app:drawableTint="@color/on_surface_variant"
+                        android:gravity="center"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:text="@string/useful_button"
+                        android:textColor="@color/on_surface_variant"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/more_solutions_btn"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_glass_panel"
+                        android:backgroundTint="#1A7DD3FC"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:drawableStart="@drawable/ic_menu_book"
+                        android:drawablePadding="8dp"
+                        android:drawableTint="@color/primary"
+                        android:gravity="center"
+                        android:paddingHorizontal="16dp"
+                        android:paddingVertical="8dp"
+                        android:text="@string/more_solutions"
+                        android:textColor="@color/primary"
+                        android:textSize="14sp" />
+
+                </LinearLayout>
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="40dp" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Navigation -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@drawable/bg_glass_panel_elevated"
+        app:itemIconTint="@color/on_surface_variant"
+        app:itemTextColor="@color/on_surface_variant"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

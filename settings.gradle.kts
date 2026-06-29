@@ -22,6 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "giaodienthunghiem"
+rootProject.name = "testUI"
 include(":app")
- 

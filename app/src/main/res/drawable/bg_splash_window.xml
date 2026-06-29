@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layer-list xmlns:android="http://schemas.android.com/apk/res/android">
+    <!-- Nền màu tối -->
+    <item android:drawable="@color/bg_splash" />
+
+    <!-- Hình tròn nền -->
+    <item
+        android:width="120dp"
+        android:height="120dp"
+        android:gravity="center">
+        <shape android:shape="oval">
+            <solid android:color="#1E293B" />
+        </shape>
+    </item>
+
+    <!-- Icon bông tuyết -->
+    <item
+        android:width="64dp"
+        android:height="64dp"
+        android:gravity="center"
+        android:drawable="@drawable/ic_snowflake" />
+</layer-list>
