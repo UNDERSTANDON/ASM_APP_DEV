@@ -98,6 +98,7 @@
                         android:layout_width="16dp"
                         android:layout_height="16dp"
                         android:src="@drawable/ic_auto_awesome"
+                        android:contentDescription="@string/original_question_label"
                         app:tint="@color/tertiary" />
 
                     <TextView
@@ -213,27 +214,34 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="horizontal"
+                    android:baselineAligned="false"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <View
+                    <FrameLayout
                         android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_glass_panel"
-                        android:backgroundTint="#1A7DD3FC" />
+                        android:layout_height="40dp">
 
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginStart="-30dp"
-                        android:layout_marginTop="10dp"
-                        android:src="@drawable/ic_calculate"
-                        app:tint="@color/primary" />
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/bg_glass_panel"
+                            android:backgroundTint="#1A7DD3FC" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/ic_calculate"
+                            android:contentDescription="@string/math_tag"
+                            app:tint="@color/primary" />
+                    </FrameLayout>
 
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="26dp"
+                        android:layout_marginStart="16dp"
+                        android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView

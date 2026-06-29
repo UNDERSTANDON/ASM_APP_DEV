@@ -90,6 +90,7 @@
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="12dp"
                     android:src="@drawable/ic_mail"
+                    android:contentDescription="@string/email_label"
                     app:tint="@color/on_surface_variant" />
 
                 <EditText
@@ -101,6 +102,8 @@
                     android:inputType="textEmailAddress"
                     android:padding="12dp"
                     android:paddingStart="44dp"
+                    android:paddingEnd="12dp"
+                    android:autofillHints="emailAddress"
                     android:textColor="@color/on_surface"
                     android:textColorHint="#66A0B4C4"
                     android:textSize="16sp" />
@@ -143,6 +146,7 @@
                     android:padding="12dp"
                     android:paddingStart="44dp"
                     android:paddingEnd="44dp"
+                    android:autofillHints="newPassword"
                     android:textColor="@color/on_surface"
                     android:textColorHint="#66A0B4C4"
                     android:textSize="16sp" />
@@ -155,6 +159,7 @@
                     android:layout_marginEnd="12dp"
                     android:clickable="true"
                     android:focusable="true"
+                    android:contentDescription="@string/password_label"
                     android:src="@drawable/ic_visibility_off"
                     app:tint="@color/on_surface_variant" />
             </FrameLayout>
@@ -184,7 +189,7 @@
                         android:id="@+id/strength_text"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="-"
+                        android:text="@string/strength_none"
                         android:textColor="@color/on_surface_variant"
                         android:textSize="12sp" />
                 </LinearLayout>
@@ -265,6 +270,7 @@
                     android:padding="12dp"
                     android:paddingStart="44dp"
                     android:paddingEnd="44dp"
+                    android:autofillHints="newPassword"
                     android:textColor="@color/on_surface"
                     android:textColorHint="#66A0B4C4"
                     android:textSize="16sp" />
@@ -288,6 +294,7 @@
                 android:textColor="@color/error"
                 android:textSize="12sp"
                 android:visibility="gone"
+                app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/confirm_password_input_wrapper" />
 
             <CheckBox

@@ -24,7 +24,7 @@
 
         <activity
             android:name=".MainActivity"
-            android:exported="false" />
+            android:exported="true" />
 
         <activity
             android:name=".RegisterActivity"
@@ -49,6 +49,30 @@
         <activity
             android:name=".AskQuestionActivity"
             android:exported="false" />
+
+        <activity
+            android:name=".NotificationsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".AnswerHistoryActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".QuizActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".QuizResultActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".AIInsightsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ProgressStatsActivity"
+            android:exported="true" />
 
     </application>
 

@@ -1,0 +1,637 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/insight_background"
+    tools:context=".AIInsightsActivity">
+
+    <!-- Header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/insight_surface"
+        android:paddingHorizontal="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:drawableStartCompat="@drawable/ic_brain"
+            android:drawablePadding="8dp"
+            app:drawableTint="@color/insight_primary"
+            android:text="EduAI"
+            android:textColor="@color/insight_text_primary"
+            android:textSize="20sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageView
+            android:id="@+id/btn_notifications"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginEnd="12dp"
+            android:padding="8dp"
+            android:src="@drawable/ic_notifications"
+            android:contentDescription="@string/notifications_title"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/user_avatar"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/insight_text_secondary" />
+
+        <com.google.android.material.imageview.ShapeableImageView
+            android:id="@+id/user_avatar"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:src="@drawable/ic_person"
+            android:contentDescription="@string/nav_profile"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:shapeAppearanceOverlay="@style/CircleAppearance" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Page Title -->
+            <TextView
+                android:id="@+id/page_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/insight_title"
+                android:textColor="@color/insight_text_primary"
+                android:textSize="28sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/insight_subtitle"
+                android:textColor="@color/insight_text_secondary"
+                android:textSize="14sp" />
+
+            <!-- Bento Grid -->
+            <GridLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:alignmentMode="alignMargins"
+                android:columnCount="2"
+                android:columnOrderPreserved="false">
+
+                <!-- Card 1: Optimal Focus Shift (Span 2) -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnSpan="2"
+                    android:layout_gravity="fill"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_insight_card"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:id="@+id/tag_group_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:src="@drawable/ic_target"
+                            android:importantForAccessibility="no"
+                            app:tint="@color/insight_primary" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="8dp"
+                            android:text="@string/insight_ai_suggestion"
+                            android:textColor="@color/insight_primary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/card1_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/insight_focus_title"
+                        android:textColor="@color/insight_text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@id/tag_group_1" />
+
+                    <TextView
+                        android:id="@+id/card1_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/insight_focus_desc"
+                        android:textColor="@color/insight_text_secondary"
+                        android:textSize="13sp"
+                        android:lineSpacingExtra="4dp"
+                        app:layout_constraintTop_toBottomOf="@id/card1_title" />
+
+                    <LinearLayout
+                        android:id="@+id/tags_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintTop_toBottomOf="@id/card1_desc">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/bg_chip"
+                            android:backgroundTint="#1A7C3AED"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp"
+                            android:text="@string/subj_math_short"
+                            android:textColor="@color/insight_primary"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/bg_chip"
+                            android:backgroundTint="#1A10B981"
+                            android:paddingHorizontal="10dp"
+                            android:paddingVertical="4dp"
+                            android:text="Efficiency +24%"
+                            android:textColor="@color/insight_success"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="@string/insight_view_schedule"
+                        android:textColor="@color/insight_text_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/tags_1" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Card 2: Momentum (Span 1) -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_marginEnd="6dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_insight_card"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/icon_2"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_flame"
+                        android:importantForAccessibility="no"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/insight_warning" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/insight_momentum_label"
+                        android:textColor="@color/insight_warning"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/icon_2"
+                        app:layout_constraintStart_toEndOf="@id/icon_2"
+                        app:layout_constraintTop_toTopOf="@id/icon_2" />
+
+                    <TextView
+                        android:id="@+id/momentum_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/momentum_8_days"
+                        android:textColor="@color/insight_text_primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/icon_2" />
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/momentum_progress"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:progress="75"
+                        app:indicatorColor="@color/insight_warning"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/momentum_val"
+                        app:trackColor="#1E1E2E"
+                        app:trackCornerRadius="2dp"
+                        app:trackThickness="4dp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/insight_momentum_target"
+                        android:textColor="@color/insight_text_secondary"
+                        android:textSize="11sp"
+                        app:layout_constraintTop_toBottomOf="@id/momentum_progress" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Card 3: Cognitive Load (Span 1) -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnWeight="1"
+                    android:layout_marginStart="6dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_insight_card"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/icon_3"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_brain"
+                        android:importantForAccessibility="no"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/insight_danger" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/insight_cognitive_label"
+                        android:textColor="@color/insight_danger"
+                        android:textSize="11sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/icon_3"
+                        app:layout_constraintStart_toEndOf="@id/icon_3"
+                        app:layout_constraintTop_toTopOf="@id/icon_3" />
+
+                    <TextView
+                        android:id="@+id/cognitive_val"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/cognitive_high"
+                        android:textColor="@color/insight_text_primary"
+                        android:textSize="24sp"
+                        android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toBottomOf="@id/icon_3" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:background="@drawable/bg_chip"
+                        android:backgroundTint="#33F59E0B"
+                        android:paddingHorizontal="6dp"
+                        android:paddingVertical="2dp"
+                        android:text="@string/insight_cognitive_warning"
+                        android:textColor="@color/insight_warning"
+                        android:textSize="11sp"
+                        app:layout_constraintBottom_toBottomOf="@id/cognitive_val"
+                        app:layout_constraintStart_toEndOf="@id/cognitive_val"
+                        app:layout_constraintTop_toTopOf="@id/cognitive_val" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="@string/insight_cognitive_desc"
+                        android:textColor="@color/insight_text_secondary"
+                        android:textSize="11sp"
+                        app:layout_constraintTop_toBottomOf="@id/cognitive_val" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Card 4: Skill Progression (Span 2) -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_columnSpan="2"
+                    android:layout_gravity="fill"
+                    android:background="@drawable/bg_insight_card"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:id="@+id/icon_4"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_trending_up"
+                        android:importantForAccessibility="no"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/insight_success" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="@string/insight_skill_label"
+                        android:textColor="@color/insight_success"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        app:layout_constraintBottom_toBottomOf="@id/icon_4"
+                        app:layout_constraintStart_toEndOf="@id/icon_4"
+                        app:layout_constraintTop_toTopOf="@id/icon_4" />
+
+                    <TextView
+                        android:id="@+id/card4_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/insight_skill_title"
+                        android:textColor="@color/insight_text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintTop_toBottomOf="@id/icon_4" />
+
+                    <LinearLayout
+                        android:id="@+id/skill_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:orientation="vertical"
+                        app:layout_constraintTop_toBottomOf="@id/card4_title">
+
+                        <!-- Math Skill -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp">
+                            <TextView
+                                android:id="@+id/s_name_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/insight_math"
+                                android:textColor="@color/insight_text_primary"
+                                android:textSize="13sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/skill_math_level"
+                                android:textColor="@color/insight_text_secondary"
+                                android:textSize="11sp"
+                                app:layout_constraintBottom_toBottomOf="@id/s_name_1"
+                                app:layout_constraintStart_toEndOf="@id/s_name_1" />
+                            <TextView
+                                android:id="@+id/s_val_1"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/skill_math_val"
+                                android:textColor="@color/insight_text_primary"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                            <com.google.android.material.progressindicator.LinearProgressIndicator
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:progress="82"
+                                app:indicatorColor="@color/insight_primary"
+                                app:layout_constraintTop_toBottomOf="@id/s_name_1"
+                                app:trackColor="#1E1E2E"
+                                app:trackCornerRadius="2dp" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                        <!-- Physics Skill -->
+                        <androidx.constraintlayout.widget.ConstraintLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginBottom="16dp">
+                            <TextView
+                                android:id="@+id/s_name_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/insight_physics"
+                                android:textColor="@color/insight_text_primary"
+                                android:textSize="13sp"
+                                app:layout_constraintStart_toStartOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:text="@string/skill_physics_level"
+                                android:textColor="@color/insight_text_secondary"
+                                android:textSize="11sp"
+                                app:layout_constraintBottom_toBottomOf="@id/s_name_2"
+                                app:layout_constraintStart_toEndOf="@id/s_name_2" />
+                            <TextView
+                                android:id="@+id/s_val_2"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/skill_physics_val"
+                                android:textColor="@color/insight_text_primary"
+                                android:textSize="13sp"
+                                android:textStyle="bold"
+                                app:layout_constraintEnd_toEndOf="parent"
+                                app:layout_constraintTop_toTopOf="parent" />
+                            <com.google.android.material.progressindicator.LinearProgressIndicator
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="8dp"
+                                android:progress="65"
+                                app:indicatorColor="@color/insight_accent"
+                                app:layout_constraintTop_toBottomOf="@id/s_name_2"
+                                app:trackColor="#1E1E2E"
+                                app:trackCornerRadius="2dp" />
+                        </androidx.constraintlayout.widget.ConstraintLayout>
+
+                    </LinearLayout>
+
+                    <Button
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:backgroundTint="@color/insight_primary"
+                        android:text="@string/insight_view_path"
+                        android:textAllCaps="false"
+                        android:textColor="@color/white"
+                        android:textSize="13sp"
+                        app:cornerRadius="8dp"
+                        app:layout_constraintTop_toBottomOf="@id/skill_list" />
+
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </GridLayout>
+
+            <!-- Weekly Summary -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:layout_marginBottom="16dp"
+                android:text="@string/insight_weekly_summary"
+                android:textColor="@color/insight_text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_glass_panel"
+                    android:padding="16dp">
+                    <ImageView
+                        android:id="@+id/s_icon_1"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_clock"
+                        android:importantForAccessibility="no"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/insight_warning" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="@string/insight_study_time"
+                        android:textColor="@color/insight_text_secondary"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="@id/s_icon_1"
+                        app:layout_constraintStart_toEndOf="@id/s_icon_1"
+                        app:layout_constraintTop_toTopOf="@id/s_icon_1" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stat_time_14h"
+                        android:textColor="@color/insight_text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_glass_panel"
+                    android:padding="16dp">
+                    <ImageView
+                        android:id="@+id/s_icon_2"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_zap"
+                        android:importantForAccessibility="no"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/insight_primary" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="@string/insight_tasks_done"
+                        android:textColor="@color/insight_text_secondary"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="@id/s_icon_2"
+                        app:layout_constraintStart_toEndOf="@id/s_icon_2"
+                        app:layout_constraintTop_toTopOf="@id/s_icon_2" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stat_done_47"
+                        android:textColor="@color/insight_text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:background="@drawable/bg_glass_panel"
+                    android:padding="16dp">
+                    <ImageView
+                        android:id="@+id/s_icon_3"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_star"
+                        android:importantForAccessibility="no"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/insight_accent" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="@string/insight_avg_score"
+                        android:textColor="@color/insight_text_secondary"
+                        android:textSize="13sp"
+                        app:layout_constraintBottom_toBottomOf="@id/s_icon_3"
+                        app:layout_constraintStart_toEndOf="@id/s_icon_3"
+                        app:layout_constraintTop_toTopOf="@id/s_icon_3" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/stat_score_8_6"
+                        android:textColor="@color/insight_text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Navigation Bar -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:background="@color/insight_surface"
+        app:itemIconTint="@color/insight_text_secondary"
+        app:itemTextColor="@color/insight_text_secondary"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

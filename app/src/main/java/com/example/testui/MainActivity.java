@@ -15,5 +15,7 @@ public class MainActivity extends AppCompatActivity {
         askAiBtn.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, AskQuestionActivity.class));
         });
+
+        NavigationHelper.setupBottomNavigation(this, R.id.nav_home);
     }
 }

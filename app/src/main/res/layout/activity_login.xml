@@ -101,6 +101,8 @@
                     android:inputType="textEmailAddress"
                     android:padding="12dp"
                     android:paddingStart="44dp"
+                    android:paddingEnd="12dp"
+                    android:autofillHints="emailAddress"
                     android:textColor="@color/on_surface"
                     android:textColorHint="#66A0B4C4"
                     android:textSize="16sp" />
@@ -143,6 +145,7 @@
                     android:padding="12dp"
                     android:paddingStart="44dp"
                     android:paddingEnd="44dp"
+                    android:autofillHints="password"
                     android:textColor="@color/on_surface"
                     android:textColorHint="#66A0B4C4"
                     android:textSize="16sp" />

@@ -27,5 +27,7 @@ public class AnswerActivity extends AppCompatActivity {
         moreSolutionsBtn.setOnClickListener(v -> {
             startActivity(new Intent(AnswerActivity.this, ExpandedAnswerActivity.class));
         });
+
+        NavigationHelper.setupBottomNavigation(this, R.id.nav_home);
     }
 }

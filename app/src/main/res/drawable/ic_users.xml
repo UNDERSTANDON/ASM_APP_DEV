@@ -9,19 +9,26 @@
       android:strokeWidth="2"
       android:strokeLineCap="round"
       android:strokeLineJoin="round"
-      android:pathData="M4,12v7a2,2 0,0 0,2 2h12a2,2 0,0 0,2 -2v-7"/>
+      android:pathData="M17,21v-2a4,4 0,0 0,-4 -4H5a4,4 0,0 0,-4 4v2"/>
   <path
       android:fillColor="#00000000"
       android:strokeColor="#FFFFFF"
       android:strokeWidth="2"
       android:strokeLineCap="round"
       android:strokeLineJoin="round"
-      android:pathData="M16,6l-4,-4l-4,4"/>
+      android:pathData="M9,7m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"/>
   <path
       android:fillColor="#00000000"
       android:strokeColor="#FFFFFF"
       android:strokeWidth="2"
       android:strokeLineCap="round"
       android:strokeLineJoin="round"
-      android:pathData="M12,2v13"/>
+      android:pathData="M23,21v-2a4,4 0,0 0,-3 -3.87"/>
+  <path
+      android:fillColor="#00000000"
+      android:strokeColor="#FFFFFF"
+      android:strokeWidth="2"
+      android:strokeLineCap="round"
+      android:strokeLineJoin="round"
+      android:pathData="M16,3.13a4,4 0,0 1,0 7.75"/>
 </vector>
