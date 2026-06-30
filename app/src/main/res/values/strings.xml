@@ -251,6 +251,8 @@
     <string name="streak_longest">Chuỗi dài nhất</string>
     <string name="streak_active_days">Ngày hoạt động</string>
     <string name="streak_motivation">Tiếp tục học hôm nay để duy trì chuỗi 12 ngày của bạn!</string>
+    <string name="emoji_ruler">📐</string>
+    <string name="emoji_bolt">⚡</string>
     <string name="subject_progress_title">Tiến độ theo môn</string>
     <string name="sub_stat_done">Câu đã làm</string>
 

@@ -107,6 +107,7 @@
                         android:text="@string/stat_total_questions"
                         android:textColor="@color/insight_text_secondary"
                         android:textSize="11sp"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/icon_q" />
                     <TextView
                         android:id="@+id/val_q"
@@ -116,6 +117,7 @@
                         android:textColor="@color/insight_text_primary"
                         android:textSize="20sp"
                         android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/label_q" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -147,6 +149,7 @@
                         android:text="@string/stat_accuracy"
                         android:textColor="@color/insight_text_secondary"
                         android:textSize="11sp"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/icon_a" />
                     <TextView
                         android:id="@+id/val_a"
@@ -156,6 +159,7 @@
                         android:textColor="@color/insight_text_primary"
                         android:textSize="20sp"
                         android:textStyle="bold"
+                        app:layout_constraintStart_toStartOf="parent"
                         app:layout_constraintTop_toBottomOf="@id/label_a" />
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -314,7 +318,7 @@
                         android:id="@+id/subj_icon_1"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📐"
+                        android:text="@string/emoji_ruler"
                         android:textSize="24sp"
                         android:importantForAccessibility="no"
                         app:layout_constraintStart_toStartOf="parent"
@@ -369,7 +373,7 @@
                         android:id="@+id/subj_icon_2"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="⚡"
+                        android:text="@string/emoji_bolt"
                         android:textSize="24sp"
                         android:importantForAccessibility="no"
                         app:layout_constraintStart_toStartOf="parent"
