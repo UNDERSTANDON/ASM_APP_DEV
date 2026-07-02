@@ -346,6 +346,7 @@
                 app:tint="@color/quiz_text_secondary" />
 
             <TextView
+                android:id="@+id/lbl_btnBack"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="8dp"
