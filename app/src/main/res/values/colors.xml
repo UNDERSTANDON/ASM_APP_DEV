@@ -62,4 +62,34 @@
     <!-- Progress Stats -->
     <color name="streak_active">#F59E0B</color>
     <color name="streak_inactive">#1E1E2E</color>
+
+    <!-- Leaderboard Colors -->
+    <color name="lb_background">#0a0a0f</color>
+    <color name="lb_surface">#12121a</color>
+    <color name="lb_surface_elevated">#1a1a2e</color>
+    <color name="lb_primary">#6c63ff</color>
+    <color name="lb_primary_light">#8b84ff</color>
+    <color name="lb_accent">#ff6584</color>
+    <color name="lb_gold">#ffd700</color>
+    <color name="lb_silver">#c0c0c0</color>
+    <color name="lb_bronze">#cd7f32</color>
+    <color name="lb_text_primary">#ffffff</color>
+    <color name="lb_text_secondary">#a0a0b0</color>
+    <!-- HIGH CONTRAST COLORS FOR REAL VISIBILITY -->
+    <color name="vis_background">#FFFFFF</color> <!-- Pure White background -->
+    <color name="vis_text_primary">#000000</color> <!-- Pure Black text -->
+    <color name="vis_accent">#0000FF</color> <!-- Bright Blue -->
+    <color name="vis_danger">#FF0000</color> <!-- Pure Red -->
+    <color name="vis_success">#008000</color> <!-- Dark Green -->
+    <color name="vis_card_bg">#F0F0F0</color> <!-- Light Grey for cards -->
+    <color name="vis_border">#CCCCCC</color> <!-- Visible borders -->
+
+    <color name="lb_border">#2a2a3e</color>
+
+    <!-- Settings Specific Colors -->
+    <color name="st_danger">#ff4d6d</color>
+    <color name="st_success">#43d9ad</color>
+    <color name="st_primary_light">#8b84ff</color>
+    <color name="st_gold">#ffd700</color>
+    <color name="st_warning">#f59e0b</color>
 </resources>

@@ -15,7 +15,7 @@
         <activity
             android:name=".SplashActivity"
             android:exported="true"
-            android:theme="@style/Theme.TestUI.Splash">
+            android:theme="@style/Theme.App.Starting">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
@@ -72,6 +72,22 @@
 
         <activity
             android:name=".ProgressStatsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".LeaderboardActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".SettingsActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".ProfileActivity"
+            android:exported="true" />
+
+        <activity
+            android:name=".OfflineActivity"
             android:exported="true" />
 
     </application>

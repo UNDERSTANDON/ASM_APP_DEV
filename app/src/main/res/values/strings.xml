@@ -1,5 +1,20 @@
 <resources>
-    <string name="app_name">testUI</string>
+    <string name="app_name">EduQuest</string>
+    <string name="back">Quay lại</string>
+    <string name="more">Thêm</string>
+    <string name="profile_name_placeholder">Alex Mercer</string>
+    <string name="profile_tag_placeholder">\@alexmercer</string>
+    <string name="level_value">42</string>
+    <string name="xp_value">8450</string>
+    <string name="streak_value_days">14d</string>
+    <string name="badges_value">27</string>
+    <string name="dob_placeholder">14/05/2000</string>
+    <string name="email_placeholder_real">alex.mercer@edu.vn</string>
+    <string name="school_placeholder">BTEC FPT</string>
+    <string name="subject_math_vn">Toán</string>
+    <string name="subject_phys_vn">Vật Lý</string>
+    <string name="subject_chem_vn">Hóa Học</string>
+    <string name="subject_it_vn">Tin Học</string>
     <string name="glacier_edu">Glacier Edu</string>
     <string name="unlock_potential">MỞ KHÓA TIỀM NĂNG</string>
     <string name="checking_session">Đang kiểm tra phiên đăng nhập…</string>
@@ -30,6 +45,8 @@
     <string name="social_login_divider">Hoặc tiếp tục với</string>
     <string name="google_login">Google</string>
     <string name="github_login">GitHub</string>
+    <string name="logo_desc">Logo</string>
+    <string name="back_icon_desc">Quay lại</string>
     <string name="legal_notice">Bằng việc đăng nhập, bạn đồng ý với Điều khoản dịch vụ và Chính sách bảo mật của chúng tôi.</string>
     <string name="dont_have_account">Chưa có tài khoản? Đăng ký</string>
     <string name="profile_setup_title">Thiết lập hồ sơ</string>
@@ -161,6 +178,8 @@
     <string name="nav_saved_label">Đã lưu</string>
     <string name="nav_alerts_label">Thông báo</string>
     <string name="nav_ai_tutor_label">AI Tutor</string>
+    <string name="nav_search">Tìm kiếm</string>
+    <string name="home_title">EduAI Home</string>
 
     <!-- Quiz Screen -->
     <string name="quiz_title">Practice Quiz</string>
@@ -332,4 +351,87 @@
     <string name="subj_chem_short">Hóa học</string>
     <string name="subj_it_short">Tin học</string>
     <string name="subj_lang_short">Ngoại ngữ</string>
+
+    <!-- Leaderboard -->
+    <string name="lb_title">Bảng Xếp Hạng</string>
+    <string name="lb_subtitle">Tuần này · Cập nhật 5 phút trước</string>
+    <string name="lb_xp_label">XP</string>
+    <string name="lb_tab_global">Global</string>
+    <string name="lb_tab_friends">Friends</string>
+    <string name="lb_streak_days">%1$d ngày 🔥</string>
+    <string name="lb_xp_to_next">+%1$d XP để lên #%2$d</string>
+    <string name="lb_current_user_name">Bạn</string>
+    <string name="lb_current_user_tag">\@me</string>
+    <string name="lb_nav_home">Trang Chủ</string>
+    <string name="lb_nav_rank">Xếp Hạng</string>
+    <string name="lb_nav_search">Tìm Kiếm</string>
+    <string name="lb_nav_profile">Hồ Sơ</string>
+    <string name="lb_nav_settings">Cài Đặt</string>
+
+    <!-- Settings -->
+    <string name="st_title">Settings</string>
+    <string name="st_subtitle">Quản lý tài khoản &amp; quyền riêng tư của bạn</string>
+    <string name="st_sec_security">Bảo Mật</string>
+    <string name="st_label_2fa">Xác Thực 2 Bước (2FA)</string>
+    <string name="st_desc_2fa">Thêm lớp bảo vệ cho tài khoản của bạn</string>
+    <string name="st_label_change_password">Đổi Mật Khẩu</string>
+    <string name="st_desc_change_password">Cập nhật mật khẩu định kỳ để bảo vệ tài khoản</string>
+    <string name="st_sec_privacy">Quyền Riêng Tư</string>
+    <string name="st_label_data_management">Quản Lý Dữ Liệu</string>
+    <string name="st_desc_data_management">Xem, tải xuống hoặc xóa dữ liệu cá nhân</string>
+    <string name="st_label_notifications">Thông Báo</string>
+    <string name="st_desc_notifications">Điều chỉnh loại thông báo bạn muốn nhận</string>
+    <string name="st_badge_notif">3 mới</string>
+    <string name="st_sec_legal">Pháp Lý</string>
+    <string name="st_label_privacy_policy">Chính Sách Quyền Riêng Tư</string>
+    <string name="st_desc_privacy_policy">Xem chính sách bảo vệ dữ liệu của chúng tôi</string>
+    <string name="st_label_terms">Điều Khoản Sử Dụng</string>
+    <string name="st_desc_terms">Các điều khoản và điều kiện khi sử dụng EduQuest</string>
+    <string name="st_sec_danger">Vùng Nguy Hiểm</string>
+    <string name="st_desc_danger">Hành động này không thể hoàn tác. Tất cả dữ liệu, tiến trình và thành tích sẽ bị xóa vĩnh viễn.</string>
+    <string name="st_btn_delete_account">Xóa Tài Khoản</string>
+
+    <!-- Profile -->
+    <string name="pr_title">Hồ Sơ Người Dùng</string>
+    <string name="pr_edit_heading">Chỉnh Sửa Hồ Sơ</string>
+    <string name="pr_label_fullname">Họ &amp; Tên</string>
+    <string name="pr_label_dob">Ngày Sinh</string>
+    <string name="pr_label_email">Email</string>
+    <string name="pr_label_education_level">Cấp Độ Giáo Dục</string>
+    <string name="pr_label_school">Trường / Cơ Sở</string>
+    <string name="pr_label_subjects">Chọn môn học</string>
+    <string name="pr_btn_save">Lưu Thay Đổi</string>
+    <string name="pr_btn_cancel">Hủy</string>
+    <string name="pr_stat_level">Cấp độ</string>
+    <string name="pr_stat_xp">XP</string>
+    <string name="pr_stat_streak">Streak</string>
+    <string name="pr_stat_badges">Huy hiệu</string>
+    <string name="pr_group_personal">Thông Tin Cá Nhân</string>
+    <string name="pr_group_education">Trình Độ Học Vấn</string>
+    <string name="pr_group_subjects">Môn Học Yêu Thích</string>
+    <string name="rank_1_name">MARCUS</string>
+    <string name="rank_2_name">ELENA</string>
+    <string name="rank_3_name">SARAH</string>
+    <string name="rank_1_label">#1</string>
+    <string name="rank_2_label">#2</string>
+    <string name="rank_3_label">#3</string>
+    <string name="rank_4_placeholder">#4 - David_K - 6200 XP</string>
+    <string name="rank_5_placeholder">#5 - AlexW - 5750 XP</string>
+    <string name="current_user_rank_placeholder">BẠN - #42 - 3200 XP</string>
+
+    <!-- Offline -->
+    <string name="of_badge">OFFLINE</string>
+    <string name="of_warning_title">Bạn đang ở chế độ Offline</string>
+    <string name="of_warning_desc">Không có kết nối Internet. Chỉ có thể truy cập nội dung đã tải về trước đó.</string>
+    <string name="of_btn_retry">Thử lại</string>
+    <string name="of_sec_title">Available Offline</string>
+    <string name="of_sec_subtitle">3 khóa học đã được tải về · Cập nhật lần cuối hôm qua</string>
+    <string name="of_card_downloaded">Đã tải</string>
+    <string name="of_lessons">%1$d bài học</string>
+    <string name="of_duration">~%1$s giờ</string>
+    <string name="of_btn_continue">Tiếp tục học</string>
+    <string name="of_storage_used">Used: %1$s MB</string>
+    <string name="of_storage_available">Available: %1$s MB</string>
+    <string name="of_storage_total">Total: %1$s GB</string>
+    <string name="of_nav_offline">Offline</string>
 </resources>

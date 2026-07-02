@@ -20,5 +20,7 @@ public class ProfileActivity extends AppCompatActivity {
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         spinner.setAdapter(adapter);
         spinner.setSelection(1); // Default to College/Uni
+
+        NavigationHelper.setupBottomNavigation(this, R.id.nav_profile);
     }
 }

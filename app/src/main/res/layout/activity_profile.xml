@@ -4,7 +4,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/lb_background"
+    android:background="@color/background"
     tools:context=".ProfileActivity">
 
     <!-- Header -->
@@ -20,50 +20,40 @@
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="Back"
+            android:contentDescription="@string/back"
             android:src="@drawable/ic_arrow_back"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/lb_text_primary" />
+            app:tint="@color/on_surface" />
 
-        <LinearLayout
+        <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:gravity="center"
-            android:orientation="horizontal"
+            android:layout_marginStart="8dp"
+            android:fontFamily="sans-serif-black"
+            android:text="@string/app_name"
+            android:textColor="@color/on_surface"
+            android:textSize="20sp"
+            app:drawableStartCompat="@drawable/ic_graduation_cap"
+            app:drawableTint="@color/primary"
+            android:drawablePadding="8dp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent">
-
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_graduation_cap"
-                app:tint="@color/lb_primary" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="8dp"
-                android:fontFamily="sans-serif-black"
-                android:text="EduQuest"
-                android:textColor="@color/lb_text_primary"
-                android:textSize="20sp" />
-        </LinearLayout>
+            app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
             android:id="@+id/btn_more"
             android:layout_width="40dp"
             android:layout_height="40dp"
             android:background="?attr/selectableItemBackgroundBorderless"
-            android:contentDescription="More"
+            android:contentDescription="@string/more"
             android:src="@drawable/ic_more_vertical"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="parent"
-            app:tint="@color/lb_text_primary" />
+            app:tint="@color/on_surface" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
@@ -82,8 +72,6 @@
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:gravity="center"
-                android:orientation="vertical"
                 android:paddingBottom="24dp">
 
                 <FrameLayout
@@ -94,7 +82,7 @@
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent">
 
-                    <!-- Decorative Orbits (Simplified) -->
+                    <!-- Decorative Orbits -->
                     <View
                         android:layout_width="180dp"
                         android:layout_height="180dp"
@@ -109,7 +97,7 @@
                         android:layout_gravity="center"
                         android:src="@drawable/ic_person"
                         app:shapeAppearanceOverlay="@style/CircleAppearance"
-                        app:strokeColor="@color/lb_primary"
+                        app:strokeColor="@color/primary"
                         app:strokeWidth="4dp" />
 
                     <com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -118,10 +106,10 @@
                         android:layout_height="wrap_content"
                         android:layout_gravity="bottom|end"
                         android:layout_margin="32dp"
-                        app:backgroundTint="@color/lb_primary"
+                        app:backgroundTint="@color/primary"
                         app:fabSize="mini"
                         app:srcCompat="@drawable/ic_photo_camera"
-                        app:tint="@color/white" />
+                        app:tint="@color/black" />
                 </FrameLayout>
 
                 <TextView
@@ -129,8 +117,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
-                    android:text="Alex Mercer"
-                    android:textColor="@color/lb_text_primary"
+                    android:text="@string/profile_name_placeholder"
+                    android:textColor="@color/on_surface"
                     android:textSize="24sp"
                     android:textStyle="bold"
                     app:layout_constraintEnd_toEndOf="parent"
@@ -141,8 +129,8 @@
                     android:id="@+id/profile_tag"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="@string/lb_current_user_tag"
-                    android:textColor="@color/lb_text_secondary"
+                    android:text="@string/profile_tag_placeholder"
+                    android:textColor="@color/on_surface_variant"
                     android:textSize="14sp"
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
@@ -166,18 +154,18 @@
                             android:layout_width="24dp"
                             android:layout_height="24dp"
                             android:src="@drawable/ic_zap"
-                            app:tint="@color/lb_primary" />
+                            app:tint="@color/primary" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="42"
-                            android:textColor="@color/white"
+                            android:text="@string/level_value"
+                            android:textColor="@color/on_surface"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/pr_stat_level"
-                            android:textColor="@color/lb_text_secondary"
+                            android:textColor="@color/on_surface_variant"
                             android:textSize="10sp" />
                     </LinearLayout>
 
@@ -195,14 +183,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="8450"
-                            android:textColor="@color/white"
+                            android:text="@string/xp_value"
+                            android:textColor="@color/on_surface"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/pr_stat_xp"
-                            android:textColor="@color/lb_text_secondary"
+                            android:textColor="@color/on_surface_variant"
                             android:textSize="10sp" />
                     </LinearLayout>
 
@@ -220,14 +208,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="14d"
-                            android:textColor="@color/white"
+                            android:text="@string/streak_value_days"
+                            android:textColor="@color/on_surface"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/pr_stat_streak"
-                            android:textColor="@color/lb_text_secondary"
+                            android:textColor="@color/on_surface_variant"
                             android:textSize="10sp" />
                     </LinearLayout>
 
@@ -245,14 +233,14 @@
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="27"
-                            android:textColor="@color/white"
+                            android:text="@string/badges_value"
+                            android:textColor="@color/on_surface"
                             android:textStyle="bold" />
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/pr_stat_badges"
-                            android:textColor="@color/lb_text_secondary"
+                            android:textColor="@color/on_surface_variant"
                             android:textSize="10sp" />
                     </LinearLayout>
                 </LinearLayout>
@@ -263,10 +251,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
-                android:drawableStart="@drawable/ic_edit_3"
+                app:drawableStartCompat="@drawable/ic_edit_3"
                 android:drawablePadding="8dp"
                 android:text="@string/pr_edit_heading"
-                android:textColor="@color/lb_text_primary"
+                android:textColor="@color/on_surface"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
@@ -282,11 +270,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_person"
+                    app:drawableStartCompat="@drawable/ic_person"
                     android:drawablePadding="8dp"
-                    android:drawableTint="@color/lb_primary"
+                    app:drawableTint="@color/primary"
                     android:text="@string/pr_group_personal"
-                    android:textColor="@color/lb_primary"
+                    android:textColor="@color/primary"
                     android:textStyle="bold" />
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -294,12 +282,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:hint="@string/pr_label_fullname"
-                    app:hintTextColor="@color/lb_text_secondary">
+                    app:hintTextColor="@color/on_surface_variant">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="Alex Mercer"
-                        android:textColor="@color/white" />
+                        android:text="@string/profile_name_placeholder"
+                        android:textColor="@color/on_surface" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -307,12 +295,12 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:hint="@string/pr_label_dob"
-                    app:hintTextColor="@color/lb_text_secondary">
+                    app:hintTextColor="@color/on_surface_variant">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="14/05/2000"
-                        android:textColor="@color/white" />
+                        android:text="@string/dob_placeholder"
+                        android:textColor="@color/on_surface" />
                 </com.google.android.material.textfield.TextInputLayout>
 
                 <com.google.android.material.textfield.TextInputLayout
@@ -323,12 +311,12 @@
                     app:endIconDrawable="@drawable/ic_verified_user"
                     app:endIconMode="custom"
                     app:endIconTint="@color/st_success"
-                    app:hintTextColor="@color/lb_text_secondary">
+                    app:hintTextColor="@color/on_surface_variant">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="alex.mercer@edu.vn"
-                        android:textColor="@color/white" />
+                        android:text="@string/email_placeholder_real"
+                        android:textColor="@color/on_surface" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -344,11 +332,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_graduation_cap"
+                    app:drawableStartCompat="@drawable/ic_graduation_cap"
                     android:drawablePadding="8dp"
-                    android:drawableTint="@color/lb_primary"
+                    app:drawableTint="@color/primary"
                     android:text="@string/pr_group_education"
-                    android:textColor="@color/lb_primary"
+                    android:textColor="@color/primary"
                     android:textStyle="bold" />
 
                 <TextView
@@ -356,7 +344,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/pr_label_education_level"
-                    android:textColor="@color/lb_text_secondary"
+                    android:textColor="@color/on_surface_variant"
                     android:textSize="12sp" />
 
                 <Spinner
@@ -365,19 +353,19 @@
                     android:layout_height="48dp"
                     android:layout_marginTop="4dp"
                     android:background="@drawable/bg_input"
-                    android:popupBackground="@color/lb_surface_elevated" />
+                    android:popupBackground="@color/surface_container" />
 
                 <com.google.android.material.textfield.TextInputLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
                     android:hint="@string/pr_label_school"
-                    app:hintTextColor="@color/lb_text_secondary">
+                    app:hintTextColor="@color/on_surface_variant">
                     <com.google.android.material.textfield.TextInputEditText
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:text="BTEC FPT"
-                        android:textColor="@color/white" />
+                        android:text="@string/school_placeholder"
+                        android:textColor="@color/on_surface" />
                 </com.google.android.material.textfield.TextInputLayout>
             </LinearLayout>
 
@@ -393,11 +381,11 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:drawableStart="@drawable/ic_book_open"
+                    app:drawableStartCompat="@drawable/ic_book_open"
                     android:drawablePadding="8dp"
-                    android:drawableTint="@color/lb_primary"
+                    app:drawableTint="@color/primary"
                     android:text="@string/pr_group_subjects"
-                    android:textColor="@color/lb_primary"
+                    android:textColor="@color/primary"
                     android:textStyle="bold" />
 
                 <TextView
@@ -405,7 +393,7 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="16dp"
                     android:text="@string/pr_label_subjects"
-                    android:textColor="@color/lb_text_secondary"
+                    android:textColor="@color/on_surface_variant"
                     android:textSize="12sp" />
 
                 <com.google.android.material.chip.ChipGroup
@@ -417,27 +405,27 @@
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Toán"
-                        android:textColor="@color/white"
-                        app:chipBackgroundColor="@color/lb_primary" />
+                        android:text="@string/subject_math_vn"
+                        android:textColor="@color/on_surface"
+                        app:chipBackgroundColor="@color/primary" />
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Vật Lý"
-                        android:textColor="@color/white"
-                        app:chipBackgroundColor="@color/lb_primary" />
+                        android:text="@string/subject_phys_vn"
+                        android:textColor="@color/on_surface"
+                        app:chipBackgroundColor="@color/primary" />
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Hóa Học"
-                        android:textColor="@color/white"
-                        app:chipBackgroundColor="@color/lb_primary" />
+                        android:text="@string/subject_chem_vn"
+                        android:textColor="@color/on_surface"
+                        app:chipBackgroundColor="@color/primary" />
                     <com.google.android.material.chip.Chip
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="Tin Học"
-                        android:textColor="@color/white"
-                        app:chipBackgroundColor="@color/lb_primary" />
+                        android:text="@string/subject_it_vn"
+                        android:textColor="@color/on_surface"
+                        app:chipBackgroundColor="@color/primary" />
                 </com.google.android.material.chip.ChipGroup>
             </LinearLayout>
 
@@ -455,9 +443,11 @@
                     android:layout_width="0dp"
                     android:layout_height="56dp"
                     android:layout_weight="1"
-                    android:backgroundTint="@color/lb_primary"
+                    android:backgroundTint="@color/primary"
                     android:text="@string/pr_btn_save"
-                    app:icon="@drawable/ic_save" />
+                    android:textColor="@color/black"
+                    app:icon="@drawable/ic_save"
+                    app:iconTint="@color/black" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btn_cancel"
@@ -466,116 +456,23 @@
                     android:layout_height="56dp"
                     android:layout_marginStart="16dp"
                     android:text="@string/pr_btn_cancel"
-                    android:textColor="@color/lb_text_secondary" />
+                    android:textColor="@color/on_surface_variant" />
             </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>
 
     <!-- Bottom Navigation -->
-    <LinearLayout
+    <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
         android:layout_height="64dp"
-        android:background="@color/lb_background"
-        android:elevation="8dp"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toBottomOf="parent">
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_home"
-                app:tint="@color/lb_text_secondary" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lb_nav_home"
-                android:textColor="@color/lb_text_secondary"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_trophy"
-                app:tint="@color/lb_text_secondary" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lb_nav_rank"
-                android:textColor="@color/lb_text_secondary"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_search"
-                app:tint="@color/lb_text_secondary" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lb_nav_search"
-                android:textColor="@color/lb_text_secondary"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_person"
-                app:tint="@color/lb_primary" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lb_nav_profile"
-                android:textColor="@color/lb_primary"
-                android:textSize="10sp" />
-        </LinearLayout>
-
-        <LinearLayout
-            android:layout_width="0dp"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:orientation="vertical">
-            <ImageView
-                android:layout_width="24dp"
-                android:layout_height="24dp"
-                android:src="@drawable/ic_menu"
-                app:tint="@color/lb_text_secondary" />
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="@string/lb_nav_settings"
-                android:textColor="@color/lb_text_secondary"
-                android:textSize="10sp" />
-        </LinearLayout>
-    </LinearLayout>
+        android:background="@color/surface_container"
+        app:itemIconTint="@color/on_surface_variant"
+        app:itemTextColor="@color/on_surface_variant"
+        app:itemActiveIndicatorStyle="@null"
+        app:labelVisibilityMode="labeled"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:menu="@menu/bottom_nav_menu" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
