@@ -4,7 +4,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
@@ -16,7 +15,6 @@ public class LoginActivity extends AppCompatActivity {
 
     private EditText passwordEditText;
     private ImageView togglePassword;
-    private TextView registerRedirect;
     private Button loginButton;
     private boolean isPasswordVisible = false;
 
@@ -27,7 +25,6 @@ public class LoginActivity extends AppCompatActivity {
 
         passwordEditText = findViewById(R.id.password_edit_text);
         togglePassword = findViewById(R.id.toggle_password);
-        registerRedirect = findViewById(R.id.register_redirect);
         loginButton = findViewById(R.id.login_button);
 
         loginButton.setOnClickListener(v -> {
@@ -50,8 +47,6 @@ public class LoginActivity extends AppCompatActivity {
             passwordEditText.setSelection(passwordEditText.getText().length());
         });
 
-        registerRedirect.setOnClickListener(v -> {
-            startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
-        });
+        findViewById(R.id.register_redirect).setOnClickListener(v -> startActivity(new Intent(LoginActivity.this, RegisterActivity.class)));
     }
 }

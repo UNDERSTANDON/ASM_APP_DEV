@@ -29,6 +29,8 @@ public class NavigationHelper {
                 targetActivity = AnswerHistoryActivity.class;
             } else if (id == R.id.nav_alerts) {
                 targetActivity = NotificationsActivity.class;
+            } else if (id == R.id.nav_profile) {
+                targetActivity = ProfileActivity.class;
             }
 
             if (targetActivity != null) {
