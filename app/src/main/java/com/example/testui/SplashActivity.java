@@ -6,10 +6,14 @@ import android.os.Handler;
 import android.os.Looper;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.activity.EdgeToEdge;
+import androidx.core.splashscreen.SplashScreen;
 
 public class SplashActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Cài đặt Splash Screen trước khi gọi super.onCreate
+        SplashScreen.installSplashScreen(this);
+
         super.onCreate(savedInstanceState);
         
         // Bật chế độ hiển thị toàn màn hình để tránh flicker thanh trạng thái

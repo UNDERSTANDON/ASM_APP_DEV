@@ -20,9 +20,7 @@ public class MainActivity extends AppCompatActivity {
         }
 
         TextView askAiBtn = findViewById(R.id.ask_ai_btn);
-        askAiBtn.setOnClickListener(v -> {
-            startActivity(new Intent(MainActivity.this, AskQuestionActivity.class));
-        });
+        askAiBtn.setOnClickListener(v -> startActivity(new Intent(MainActivity.this, AskQuestionActivity.class)));
 
         NavigationHelper.setupBottomNavigation(this, R.id.nav_home);
     }

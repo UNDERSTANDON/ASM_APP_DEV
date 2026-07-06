@@ -89,6 +89,7 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="12dp"
+                    android:contentDescription="@string/email_label"
                     android:src="@drawable/ic_mail"
                     app:tint="@color/on_surface_variant" />
 
@@ -132,6 +133,7 @@
                     android:layout_height="20dp"
                     android:layout_gravity="center_vertical|start"
                     android:layout_marginStart="12dp"
+                    android:contentDescription="@string/password_label"
                     android:src="@drawable/ic_lock"
                     app:tint="@color/on_surface_variant" />
 
@@ -157,6 +159,7 @@
                     android:layout_gravity="center_vertical|end"
                     android:layout_marginEnd="12dp"
                     android:clickable="true"
+                    android:contentDescription="@string/password_label"
                     android:focusable="true"
                     android:src="@drawable/ic_visibility_off"
                     app:tint="@color/on_surface_variant" />
@@ -208,6 +211,7 @@
                 <ImageView
                     android:layout_width="24dp"
                     android:layout_height="24dp"
+                    android:contentDescription="@string/two_fa_label"
                     android:src="@drawable/ic_shield_locked" />
 
                 <TextView
@@ -292,6 +296,7 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
+                        android:contentDescription="@string/google_login"
                         android:src="@drawable/ic_google" />
 
                     <TextView
@@ -319,6 +324,7 @@
                     <ImageView
                         android:layout_width="20dp"
                         android:layout_height="20dp"
+                        android:contentDescription="@string/github_login"
                         android:src="@drawable/ic_github" />
 
                     <TextView

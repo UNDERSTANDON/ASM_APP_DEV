@@ -1,0 +1,679 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/lb_background"
+    tools:context=".OfflineActivity">
+
+    <!-- Header -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Back"
+            android:src="@drawable/ic_arrow_back"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/lb_text_primary" />
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_wifi_off" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif-black"
+                android:text="EduQuest"
+                android:textColor="@color/lb_text_primary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_chip"
+                android:backgroundTint="@color/st_warning"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="@string/of_badge"
+                android:textColor="@color/lb_background"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ImageButton
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Settings"
+            android:src="@drawable/ic_settings"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:tint="@color/lb_text_primary" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_nav"
+        app:layout_constraintTop_toBottomOf="@id/header">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="20dp">
+
+            <!-- Offline Warning Banner -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/offline_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_glass_panel"
+                android:backgroundTint="#26A00000"
+                android:padding="16dp">
+
+                <ImageView
+                    android:id="@+id/banner_icon"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:src="@drawable/ic_alert_circle"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:orientation="vertical"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toEndOf="@id/banner_icon"
+                    app:layout_constraintTop_toTopOf="parent">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/of_warning_title"
+                        android:textColor="@color/st_warning"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="@string/of_warning_desc"
+                        android:textColor="@color/lb_text_secondary"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btn_retry"
+                        style="@style/Widget.Material3.Button.OutlinedButton"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="@string/of_btn_retry"
+                        android:textColor="@color/st_warning"
+                        app:icon="@drawable/ic_refresh_cw"
+                        app:iconTint="@color/st_warning"
+                        app:strokeColor="@color/st_warning" />
+                </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+            <!-- Available Offline Section -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:src="@drawable/ic_download_cloud" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:text="@string/of_sec_title"
+                    android:textColor="@color/white"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="@string/of_sec_subtitle"
+                android:textColor="@color/lb_text_secondary"
+                android:textSize="14sp" />
+
+            <!-- Cached Cards -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <!-- Card 1: Physics -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_glass_panel"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/badge_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_chip"
+                        android:backgroundTint="#20FFFFFF"
+                        android:drawableStart="@drawable/ic_download"
+                        android:drawablePadding="4dp"
+                        android:drawableTint="@color/lb_text_secondary"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="@string/of_card_downloaded"
+                        android:textColor="@color/lb_text_secondary"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/icon_1"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_atom"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/title_1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Vật Lý"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@id/badge_1"
+                        app:layout_constraintStart_toEndOf="@id/icon_1"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/subtitle_1"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Cơ học Newton &amp; Điện từ học"
+                        android:textColor="@color/lb_text_secondary"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/badge_1"
+                        app:layout_constraintStart_toStartOf="@id/title_1"
+                        app:layout_constraintTop_toBottomOf="@id/title_1" />
+
+                    <LinearLayout
+                        android:id="@+id/meta_1"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="@id/title_1"
+                        app:layout_constraintTop_toBottomOf="@id/subtitle_1">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_book_open"
+                            android:drawablePadding="4dp"
+                            android:drawableTint="@color/lb_text_secondary"
+                            android:text="12 bài học"
+                            android:textColor="@color/lb_text_secondary"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:drawableStart="@drawable/ic_clock"
+                            android:drawablePadding="4dp"
+                            android:drawableTint="@color/lb_text_secondary"
+                            android:text="~4 giờ"
+                            android:textColor="@color/lb_text_secondary"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_1"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:progress="65"
+                        app:indicatorColor="@color/lb_primary"
+                        app:layout_constraintTop_toBottomOf="@id/meta_1"
+                        app:trackColor="#20FFFFFF"
+                        app:trackCornerRadius="4dp"
+                        app:trackThickness="8dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="@color/lb_primary"
+                        android:text="@string/of_btn_continue"
+                        app:icon="@drawable/ic_play_circle"
+                        app:layout_constraintTop_toBottomOf="@id/progress_1" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Card 2: Calculus -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_glass_panel"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/badge_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_chip"
+                        android:backgroundTint="#20FFFFFF"
+                        android:drawableStart="@drawable/ic_download"
+                        android:drawablePadding="4dp"
+                        android:drawableTint="@color/lb_text_secondary"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="@string/of_card_downloaded"
+                        android:textColor="@color/lb_text_secondary"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/icon_2"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_function_square"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/title_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Giải Tích"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@id/badge_2"
+                        app:layout_constraintStart_toEndOf="@id/icon_2"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/subtitle_2"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Vi phân &amp; Tích phân cơ bản"
+                        android:textColor="@color/lb_text_secondary"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/badge_2"
+                        app:layout_constraintStart_toStartOf="@id/title_2"
+                        app:layout_constraintTop_toBottomOf="@id/title_2" />
+
+                    <LinearLayout
+                        android:id="@+id/meta_2"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="@id/title_2"
+                        app:layout_constraintTop_toBottomOf="@id/subtitle_2">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_book_open"
+                            android:drawablePadding="4dp"
+                            android:drawableTint="@color/lb_text_secondary"
+                            android:text="8 bài học"
+                            android:textColor="@color/lb_text_secondary"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:drawableStart="@drawable/ic_clock"
+                            android:drawablePadding="4dp"
+                            android:drawableTint="@color/lb_text_secondary"
+                            android:text="~3 giờ"
+                            android:textColor="@color/lb_text_secondary"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_2"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:progress="40"
+                        app:indicatorColor="@color/st_success"
+                        app:layout_constraintTop_toBottomOf="@id/meta_2"
+                        app:trackColor="#20FFFFFF"
+                        app:trackCornerRadius="4dp"
+                        app:trackThickness="8dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="@color/st_success"
+                        android:text="@string/of_btn_continue"
+                        app:icon="@drawable/ic_play_circle"
+                        app:layout_constraintTop_toBottomOf="@id/progress_2" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <!-- Card 3: History -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="16dp"
+                    android:background="@drawable/bg_glass_panel"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:id="@+id/badge_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_chip"
+                        android:backgroundTint="#20FFFFFF"
+                        android:drawableStart="@drawable/ic_download"
+                        android:drawablePadding="4dp"
+                        android:drawableTint="@color/lb_text_secondary"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:text="@string/of_card_downloaded"
+                        android:textColor="@color/lb_text_secondary"
+                        android:textSize="10sp"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <ImageView
+                        android:id="@+id/icon_3"
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:src="@drawable/ic_scroll"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/title_3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:text="Lịch Sử"
+                        android:textColor="@color/white"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        app:layout_constraintEnd_toStartOf="@id/badge_3"
+                        app:layout_constraintStart_toEndOf="@id/icon_3"
+                        app:layout_constraintTop_toTopOf="parent" />
+
+                    <TextView
+                        android:id="@+id/subtitle_3"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:text="Chiến tranh Thế giới &amp; Cách mạng công nghiệp"
+                        android:textColor="@color/lb_text_secondary"
+                        android:textSize="12sp"
+                        app:layout_constraintEnd_toStartOf="@id/badge_3"
+                        app:layout_constraintStart_toStartOf="@id/title_3"
+                        app:layout_constraintTop_toBottomOf="@id/title_3" />
+
+                    <LinearLayout
+                        android:id="@+id/meta_3"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal"
+                        app:layout_constraintStart_toStartOf="@id/title_3"
+                        app:layout_constraintTop_toBottomOf="@id/subtitle_3">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:drawableStart="@drawable/ic_book_open"
+                            android:drawablePadding="4dp"
+                            android:drawableTint="@color/lb_text_secondary"
+                            android:text="10 bài học"
+                            android:textColor="@color/lb_text_secondary"
+                            android:textSize="10sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="16dp"
+                            android:drawableStart="@drawable/ic_clock"
+                            android:drawablePadding="4dp"
+                            android:drawableTint="@color/lb_text_secondary"
+                            android:text="~3.5 giờ"
+                            android:textColor="@color/lb_text_secondary"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+
+                    <com.google.android.material.progressindicator.LinearProgressIndicator
+                        android:id="@+id/progress_3"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:progress="80"
+                        app:indicatorColor="@color/st_warning"
+                        app:layout_constraintTop_toBottomOf="@id/meta_3"
+                        app:trackColor="#20FFFFFF"
+                        app:trackCornerRadius="4dp"
+                        app:trackThickness="8dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:backgroundTint="@color/st_warning"
+                        android:text="@string/of_btn_continue"
+                        app:icon="@drawable/ic_play_circle"
+                        app:layout_constraintTop_toBottomOf="@id/progress_3" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+            </LinearLayout>
+
+            <!-- Storage Summary -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                android:background="@drawable/bg_glass_panel"
+                android:padding="16dp">
+
+                <TextView
+                    android:id="@+id/storage_used"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Used: 104.0 MB"
+                    android:textColor="@color/white"
+                    android:textSize="12sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/storage_available"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Available: 896.0 MB"
+                    android:textColor="@color/lb_text_secondary"
+                    android:textSize="12sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <com.google.android.material.progressindicator.LinearProgressIndicator
+                    android:id="@+id/storage_bar"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:progress="10"
+                    app:indicatorColor="@color/lb_primary"
+                    app:layout_constraintTop_toBottomOf="@id/storage_used"
+                    app:trackColor="#20FFFFFF"
+                    app:trackCornerRadius="4dp"
+                    app:trackThickness="8dp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Total: 1 GB"
+                    android:textColor="@color/lb_text_secondary"
+                    android:textSize="10sp"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/storage_bar" />
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- Bottom Navigation -->
+    <LinearLayout
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="@color/lb_background"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_home"
+                app:tint="@color/lb_text_secondary" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lb_nav_home"
+                android:textColor="@color/lb_text_secondary"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_trophy"
+                app:tint="@color/lb_text_secondary" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lb_nav_rank"
+                android:textColor="@color/lb_text_secondary"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_search"
+                app:tint="@color/lb_text_secondary" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lb_nav_search"
+                android:textColor="@color/lb_text_secondary"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_person"
+                app:tint="@color/lb_text_secondary" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/lb_nav_profile"
+                android:textColor="@color/lb_text_secondary"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/ic_wifi_off"
+                app:tint="@color/lb_primary" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/of_nav_offline"
+                android:textColor="@color/lb_primary"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
