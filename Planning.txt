@@ -1,0 +1,156 @@
+App name: Brightpath learning (placeholder)
+
+AI model can use already existed models to save cost and time.
+
+
+# Overview: 
+BrightPath Learning is a small development team with limited experience in mobile application development. They are building a mobile app called “AI Study Mentor”, designed exclusively for students at middle school, high school, and university levels.
+The core purpose of Study Mentor is to provide an AI-powered question-and-answer learning platform, where students can directly ask academic questions and receive instant, intelligent answers from AI.
+ There are no teachers or lecturers involved in the system. All explanations, solutions, and learning guidance are generated automatically by AI.
+The application focuses on on-demand learning, allowing students to solve homework problems, clarify concepts, and improve understanding anytime, anywhere.
+
+# Non-functional requirements:
++ The system must handle a large number of questions concurrently.
++ AI response time should be fast and optimized. (API call)
++ The interface must be simple and intuitive. (Simple UI/UX)
++ Question submission should require minimal steps.
++ Answers should be easy to read and well-structured. (How?)
++ Platforms compatible: The app must support both:
+	+ Android
+	+ iOS (optional)
+	
++ Data Privacy: 
+	+ Compliance with privacy regulations such as:
+		+ GDPR
+		+ COPPA (for underage students)
+
++ Offine mode:
+	+ Previous logs need to be saved locally.
+	+ Sync log upon enstablished network connection.
+	
+	
++ Monetization (optional):
+	+ Premium subscirption: 
+		+ Unlimited access to AI questions / Better model for explanations / Faster response / No Ads / Unlimited quizes
+		
+	+ In-app customization for UI/UX
+	+ Rank list
+	
++ IDE, Languages, Storage:
+	+ IDE = Android Studio
+	+ Languages = Java
+	+ Storage = SQLite
+	
+# Functional requirements:
+
+1. Account Auth:
+	1. register using email address
+	2. Account required to have: "Question history", "Saved Answers", "Learning stat" (optional)
+	3. During account initialization, student need to selects the following:
+		+ Education levels: enum "Middle school", "Highschool", "Colege", "University".
+		+ Majors / subjects
+		+ AI response customization: Fast, Detail, In-Depth
+		+ AI tone: Serious, witty, strict, and more idk
+
+2. AI question submission:
+	1. Submissions: 
+		+ Students can submit via: chat message or image upload (Require OCR)
+	2. Major coverage:
+		+ Science
+		+ Mathematic
+		+ Programming
+		+ History
+		+ Languages
+
+3. AI Response generation:
+	1. Can identify subject and difficulty level
+	2. Generate accurate response (At least 87% accurate)
+	3. Provide step-by-step explanation if needed.
+	4. Use appropriate languages for corresponding level. Example: Cannot talk about Euler's Identity for a middleschooler or talk about quadratic formula for University level.
+	
+	5. Problem solving questions:
+		1. Show logical steps
+		2. Explain which formula or concept used
+		3. Provide final answer clearly
+
+4. Answer Improvement & Learning Support:
+Foreach answered question, AI can:
+	+ Simplified explanations or tl:dr
+	+ Alternative solution approaches 
+	+ Key concepts summary
+	+ Common mistakes to avoid
+	+ Suggested follow-up questions for practice (Optional)
+	
+5. Question History & Personal Library
+	+ All questions asked are saved
+	+ Students can: 
+		+ Search past logs.
+		+ Bookmark important answers.
+		+ Organized questions by answer.
+	+ Algorithm for frequently asked questions and topic.
+	
+6. AI-Generated Practice Questions
+	+ Based on previously asked questions, the AI can generate:
+		+ Practice problems
+		+ Short quizzes
+		+ Review exercises
+	+ Question types include:
+		+ Multiple choice
+		+ Short answer
+		+ Fill-in-the-blank
+	+ Instant feedback is provided after each attempt.
+	
+7. Progress Tracking
+	+ The dashboard shows:
+		+ Total questions asked
+		+ Subjects most frequently studied
+		+ Quiz accuracy rate
+		+ Time spent reviewing answers
+	+ AI-generated insights may include:
+		+ Frequency of asked questions
+		+ Accuracy improvements and encouragement
+
+8. Gamification
+	+ Students earn experience points (XP) for:
+		+ Asking questions
+		+ Reviewing AI answers
+		+ Completing practice quizzes
+	+ XP allows students to:
+		+ Level up
+		+ Unlock avatars and themes
+		+ Earn achievement badges
+	+ A global or friends-based leaderboard shows activity levels.
+
+9. Notifications
+	+ Reminders to review bookmarked answers
+	+ Alerts for repeated mistakes in similar questions
+	+ Motivational messages based on learning activity
+	+ Daily or weekly learning summaries
+	
+10. Security & Safety
+	+ Password strength validation
+		+ Optional two-factor authentication (2FA)
+	+ Encrypted storage for:
+		+ User data
+		+ Question history
+		+ Uploaded images
+	+ Abuse detection to prevent spam or inappropriate content
+	
+	
+# Project constraints
+1. Timeline:
+	+ MVP must be completed within **14 weeks**
+	+ Core features:
+		+ AI question submission
+		+ AI answer generation
+		+ Question history
+		+ Basic progress tracking
+
+2. Budget: 
+	+ Limited development and AI usage budget
+	+ Optimization of API calls is required
+
+3. AI Cost Management
+	+ Reduce repeated AI calls through caching
+	+ Detect similar questions and reuse answers
+	+ Balance answer quality and operational cost

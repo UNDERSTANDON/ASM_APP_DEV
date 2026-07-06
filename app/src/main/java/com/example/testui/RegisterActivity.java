@@ -11,9 +11,12 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+
+import com.example.testui.database.DatabaseHelper;
 
 public class RegisterActivity extends AppCompatActivity {
 
@@ -25,13 +28,17 @@ public class RegisterActivity extends AppCompatActivity {
     private ImageView matchIcon;
     private TextView matchError;
     private TextView loginRedirect;
+    private EditText emailEditText;
     private boolean isPasswordVisible = false;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
 
+        dbHelper = new DatabaseHelper(this);
+        emailEditText = findViewById(R.id.email_edit_text);
         passwordEditText = findViewById(R.id.password_edit_text);
         confirmPasswordEditText = findViewById(R.id.confirm_password_edit_text);
         togglePassword = findViewById(R.id.toggle_password);
@@ -62,8 +69,34 @@ public class RegisterActivity extends AppCompatActivity {
         });
 
         findViewById(R.id.register_button).setOnClickListener(v -> {
-            startActivity(new Intent(RegisterActivity.this, ProfileSetupActivity.class));
-            finish();
+            String email = emailEditText.getText().toString().trim();
+            String password = passwordEditText.getText().toString().trim();
+            String confirmPassword = confirmPasswordEditText.getText().toString().trim();
+
+            if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
+                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            if (!password.equals(confirmPassword)) {
+                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Default education level during registration, refined in ProfileSetupActivity
+            long result = dbHelper.registerUser(email, password, "Not set");
+            if (result != -1) {
+                // Store email in session to use in ProfileSetupActivity
+                getSharedPreferences("AppPrefs", MODE_PRIVATE)
+                        .edit()
+                        .putString("user_email", email)
+                        .apply();
+
+                startActivity(new Intent(RegisterActivity.this, ProfileSetupActivity.class));
+                finish();
+            } else {
+                Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show();
+            }
         });
 
         passwordEditText.addTextChangedListener(new TextWatcher() {
