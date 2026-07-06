@@ -7,9 +7,17 @@ import android.widget.Button;
 import android.widget.FrameLayout;
 import android.widget.LinearLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.content.ContextCompat;
+
+import com.example.testui.ai.AIObj;
+import com.example.testui.database.DatabaseHelper;
+import com.example.testui.models.UserProfile;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public class ProfileSetupActivity extends AppCompatActivity {
 
@@ -23,12 +31,14 @@ public class ProfileSetupActivity extends AppCompatActivity {
 
     private View selectedLevel = null;
     private View selectedStyle = null;
+    private DatabaseHelper dbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_profile_setup);
 
+        dbHelper = new DatabaseHelper(this);
         step1Content = findViewById(R.id.step1_content);
         step2Content = findViewById(R.id.step2_content);
         step3Content = findViewById(R.id.step3_content);
@@ -64,10 +74,47 @@ public class ProfileSetupActivity extends AppCompatActivity {
         });
 
         finishButton.setOnClickListener(v -> {
-            // Finalize and go to main app
-            startActivity(new Intent(ProfileSetupActivity.this, MainActivity.class));
-            finish();
+            saveProfileAndFinish();
         });
+    }
+
+    private void saveProfileAndFinish() {
+        String email = getSharedPreferences("AppPrefs", MODE_PRIVATE).getString("user_email", null);
+        if (email == null) {
+            Toast.makeText(this, "Session error", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        String educationLevel = "THPT"; // Default
+        if (selectedLevel != null) {
+            int id = selectedLevel.getId();
+            if (id == R.id.level_thcs) educationLevel = "THCS";
+            else if (id == R.id.level_thpt) educationLevel = "THPT";
+            else if (id == R.id.level_uni) educationLevel = "Đại học";
+            // Add level_tieu_hoc if it exists in layout
+        }
+
+        String tone = "Detailed"; // Default
+        if (selectedStyle != null) {
+            int id = selectedStyle.getId();
+            if (id == R.id.style_concise_btn) tone = "Concise";
+            else if (id == R.id.style_detailed_btn) tone = "Detailed";
+            else if (id == R.id.style_step_btn) tone = "Step-by-Step";
+        }
+
+        UserProfile profile = new UserProfile(email, educationLevel);
+        profile.setAiTone(tone);
+        dbHelper.updateUserProfile(profile);
+
+        // Initialize AI with user context
+        Map<String, Object> aiConfig = new HashMap<>();
+        aiConfig.put("educationLevel", educationLevel);
+        aiConfig.put("tone", tone);
+        AIObj.getInstance().initialize(aiConfig);
+
+        // Finalize and go to main app
+        startActivity(new Intent(ProfileSetupActivity.this, MainActivity.class));
+        finish();
     }
 
     private void setupStep1() {
