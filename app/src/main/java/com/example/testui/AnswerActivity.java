@@ -43,10 +43,16 @@ public class AnswerActivity extends AppCompatActivity {
     }
 
     private void fetchAIAnswer(String question) {
+        // Check local database cache first
+        AIResponse cachedResponse = dbHelper.getCachedResponseForQuestion(question);
+        if (cachedResponse != null) {
+            displayResponse(cachedResponse);
+            Toast.makeText(AnswerActivity.this, "Tải câu trả lời từ bộ nhớ đệm local...", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         if (!NetworkUtils.isOnline(this)) {
-            Toast.makeText(this, "Offline: Checking local history...", Toast.LENGTH_SHORT).show();
-            // In a real app, we'd search for the specific question text
-            // For demo, we'll just inform the user or try to pull the last answer
+            Toast.makeText(this, "Ngoại tuyến: Không tìm thấy câu trả lời trong bộ nhớ đệm.", Toast.LENGTH_LONG).show();
             return;
         }
 
@@ -59,12 +65,12 @@ public class AnswerActivity extends AppCompatActivity {
                 long qId = dbHelper.saveQuestion(question, 1, 1); // Mock IDs
                 dbHelper.saveAIResponse(qId, result);
                 
-                Toast.makeText(AnswerActivity.this, "Answer saved for offline", Toast.LENGTH_SHORT).show();
+                Toast.makeText(AnswerActivity.this, "Đã lưu câu trả lời ngoại tuyến", Toast.LENGTH_SHORT).show();
             }
 
             @Override
             public void onError(String error) {
-                Toast.makeText(AnswerActivity.this, "Error: " + error, Toast.LENGTH_LONG).show();
+                Toast.makeText(AnswerActivity.this, "Lỗi: " + error, Toast.LENGTH_LONG).show();
             }
         });
     }
