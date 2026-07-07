@@ -26,6 +26,7 @@ public class AskQuestionActivity extends AppCompatActivity {
     private ChatAdapter chatAdapter;
     private List<ChatMessage> messageList;
     private DatabaseHelper dbHelper;
+    private int currentSessionId;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,6 +35,11 @@ public class AskQuestionActivity extends AppCompatActivity {
 
         dbHelper = new DatabaseHelper(this);
         messageList = new ArrayList<>();
+
+        currentSessionId = getIntent().getIntExtra("session_id", -1);
+        if (currentSessionId == -1) {
+            currentSessionId = (int) (System.currentTimeMillis() / 1000);
+        }
 
         questionInput = findViewById(R.id.question_input);
         sendButton = findViewById(R.id.send_button);
@@ -48,8 +54,17 @@ public class AskQuestionActivity extends AppCompatActivity {
         // Setup back button
         backButton.setOnClickListener(v -> finish());
 
-        // Add welcome message from AI
-        addAIMessage(new ChatMessage("Chào bạn! Tôi là Mentor học tập AI của bạn. Hãy nhập bất kỳ câu hỏi nào về Toán, Khoa học, Lịch sử hoặc Lập trình để tôi trợ giúp nhé!", false));
+        // Setup history button
+        ImageView historyButton = findViewById(R.id.history_button);
+        if (historyButton != null) {
+            historyButton.setOnClickListener(v -> {
+                Intent intent = new Intent(AskQuestionActivity.this, AnswerHistoryActivity.class);
+                startActivity(intent);
+            });
+        }
+
+        // Load chat history from SQLite
+        loadChatHistory();
 
         // Setup send button
         sendButton.setOnClickListener(v -> {
@@ -73,6 +88,17 @@ public class AskQuestionActivity extends AppCompatActivity {
         // Clear input box
         questionInput.setText("");
 
+        // Check if we have a cached response for this question (exact match)
+        AIResponse cachedResponse = dbHelper.getCachedResponseForQuestion(question);
+        if (cachedResponse != null) {
+            ChatMessage aiMessage = new ChatMessage(cachedResponse, false);
+            messageList.add(aiMessage);
+            chatAdapter.notifyItemInserted(messageList.size() - 1);
+            chatRecyclerView.scrollToPosition(messageList.size() - 1);
+            Toast.makeText(AskQuestionActivity.this, "Tải từ bộ nhớ đệm...", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
         // 2. Add thinking message
         ChatMessage thinkingMessage = new ChatMessage(true);
         messageList.add(thinkingMessage);
@@ -93,7 +119,7 @@ public class AskQuestionActivity extends AppCompatActivity {
                 chatRecyclerView.scrollToPosition(messageList.size() - 1);
 
                 // Save to local database
-                long qId = dbHelper.saveQuestion(question, 1, 1); // Mock User/Subject ID
+                long qId = dbHelper.saveQuestion(question, 1, currentSessionId);
                 dbHelper.saveAIResponse(qId, result);
             }
 
@@ -124,6 +150,24 @@ public class AskQuestionActivity extends AppCompatActivity {
                 chatAdapter.notifyItemRemoved(i);
                 break;
             }
+        }
+    }
+
+    private void loadChatHistory() {
+        messageList.clear();
+        
+        // Add welcome message from AI
+        messageList.add(new ChatMessage("Chào bạn! Tôi là Mentor học tập AI của bạn. Hãy nhập bất kỳ câu hỏi nào về Toán, Khoa học, Lịch sử hoặc Lập trình để tôi trợ giúp nhé!", false));
+        
+        // Retrieve saved chat history for mock user ID 1 and currentSessionId
+        List<ChatMessage> savedHistory = dbHelper.getChatHistoryForSession(1, currentSessionId);
+        if (savedHistory != null && !savedHistory.isEmpty()) {
+            messageList.addAll(savedHistory);
+        }
+        
+        chatAdapter.notifyDataSetChanged();
+        if (!messageList.isEmpty()) {
+            chatRecyclerView.scrollToPosition(messageList.size() - 1);
         }
     }
 }
