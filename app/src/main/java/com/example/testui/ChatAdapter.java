@@ -11,6 +11,9 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.example.testui.models.AIResponse;
 import com.example.testui.models.ChatMessage;
+
+import io.noties.markwon.Markwon;
+
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
@@ -23,6 +26,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
     private final List<ChatMessage> messageList;
     private final SimpleDateFormat timeFormat;
+    private Markwon markwon;
 
     public ChatAdapter(List<ChatMessage> messageList) {
         this.messageList = messageList;
@@ -37,6 +41,9 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
     @NonNull
     @Override
     public RecyclerView.ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
+        if (markwon == null) {
+            markwon = Markwon.create(parent.getContext());
+        }
         LayoutInflater inflater = LayoutInflater.from(parent.getContext());
         if (viewType == VIEW_TYPE_USER) {
             View view = inflater.inflate(R.layout.item_chat_user, parent, false);
@@ -54,7 +61,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
         if (holder instanceof UserViewHolder) {
             UserViewHolder userHolder = (UserViewHolder) holder;
-            userHolder.textMessage.setText(message.getText());
+            markwon.setMarkdown(userHolder.textMessage, message.getText());
             userHolder.textTime.setText(timeStr);
         } else if (holder instanceof AIViewHolder) {
             AIViewHolder aiHolder = (AIViewHolder) holder;
@@ -75,14 +82,14 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
 
                 AIResponse response = message.getAiResponse();
                 if (response != null) {
-                    aiHolder.textExplanation.setText(response.getSimplifiedExplanation());
+                    markwon.setMarkdown(aiHolder.textExplanation, response.getSimplifiedExplanation());
                     aiHolder.layoutDetails.setVisibility(View.VISIBLE);
 
                     // --- Process Logical Steps ---
                     String steps = response.getLogicalSteps();
                     if (steps != null && !steps.trim().isEmpty()) {
                         aiHolder.btnToggleSteps.setVisibility(View.VISIBLE);
-                        aiHolder.textSteps.setText(steps);
+                        markwon.setMarkdown(aiHolder.textSteps, steps);
                         // Setup collapse/expand
                         aiHolder.btnToggleSteps.setOnClickListener(v -> {
                             int visibility = aiHolder.layoutStepsContent.getVisibility();
@@ -105,10 +112,10 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         aiHolder.layoutFormulas.setVisibility(View.VISIBLE);
                         StringBuilder sb = new StringBuilder();
                         for (String f : formulas) {
-                            if (sb.length() > 0) sb.append(", ");
-                            sb.append(f);
+                            if (sb.length() > 0) sb.append("\n");
+                            sb.append("* ").append(f);
                         }
-                        aiHolder.textFormulas.setText(sb.toString());
+                        markwon.setMarkdown(aiHolder.textFormulas, sb.toString());
                     } else {
                         aiHolder.layoutFormulas.setVisibility(View.GONE);
                     }
@@ -120,9 +127,9 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         StringBuilder sb = new StringBuilder();
                         for (String alt : alternatives) {
                             if (sb.length() > 0) sb.append("\n");
-                            sb.append("• ").append(alt);
+                            sb.append("* ").append(alt);
                         }
-                        aiHolder.textAlternatives.setText(sb.toString());
+                        markwon.setMarkdown(aiHolder.textAlternatives, sb.toString());
                     } else {
                         aiHolder.layoutAlternatives.setVisibility(View.GONE);
                     }
@@ -134,15 +141,15 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                         StringBuilder sb = new StringBuilder();
                         for (String mis : mistakes) {
                             if (sb.length() > 0) sb.append("\n");
-                            sb.append("• ").append(mis);
+                            sb.append("* ").append(mis);
                         }
-                        aiHolder.textMistakes.setText(sb.toString());
+                        markwon.setMarkdown(aiHolder.textMistakes, sb.toString());
                     } else {
                         aiHolder.layoutMistakes.setVisibility(View.GONE);
                     }
                 } else {
                     // Just simple text fallback
-                    aiHolder.textExplanation.setText(message.getText());
+                    markwon.setMarkdown(aiHolder.textExplanation, message.getText());
                     aiHolder.layoutDetails.setVisibility(View.GONE);
                 }
             }

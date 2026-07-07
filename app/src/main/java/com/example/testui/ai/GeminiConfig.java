@@ -2,7 +2,7 @@ package com.example.testui.ai;
 
 public class GeminiConfig {
     // TODO: Replace with your actual Gemini API Key
-    public static final String API_KEY = "Your_API_Key";
+    public static final String API_KEY = "YOUR_API_KEY";
 
     // Using gemini-3.5-flash for reasoning, speed and cost efficiency
     public static final String MODEL_NAME = "gemini-3.5-flash";
