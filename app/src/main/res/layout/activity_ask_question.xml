@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/background"
+    android:fitsSystemWindows="true"
     tools:context=".AskQuestionActivity">
 
     <!-- Ambient Glow Background -->
@@ -81,237 +82,148 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:orientation="vertical"
-        android:padding="20dp"
+        android:padding="16dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintTop_toBottomOf="@id/header">
 
-        <!-- Context Header -->
-        <TextView
+        <!-- Subject Selector (Top of Main Content) -->
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/subject_selector"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/ask_heading"
-            android:textColor="@color/on_surface"
-            android:textSize="24sp"
-            android:textStyle="bold" />
+            android:layout_height="48dp"
+            android:background="@drawable/bg_glass_panel"
+            android:backgroundTint="#4D141C2E"
+            android:paddingHorizontal="16dp"
+            android:layout_marginBottom="8dp">
 
-        <TextView
+            <ImageView
+                android:id="@+id/category_icon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_category"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/primary" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:text="@string/subject_general"
+                android:textColor="@color/on_surface"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/expand_icon"
+                app:layout_constraintStart_toEndOf="@id/category_icon"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/expand_icon"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                android:src="@drawable/ic_expand_more"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:tint="@color/on_surface_variant" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <!-- Chat RecyclerView -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/chat_recycler_view"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:clipToPadding="false"
+            android:paddingBottom="8dp"
+            android:scrollbars="vertical" />
+
+        <!-- Bottom Compose Area -->
+        <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginTop="8dp"
-            android:text="@string/ask_subheading"
-            android:textColor="@color/on_surface_variant"
-            android:textSize="14sp" />
+            android:background="@drawable/bg_glass_panel_elevated"
+            android:padding="8dp">
 
-        <!-- Compose Area -->
-        <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="match_parent"
-            android:layout_height="0dp"
-            android:layout_marginTop="24dp"
-            android:layout_weight="1"
-            android:background="@drawable/bg_glass_panel_elevated">
+            <!-- Attachment Buttons -->
+            <ImageView
+                android:id="@+id/btn_attach_image"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:padding="8dp"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="#0DFFFFFF"
+                android:src="@drawable/ic_image"
+                app:tint="@color/on_surface"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Subject Selector -->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/subject_selector"
-                android:layout_width="match_parent"
-                android:layout_height="56dp"
-                android:background="@drawable/bg_glass_panel"
-                android:backgroundTint="#4D141C2E"
-                android:paddingHorizontal="16dp"
-                app:layout_constraintTop_toTopOf="parent">
-
-                <ImageView
-                    android:id="@+id/category_icon"
-                    android:layout_width="20dp"
-                    android:layout_height="20dp"
-                    android:contentDescription="@null"
-                    android:src="@drawable/ic_category"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/primary" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="@string/subject_general"
-                    android:textColor="@color/on_surface"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toStartOf="@id/expand_icon"
-                    app:layout_constraintStart_toEndOf="@id/category_icon"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <ImageView
-                    android:id="@+id/expand_icon"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:contentDescription="@null"
-                    android:src="@drawable/ic_expand_more"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:tint="@color/on_surface_variant" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            <ImageView
+                android:id="@+id/btn_camera"
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:layout_marginStart="6dp"
+                android:padding="8dp"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="#0DFFFFFF"
+                android:src="@drawable/ic_photo_camera"
+                app:tint="@color/on_surface"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toEndOf="@id/btn_attach_image"
+                app:layout_constraintTop_toTopOf="parent" />
 
             <!-- Text Input Area -->
             <EditText
                 android:id="@+id/question_input"
-                android:layout_width="match_parent"
-                android:layout_height="0dp"
-                android:background="@android:color/transparent"
-                android:gravity="top"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/bg_input"
                 android:hint="@string/question_placeholder"
-                android:padding="20dp"
+                android:inputType="textMultiLine"
+                android:maxLines="4"
+                android:minLines="1"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="10dp"
                 android:textColor="@color/on_surface"
                 android:textColorHint="#80A0B4C4"
-                android:textSize="18sp"
-                android:inputType="textMultiLine"
+                android:textSize="14sp"
                 android:autofillHints="none"
-                app:layout_constraintBottom_toTopOf="@id/attachment_preview"
-                app:layout_constraintTop_toBottomOf="@id/subject_selector" />
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/send_button"
+                app:layout_constraintStart_toEndOf="@id/btn_camera"
+                app:layout_constraintTop_toTopOf="parent" />
 
-            <!-- Attachment Preview Area -->
-            <HorizontalScrollView
-                android:id="@+id/attachment_preview"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="12dp"
-                android:visibility="gone"
-                app:layout_constraintBottom_toTopOf="@id/toolbar">
+            <!-- Send Button -->
+            <LinearLayout
+                android:id="@+id/send_button"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="#267DD3FC"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent">
 
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="80dp"
-                    android:orientation="horizontal">
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:contentDescription="@string/ask_ai_button"
+                    android:src="@drawable/ic_send"
+                    app:tint="@color/primary" />
 
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="80dp"
-                        android:layout_height="match_parent"
-                        android:layout_marginEnd="12dp">
-
-                        <ImageView
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
-                            android:background="@drawable/bg_glass_panel"
-                            android:scaleType="centerCrop"
-                            android:src="@drawable/bg_circle"
-                            android:contentDescription="@null"
-                            android:alpha="0.5" />
-
-                        <ImageView
-                            android:layout_width="24dp"
-                            android:layout_height="24dp"
-                            android:background="@drawable/bg_circle"
-                            android:backgroundTint="@color/surface_dim"
-                            android:padding="4dp"
-                            android:src="@drawable/ic_close"
-                            android:contentDescription="@string/skip"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:tint="@color/on_surface" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                </LinearLayout>
-            </HorizontalScrollView>
-
-            <!-- Toolbar -->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:id="@+id/toolbar"
-                android:layout_width="match_parent"
-                android:layout_height="64dp"
-                android:background="@drawable/bg_glass_panel"
-                android:backgroundTint="#80141C2E"
-                android:paddingHorizontal="16dp"
-                app:layout_constraintBottom_toBottomOf="parent">
-
-                <LinearLayout
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:background="@drawable/bg_circle"
-                        android:backgroundTint="#0DFFFFFF"
-                        android:contentDescription="@string/ask_ai_button"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_image"
-                        app:tint="@color/on_surface" />
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="8dp"
-                        android:background="@drawable/bg_circle"
-                        android:backgroundTint="#0DFFFFFF"
-                        android:contentDescription="@string/ask_ai_button"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_photo_camera"
-                        app:tint="@color/on_surface" />
-
-                    <View
-                        android:layout_width="1dp"
-                        android:layout_height="24dp"
-                        android:layout_marginStart="12dp"
-                        android:background="@color/outline_variant" />
-
-                    <ImageView
-                        android:layout_width="40dp"
-                        android:layout_height="40dp"
-                        android:layout_marginStart="12dp"
-                        android:background="@drawable/bg_circle"
-                        android:backgroundTint="#0DFFFFFF"
-                        android:contentDescription="@string/ask_ai_button"
-                        android:padding="10dp"
-                        android:src="@drawable/ic_mic"
-                        app:tint="@color/on_surface" />
-
-                </LinearLayout>
-
-                <LinearLayout
-                    android:id="@+id/send_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:background="@drawable/bg_glass_panel"
-                    android:backgroundTint="#267DD3FC"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal"
-                    android:paddingHorizontal="20dp"
-                    android:paddingVertical="10dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="@string/ask_ai_button"
-                        android:textColor="@color/primary"
-                        android:textSize="16sp"
-                        android:textStyle="bold" />
-
-                    <ImageView
-                        android:layout_width="20dp"
-                        android:layout_height="20dp"
-                        android:layout_marginStart="8dp"
-                        android:contentDescription="@string/ask_ai_button"
-                        android:src="@drawable/ic_send"
-                        app:tint="@color/primary" />
-
-                </LinearLayout>
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

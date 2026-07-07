@@ -80,6 +80,7 @@
         <activity
             android:name=".ProfileActivity"
             android:exported="false" />
+        <activity
             android:name=".LeaderboardActivity"
             android:exported="true" />
 
@@ -87,9 +88,6 @@
             android:name=".SettingsActivity"
             android:exported="true" />
 
-        <activity
-            android:name=".ProfileActivity"
-            android:exported="true" />
 
         <activity
             android:name=".OfflineActivity"
