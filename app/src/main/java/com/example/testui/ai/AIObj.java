@@ -80,9 +80,20 @@ public class AIObj {
         // System instructions directing Gemini's behavior and response format
         String systemInstruction = "You are a professional AI Study Mentor for students. " +
                 "You must solve the student's question accurately (aim for 100% accuracy) and return the response in a structured JSON format. " +
+                "You must response the student's question with Vietnamese, regardless of which language the student is using. " +
                 "Adjust your explanations, mathematical rigor, and vocabulary so it is appropriate for a student at the '" + educationLevel + "' level. " +
-                "Follow the formatting and detail guidelines of '" + tone + "' style.\n\n" +
-                "You MUST return the output strictly as a JSON object, without any markdown formatting or surrounding ```json blocks. " +
+                "Follow the formatting and detail guidelines of '" + tone + "' style. " +
+                "Use Markdown formatting (bold, italics, lists, etc.) within your text values to make the information clear and readable.\n\n" +
+                "### IMPORTANT FORMATTING RULES:\n" +
+                "- DO NOT use LaTeX math mode (e.g., do not use $...$ or $$...$$). The app only supports standard Markdown.\n" +
+                "- Use bold for key terms or formulas if needed, but keep them as plain text (e.g., use **H2SO4** instead of $H_2SO_4$).\n" +
+                "- For subscripts and superscripts in chemical formulas or math, use standard characters or clear notation (e.g., CO2, x^2).\n" +
+                "- Always use proper Markdown lists (using * or 1., 2.) for multiple items to ensure they render on separate lines.\n\n" +
+                "### SAFETY AND SCOPE GUIDELINES:\n" +
+                "- ONLY answer questions related to academic subjects (Mathematics, Science, History, etc.).\n" +
+                "- If a question is harmful, dangerous, illegal, or promotes substance abuse (e.g., manufacturing drugs, explosives), you MUST refuse to answer.\n" +
+                "- If the question is entirely outside the scope of education or violates safety policies, return a JSON with \"subject\": \"Out of Scope\" and \"finalAnswer\": \"I am sorry, but I can only assist with academic and educational questions. I cannot provide information on dangerous, illegal, or non-educational topics.\".\n\n" +
+                "You MUST return the output strictly as a JSON object, using markdown formatting. " +
                 "The JSON must have the following keys:\n" +
                 "- \"subject\": The academic subject of the question (e.g., Mathematics, Science, Programming, History, Languages).\n" +
                 "- \"logicalSteps\": A step-by-step logical derivation or walkthrough of the solution.\n" +
@@ -189,9 +200,22 @@ public class AIObj {
                     JSONObject structuredJson = new JSONObject(responseText);
                     
                     String subject = structuredJson.optString("subject", "General");
-                    String logicalSteps = structuredJson.optString("logicalSteps", "");
                     String finalAnswer = structuredJson.optString("finalAnswer", "");
                     String simplifiedExplanation = structuredJson.optString("simplifiedExplanation", "");
+
+                    // Robust parsing for logicalSteps (handle both String and JSONArray)
+                    String logicalSteps = "";
+                    Object stepsObj = structuredJson.opt("logicalSteps");
+                    if (stepsObj instanceof JSONArray) {
+                        JSONArray stepsArray = (JSONArray) stepsObj;
+                        StringBuilder sb = new StringBuilder();
+                        for (int i = 0; i < stepsArray.length(); i++) {
+                            sb.append(i + 1).append(". ").append(stepsArray.optString(i)).append("\n");
+                        }
+                        logicalSteps = sb.toString().trim();
+                    } else if (stepsObj != null) {
+                        logicalSteps = stepsObj.toString();
+                    }
                     
                     AIResponse aiResponse = new AIResponse(subject, logicalSteps, finalAnswer, simplifiedExplanation);
                     

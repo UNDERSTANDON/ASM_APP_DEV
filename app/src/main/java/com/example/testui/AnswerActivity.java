@@ -10,6 +10,7 @@ import com.example.testui.ai.AIObj;
 import com.example.testui.database.DatabaseHelper;
 import com.example.testui.models.AIResponse;
 import com.example.testui.utils.NetworkUtils;
+import io.noties.markwon.Markwon;
 
 public class AnswerActivity extends AppCompatActivity {
 
@@ -69,14 +70,16 @@ public class AnswerActivity extends AppCompatActivity {
     }
 
     private void displayResponse(AIResponse result) {
+        Markwon markwon = Markwon.create(this);
+
         TextView introText = findViewById(R.id.intro_text);
         if (introText != null) {
-            introText.setText(result.getSimplifiedExplanation());
+            markwon.setMarkdown(introText, result.getSimplifiedExplanation());
         }
 
         TextView mathBlock1 = findViewById(R.id.math_1_block);
         if (mathBlock1 != null && result.getLogicalSteps() != null) {
-            mathBlock1.setText(result.getLogicalSteps());
+            markwon.setMarkdown(mathBlock1, result.getLogicalSteps());
         }
     }
 }

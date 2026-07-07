@@ -26,7 +26,7 @@ public class SplashActivity extends AppCompatActivity {
         
         setContentView(R.layout.activity_splash);
 
-        // Check if user is logged in and initialize AI context
+        // Kiểm tra người dùng login để khởi tạo ai context
         boolean isLoggedIn = getSharedPreferences("AppPrefs", MODE_PRIVATE).getBoolean("isLoggedIn", false);
         String userEmail = getSharedPreferences("AppPrefs", MODE_PRIVATE).getString("user_email", null);
 
