@@ -1,8 +1,9 @@
 package com.example.testui.models;
 
+import java.io.Serializable;
 import java.util.List;
 
-public class QuizQuestion {
+public class QuizQuestion implements Serializable {
     private String questionText;
     private List<String> options;
     private int correctOptionIndex;

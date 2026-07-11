@@ -195,6 +195,7 @@
                 </androidx.constraintlayout.widget.ConstraintLayout>
 
                 <TextView
+                    android:id="@+id/tv_question_text"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="16dp"
@@ -216,14 +217,13 @@
                     app:drawableStartCompat="@drawable/ic_lightbulb"
                     app:drawableTint="@color/quiz_primary" />
 
-                <!-- Options List (MCQ) - Hidden for FIB example -->
+                <!-- Options List (MCQ) -->
                 <LinearLayout
                     android:id="@+id/mcq_options"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="gone">
-                    <!-- ... MCQ options ... -->
+                    android:visibility="visible">
                 </LinearLayout>
 
                 <!-- Fill in the Blank Area -->
@@ -232,7 +232,7 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:orientation="vertical"
-                    android:visibility="visible">
+                    android:visibility="gone">
 
                     <TextView
                         android:layout_width="match_parent"
