@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.activity.EdgeToEdge;
+import androidx.core.view.WindowCompat;
 import androidx.core.splashscreen.SplashScreen;
 import com.example.testui.ai.AIObj;
 import com.example.testui.database.DatabaseHelper;
@@ -14,6 +14,9 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class SplashActivity extends AppCompatActivity {
+    private Handler splashHandler;
+    private Runnable splashRunnable;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Cài đặt Splash Screen trước khi gọi super.onCreate
@@ -22,7 +25,7 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         
         // Bật chế độ hiển thị toàn màn hình để tránh flicker thanh trạng thái
-        EdgeToEdge.enable(this);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), false);
         
         setContentView(R.layout.activity_splash);
 
@@ -42,12 +45,24 @@ public class SplashActivity extends AppCompatActivity {
         }
 
         // Chuyển sang màn hình tương ứng sau 2 giây (2000ms)
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            Class<?> targetActivity = isLoggedIn ? MainActivity.class : LoginActivity.class;
-            startActivity(new Intent(SplashActivity.this, targetActivity));
-            // Thêm hiệu ứng chuyển cảnh mượt mà
-            overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
-            finish();
-        }, 2000);
+        splashHandler = new Handler(Looper.getMainLooper());
+        splashRunnable = () -> {
+            if (!isFinishing() && !isDestroyed()) {
+                Class<?> targetActivity = isLoggedIn ? MainActivity.class : LoginActivity.class;
+                startActivity(new Intent(SplashActivity.this, targetActivity));
+                // Thêm hiệu ứng chuyển cảnh mượt mà
+                overridePendingTransition(android.R.anim.fade_in, android.R.anim.fade_out);
+                finish();
+            }
+        };
+        splashHandler.postDelayed(splashRunnable, 2000);
+    }
+
+    @Override
+    protected void onDestroy() {
+        if (splashHandler != null && splashRunnable != null) {
+            splashHandler.removeCallbacks(splashRunnable);
+        }
+        super.onDestroy();
     }
 }
