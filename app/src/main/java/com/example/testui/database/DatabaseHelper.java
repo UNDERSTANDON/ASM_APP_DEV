@@ -75,6 +75,17 @@ public class DatabaseHelper extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    @Override
+    public void onDowngrade(SQLiteDatabase db, int oldVersion, int newVersion) {
+        // If the app is downgraded and the existing DB version is higher,
+        // drop existing tables and recreate a clean schema. This is destructive
+        // but prevents SQLiteException: Can't downgrade database from X to Y.
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_USER);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_QUESTION);
+        db.execSQL("DROP TABLE IF EXISTS " + TABLE_AI_RESPONSE);
+        onCreate(db);
+    }
+
     // --- Helper Methods ---
 
     public long saveQuestion(String content, int userId, int subjectId) {
