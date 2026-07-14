@@ -91,7 +91,12 @@ public class AskQuestionActivity extends AppCompatActivity {
         // Check if we have a cached response for this question (exact match)
         AIResponse cachedResponse = dbHelper.getCachedResponseForQuestion(question);
         if (cachedResponse != null) {
+            long qId = dbHelper.getQuestionIdByContent(question);
+            userMessage.setQuestionId(qId);
+            
             ChatMessage aiMessage = new ChatMessage(cachedResponse, false);
+            aiMessage.setQuestionId(qId);
+            
             messageList.add(aiMessage);
             chatAdapter.notifyItemInserted(messageList.size() - 1);
             chatRecyclerView.scrollToPosition(messageList.size() - 1);
@@ -112,15 +117,19 @@ public class AskQuestionActivity extends AppCompatActivity {
                 // Remove thinking indicator
                 removeThinkingMessage();
 
-                // Add AI response
-                ChatMessage aiMessage = new ChatMessage(result, false);
-                messageList.add(aiMessage);
-                chatAdapter.notifyItemInserted(messageList.size() - 1);
-                chatRecyclerView.scrollToPosition(messageList.size() - 1);
-
                 // Save to local database
                 long qId = dbHelper.saveQuestion(question, 1, currentSessionId);
                 dbHelper.saveAIResponse(qId, result);
+                
+                userMessage.setQuestionId(qId);
+
+                // Add AI response
+                ChatMessage aiMessage = new ChatMessage(result, false);
+                aiMessage.setQuestionId(qId);
+                
+                messageList.add(aiMessage);
+                chatAdapter.notifyItemInserted(messageList.size() - 1);
+                chatRecyclerView.scrollToPosition(messageList.size() - 1);
             }
 
             @Override

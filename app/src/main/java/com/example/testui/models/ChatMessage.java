@@ -6,6 +6,7 @@ public class ChatMessage {
     private long timestamp;
     private AIResponse aiResponse;
     private boolean isThinking;
+    private long questionId = -1;
 
     public ChatMessage(String text, boolean isUser) {
         this.text = text;
@@ -41,5 +42,8 @@ public class ChatMessage {
     public void setAiResponse(AIResponse aiResponse) { this.aiResponse = aiResponse; }
 
     public boolean isThinking() { return isThinking; }
-    public void setThinking(boolean thinking) { isThinking = thinking; }
+    public void setThinking(boolean thinking) { this.isThinking = thinking; }
+
+    public long getQuestionId() { return questionId; }
+    public void setQuestionId(long questionId) { this.questionId = questionId; }
 }

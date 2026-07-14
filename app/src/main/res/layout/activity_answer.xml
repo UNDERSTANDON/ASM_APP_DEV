@@ -569,6 +569,73 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
+            <!-- Generate Quiz Section -->
+            <androidx.constraintlayout.widget.ConstraintLayout
+                android:id="@+id/layout_quiz_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_glass_panel"
+                android:padding="20dp">
+
+                <TextView
+                    android:id="@+id/quiz_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Luyện tập với Quiz AI"
+                    android:textColor="@color/on_surface"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent" />
+
+                <TextView
+                    android:id="@+id/quiz_subtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Tạo bài kiểm tra nhanh từ câu trả lời này"
+                    android:textColor="@color/on_surface_variant"
+                    android:textSize="13sp"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/quiz_title" />
+
+                <EditText
+                    android:id="@+id/edit_quiz_instruction"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="Nhập yêu cầu (vd: 5 câu trắc nghiệm khó)"
+                    android:padding="12dp"
+                    android:textColor="@color/on_surface"
+                    android:textSize="14sp"
+                    android:textColorHint="@color/text_secondary"
+                    android:maxLines="2"
+                    android:inputType="text"
+                    android:importantForAutofill="no"
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toBottomOf="@id/quiz_subtitle" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_generate_quiz"
+                    android:layout_width="match_parent"
+                    android:layout_height="56dp"
+                    android:layout_marginTop="16dp"
+                    android:text="Tạo bài kiểm tra"
+                    android:textAllCaps="false"
+                    android:textColor="@color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    app:backgroundTint="@color/primary"
+                    app:cornerRadius="12dp"
+                    app:icon="@drawable/ic_file_text"
+                    app:iconGravity="textStart"
+                    app:layout_constraintTop_toBottomOf="@id/edit_quiz_instruction" />
+
+            </androidx.constraintlayout.widget.ConstraintLayout>
+
             <View
                 android:layout_width="match_parent"
                 android:layout_height="40dp" />
