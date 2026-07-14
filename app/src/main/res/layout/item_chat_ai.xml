@@ -229,6 +229,53 @@
                     android:textSize="12sp" />
             </LinearLayout>
 
+            <!-- Generate Quiz Section -->
+            <LinearLayout
+                android:id="@+id/layout_quiz_action"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:background="@drawable/bg_glass_panel"
+                android:backgroundTint="#0D7DD3FC">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Luyện tập với Quiz AI"
+                    android:textColor="@color/primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/edit_quiz_instruction"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/bg_input"
+                    android:hint="Nhập yêu cầu (vd: 5 câu trắc nghiệm khó)"
+                    android:padding="10dp"
+                    android:textSize="13sp"
+                    android:textColor="@color/on_surface"
+                    android:textColorHint="@color/text_secondary"
+                    android:maxLines="2"
+                    android:inputType="text"
+                    android:importantForAutofill="no" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_generate_quiz"
+                    style="@style/Widget.Material3.Button.TonalButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Tạo bài kiểm tra"
+                    android:textAllCaps="false"
+                    android:textSize="13sp"
+                    app:icon="@drawable/ic_file_text"
+                    app:cornerRadius="8dp" />
+            </LinearLayout>
+
         </LinearLayout>
 
     </LinearLayout>

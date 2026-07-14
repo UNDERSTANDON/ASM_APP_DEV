@@ -1,20 +1,29 @@
 package com.example.testui;
 
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+import com.example.testui.ai.AIObj;
+import com.example.testui.database.DatabaseHelper;
 import com.example.testui.models.AIResponse;
 import com.example.testui.models.ChatMessage;
+import com.example.testui.models.QuizQuestion;
+import com.google.android.material.button.MaterialButton;
 
 import io.noties.markwon.Markwon;
 
+import java.io.Serializable;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -72,6 +81,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 aiHolder.textThinkingLabel.setVisibility(View.VISIBLE);
                 aiHolder.textExplanation.setVisibility(View.GONE);
                 aiHolder.layoutDetails.setVisibility(View.GONE);
+                aiHolder.layoutQuizAction.setVisibility(View.GONE);
                 aiHolder.textTime.setText("");
             } else {
                 // Hide thinking progress and show content
@@ -84,6 +94,53 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                 if (response != null) {
                     markwon.setMarkdown(aiHolder.textExplanation, response.getSimplifiedExplanation());
                     aiHolder.layoutDetails.setVisibility(View.VISIBLE);
+                    aiHolder.layoutQuizAction.setVisibility(View.VISIBLE);
+
+                    // Setup Quiz Action
+                    aiHolder.btnGenerateQuiz.setOnClickListener(v -> {
+                        long questionId = message.getQuestionId();
+                        if (questionId == -1) {
+                            Toast.makeText(v.getContext(), "Không tìm thấy ID câu hỏi để tạo quiz.", Toast.LENGTH_SHORT).show();
+                            return;
+                        }
+
+                        DatabaseHelper dbHelper = new DatabaseHelper(v.getContext());
+                        List<QuizQuestion> existingQuiz = dbHelper.getQuizForQuestion(questionId);
+                        if (!existingQuiz.isEmpty()) {
+                            Intent intent = new Intent(v.getContext(), QuizActivity.class);
+                            intent.putExtra("quiz_questions", (Serializable) existingQuiz);
+                            v.getContext().startActivity(intent);
+                            return;
+                        }
+
+                        String instruction = aiHolder.editQuizInstruction.getText().toString().trim();
+                        aiHolder.btnGenerateQuiz.setEnabled(false);
+                        aiHolder.btnGenerateQuiz.setText("Đang tạo...");
+
+                        String context = "Question: " + message.getText() + "\nAnswer: " + response.getLogicalSteps();
+
+                        AIObj.getInstance().generateQuiz(context, instruction, new AIObj.AICallback<List<QuizQuestion>>() {
+                            @Override
+                            public void onSuccess(List<QuizQuestion> result) {
+                                aiHolder.btnGenerateQuiz.setEnabled(true);
+                                aiHolder.btnGenerateQuiz.setText("Tạo bài kiểm tra");
+                                
+                                // Save to DB
+                                dbHelper.saveQuiz(questionId, result);
+                                
+                                Intent intent = new Intent(v.getContext(), QuizActivity.class);
+                                intent.putExtra("quiz_questions", (Serializable) result);
+                                v.getContext().startActivity(intent);
+                            }
+
+                            @Override
+                            public void onError(String error) {
+                                aiHolder.btnGenerateQuiz.setEnabled(true);
+                                aiHolder.btnGenerateQuiz.setText("Tạo bài kiểm tra");
+                                Toast.makeText(v.getContext(), "Lỗi: " + error, Toast.LENGTH_SHORT).show();
+                            }
+                        });
+                    });
 
                     // --- Process Logical Steps ---
                     String steps = response.getLogicalSteps();
@@ -151,6 +208,7 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
                     // Just simple text fallback
                     markwon.setMarkdown(aiHolder.textExplanation, message.getText());
                     aiHolder.layoutDetails.setVisibility(View.GONE);
+                    aiHolder.layoutQuizAction.setVisibility(View.GONE);
                 }
             }
         }
@@ -191,6 +249,10 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
         LinearLayout layoutMistakes;
         TextView textMistakes;
 
+        LinearLayout layoutQuizAction;
+        EditText editQuizInstruction;
+        MaterialButton btnGenerateQuiz;
+
         public AIViewHolder(@NonNull View itemView) {
             super(itemView);
             thinkingProgress = itemView.findViewById(R.id.thinking_progress);
@@ -210,6 +272,10 @@ public class ChatAdapter extends RecyclerView.Adapter<RecyclerView.ViewHolder> {
             textAlternatives = itemView.findViewById(R.id.text_alternatives);
             layoutMistakes = itemView.findViewById(R.id.layout_mistakes);
             textMistakes = itemView.findViewById(R.id.text_mistakes);
+
+            layoutQuizAction = itemView.findViewById(R.id.layout_quiz_action);
+            editQuizInstruction = itemView.findViewById(R.id.edit_quiz_instruction);
+            btnGenerateQuiz = itemView.findViewById(R.id.btn_generate_quiz);
         }
     }
 }

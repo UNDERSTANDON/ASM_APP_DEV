@@ -245,16 +245,114 @@ public class AIObj {
     /**
      * Method to generate a quiz based on a specific question/answer.
      */
-    public void generateQuiz(int questionId, AICallback<List<QuizQuestion>> callback) {
-        new Handler(Looper.getMainLooper()).postDelayed(() -> {
-            List<QuizQuestion> mockQuiz = new ArrayList<>();
-            mockQuiz.add(new QuizQuestion(
-                "What is the discriminant of the equation 2x² - 5x + 3 = 0?",
-                Arrays.asList("1", "4", "25", "49"),
-                0,
-                "Correct! b² - 4ac = (-5)² - 4(2)(3) = 25 - 24 = 1."
-            ));
-            callback.onSuccess(mockQuiz);
-        }, 1000);
+    public void generateQuiz(String context, String instruction, AICallback<List<QuizQuestion>> callback) {
+        String systemInstruction = "You are a professional quiz creator for students. " +
+                "Generate a high-quality multiple-choice quiz based on the provided context. " +
+                "The context is a student's question and the AI's detailed answer. " +
+                "Follow these rules:\n" +
+                "1. Create 3-5 multiple-choice questions.\n" +
+                "2. Each question must have exactly 4 options.\n" +
+                "3. Provide the index of the correct option (0-indexed).\n" +
+                "4. Provide a helpful explanation/feedback for the correct answer.\n" +
+                "5. Ensure the language is Vietnamese.\n" +
+                "6. If the user provided specific instructions like 'focus on math', follow them.\n\n" +
+                "You MUST return the output strictly as a JSON array of objects. " +
+                "Each object must have the following keys:\n" +
+                "- \"questionText\": The text of the question.\n" +
+                "- \"options\": An array of 4 strings representing the choices.\n" +
+                "- \"correctOptionIndex\": The 0-based index of the correct choice.\n" +
+                "- \"feedback\": A brief explanation of why the answer is correct.\n";
+
+        String userPrompt = "Context: " + context + "\n\nAdditional Instructions: " + instruction;
+
+        JSONObject jsonPayload = new JSONObject();
+        try {
+            JSONObject systemInstructionObj = new JSONObject();
+            JSONArray siParts = new JSONArray();
+            siParts.put(new JSONObject().put("text", systemInstruction));
+            systemInstructionObj.put("parts", siParts);
+            jsonPayload.put("system_instruction", systemInstructionObj);
+
+            JSONArray contents = new JSONArray();
+            JSONObject contentObj = new JSONObject();
+            JSONArray parts = new JSONArray();
+            parts.put(new JSONObject().put("text", userPrompt));
+            contentObj.put("parts", parts);
+            contents.put(contentObj);
+            jsonPayload.put("contents", contents);
+
+            JSONObject generationConfig = new JSONObject();
+            generationConfig.put("responseMimeType", "application/json");
+            jsonPayload.put("generationConfig", generationConfig);
+        } catch (JSONException e) {
+            callback.onError("Failed to create request payload: " + e.getMessage());
+            return;
+        }
+
+        RequestBody body = RequestBody.create(
+                jsonPayload.toString(),
+                MediaType.parse("application/json; charset=utf-8")
+        );
+
+        String apiKey = GeminiConfig.API_KEY;
+        String url = GeminiConfig.BASE_URL + GeminiConfig.MODEL_NAME + ":generateContent?key=" + apiKey;
+
+        Request request = new Request.Builder()
+                .url(url)
+                .post(body)
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                mainHandler.post(() -> callback.onError("Network error: " + e.getMessage()));
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                try (Response responseBody = response) {
+                    if (!response.isSuccessful()) {
+                        String errBody = response.body() != null ? response.body().string() : "Empty response body";
+                        mainHandler.post(() -> callback.onError("API error (code " + response.code() + "): " + errBody));
+                        return;
+                    }
+
+                    String responseString = response.body().string();
+                    JSONObject jsonResponse = new JSONObject(responseString);
+                    JSONArray candidates = jsonResponse.optJSONArray("candidates");
+                    if (candidates == null || candidates.length() == 0) {
+                        mainHandler.post(() -> callback.onError("No candidates found"));
+                        return;
+                    }
+
+                    String responseText = candidates.getJSONObject(0)
+                            .getJSONObject("content")
+                            .getJSONArray("parts")
+                            .getJSONObject(0)
+                            .getString("text");
+
+                    JSONArray quizArray = new JSONArray(responseText);
+                    List<QuizQuestion> quizQuestions = new ArrayList<>();
+                    for (int i = 0; i < quizArray.length(); i++) {
+                        JSONObject qObj = quizArray.getJSONObject(i);
+                        String qText = qObj.optString("questionText");
+                        JSONArray optsArr = qObj.optJSONArray("options");
+                        List<String> options = new ArrayList<>();
+                        if (optsArr != null) {
+                            for (int j = 0; j < optsArr.length(); j++) {
+                                options.add(optsArr.getString(j));
+                            }
+                        }
+                        int correctIdx = qObj.optInt("correctOptionIndex");
+                        String feedback = qObj.optString("feedback");
+                        quizQuestions.add(new QuizQuestion(qText, options, correctIdx, feedback));
+                    }
+
+                    mainHandler.post(() -> callback.onSuccess(quizQuestions));
+                } catch (Exception e) {
+                    mainHandler.post(() -> callback.onError("Failed to parse quiz: " + e.getMessage()));
+                }
+            }
+        });
     }
 }
