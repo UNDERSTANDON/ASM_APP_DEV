@@ -1,49 +1,243 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!--
+    activity_main.xml — Home Screen EduAI redesign
+    Cấu trúc:
+      FrameLayout (root, gradient background)
+      ├── NestedScrollView (nội dung chính, padding bottom cho nav)
+      │   └── LinearLayout vertical
+      │       ├── Header (title + subtitle)
+      │       ├── Hero Card glassmorphism (icon + button Hỏi AI)
+      │       ├── Section label "Featured Content"
+      │       └── HorizontalScrollView (2 featured cards)
+      └── BottomNavigationView (id=bottom_nav — giữ nguyên)
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/background"
+    android:background="@drawable/bg_home_gradient"
     tools:context=".MainActivity">
 
-    <TextView
-        android:id="@+id/greeting"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/home_title"
-        android:textColor="@color/on_surface"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/ask_ai_btn"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+    <!-- ===== MAIN SCROLLABLE CONTENT ===== -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:paddingBottom="88dp"
+        android:clipToPadding="false"
+        android:scrollbars="none">
 
-    <Button
-        android:id="@+id/ask_ai_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
-        android:text="@string/ask_ai"
-        android:textColor="@color/black"
-        android:backgroundTint="@color/primary"
-        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/greeting" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingEnd="24dp"
+            android:paddingTop="48dp"
+            android:paddingBottom="16dp">
 
+            <!-- ===== HEADER SECTION ===== -->
+            <TextView
+                android:id="@+id/tv_home_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="EduAI Home"
+                android:textColor="@color/on_surface"
+                android:textSize="34sp"
+                android:textStyle="bold"
+                android:letterSpacing="0.01"
+                android:layout_gravity="center_horizontal" />
+
+            <TextView
+                android:id="@+id/tv_home_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Your Intelligent Learning Companion"
+                android:textColor="@color/home_subtitle"
+                android:textSize="14sp"
+                android:layout_gravity="center_horizontal" />
+
+            <!-- ===== HERO CARD ===== -->
+            <LinearLayout
+                android:id="@+id/card_hero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/bg_hero_card"
+                android:orientation="vertical"
+                android:gravity="center"
+                android:paddingTop="36dp"
+                android:paddingBottom="32dp"
+                android:paddingStart="28dp"
+                android:paddingEnd="28dp">
+
+                <!-- Icon bóng đèn AI -->
+                <ImageView
+                    android:id="@+id/iv_ai_icon"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:src="@drawable/ic_ai_bulb"
+                    android:contentDescription="AI Bulb Icon" />
+
+                <!-- Nút Hỏi AI — giữ nguyên id=ask_ai_btn -->
+                <TextView
+                    android:id="@+id/ask_ai_btn"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/bg_ask_ai_button"
+                    android:text="Hỏi AI"
+                    android:textColor="@color/background"
+                    android:textSize="18sp"
+                    android:textStyle="bold"
+                    android:gravity="center"
+                    android:clickable="true"
+                    android:focusable="true" />
+
+            </LinearLayout>
+
+            <!-- ===== FEATURED CONTENT SECTION ===== -->
+            <TextView
+                android:id="@+id/tv_featured_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:text="Featured Content"
+                android:textColor="@color/on_surface"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- HorizontalScrollView chứa 2 featured cards -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:scrollbars="none"
+                android:paddingEnd="8dp"
+                android:clipToPadding="false">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- === Featured Card 1: Continue Learning === -->
+                    <LinearLayout
+                        android:id="@+id/card_continue"
+                        android:layout_width="160dp"
+                        android:layout_height="190dp"
+                        android:layout_marginEnd="16dp"
+                        android:background="@drawable/bg_featured_card"
+                        android:orientation="vertical"
+                        android:gravity="bottom"
+                        android:padding="18dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <!-- Icon sách -->
+                        <ImageView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:src="@drawable/ic_book_open"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginBottom="12dp"
+                            android:contentDescription="Continue Learning"
+                            app:tint="@color/home_card_tag" />
+
+                        <!-- Title động từ DB -->
+                        <TextView
+                            android:id="@+id/tv_continue_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Continue Learning"
+                            android:textColor="@color/on_surface"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:maxLines="2"
+                            android:ellipsize="end" />
+
+                        <!-- Subtitle động từ DB -->
+                        <TextView
+                            android:id="@+id/tv_continue_subtitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="Recent Lesson"
+                            android:textColor="@color/home_card_text_secondary"
+                            android:textSize="11sp"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
+
+                    </LinearLayout>
+
+                    <!-- === Featured Card 2: Daily Quiz === -->
+                    <LinearLayout
+                        android:id="@+id/card_quiz"
+                        android:layout_width="160dp"
+                        android:layout_height="190dp"
+                        android:layout_marginEnd="8dp"
+                        android:background="@drawable/bg_featured_card"
+                        android:orientation="vertical"
+                        android:gravity="bottom"
+                        android:padding="18dp"
+                        android:clickable="true"
+                        android:focusable="true">
+
+                        <!-- Icon quiz -->
+                        <ImageView
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:src="@drawable/ic_help_circle"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginBottom="12dp"
+                            android:contentDescription="Daily Quiz"
+                            app:tint="@color/home_icon_quiz" />
+
+                        <!-- Title động từ DB -->
+                        <TextView
+                            android:id="@+id/tv_quiz_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Daily Quiz Challenge"
+                            android:textColor="@color/on_surface"
+                            android:textSize="13sp"
+                            android:textStyle="bold"
+                            android:maxLines="2"
+                            android:ellipsize="end" />
+
+                        <!-- Subtitle động từ DB -->
+                        <TextView
+                            android:id="@+id/tv_quiz_subtitle"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="New Quiz"
+                            android:textColor="@color/home_card_text_secondary"
+                            android:textSize="11sp"
+                            android:maxLines="1"
+                            android:ellipsize="end" />
+
+                    </LinearLayout>
+
+                </LinearLayout>
+            </HorizontalScrollView>
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- ===== BOTTOM NAVIGATION — id giữ nguyên ===== -->
     <com.google.android.material.bottomnavigation.BottomNavigationView
         android:id="@+id/bottom_nav"
         android:layout_width="match_parent"
-        android:layout_height="80dp"
-        android:background="@color/surface_container"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bg_home_bottom_nav"
+        android:elevation="0dp"
         app:itemIconTint="@color/on_surface_variant"
         app:itemTextColor="@color/on_surface_variant"
         app:labelVisibilityMode="labeled"
-        app:layout_constraintBottom_toBottomOf="parent"
         app:menu="@menu/bottom_nav_menu" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

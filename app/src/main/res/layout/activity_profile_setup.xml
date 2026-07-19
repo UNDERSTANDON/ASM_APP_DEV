@@ -228,7 +228,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="64dp"
                             android:layout_marginBottom="12dp"
-                            android:background="@drawable/bg_input"
+                            android:background="@drawable/bg_profile_option"
                             android:gravity="center_vertical"
                             android:paddingHorizontal="16dp"
                             android:text="@string/level_thcs"
@@ -239,7 +239,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="64dp"
                             android:layout_marginBottom="12dp"
-                            android:background="@drawable/bg_input"
+                            android:background="@drawable/bg_profile_option"
                             android:gravity="center_vertical"
                             android:paddingHorizontal="16dp"
                             android:text="@string/level_thpt"
@@ -249,7 +249,7 @@
                             android:id="@+id/level_uni"
                             android:layout_width="match_parent"
                             android:layout_height="64dp"
-                            android:background="@drawable/bg_input"
+                            android:background="@drawable/bg_profile_option"
                             android:gravity="center_vertical"
                             android:paddingHorizontal="16dp"
                             android:text="@string/level_uni"
@@ -287,25 +287,44 @@
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="24dp"
+                        app:singleSelection="true"
+                        app:selectionRequired="true"
                         app:chipSpacingVertical="12dp">
 
                         <com.google.android.material.chip.Chip
                             style="@style/Widget.Material3.Chip.Filter"
+                            android:id="@+id/chip_math"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/subj_math_short" />
 
                         <com.google.android.material.chip.Chip
                             style="@style/Widget.Material3.Chip.Filter"
+                            android:id="@+id/chip_phys"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/subj_phys_short" />
 
                         <com.google.android.material.chip.Chip
                             style="@style/Widget.Material3.Chip.Filter"
+                            android:id="@+id/chip_chem"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:text="@string/subj_chem_short" />
+
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:id="@+id/chip_it"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/subj_it_short" />
+
+                        <com.google.android.material.chip.Chip
+                            style="@style/Widget.Material3.Chip.Filter"
+                            android:id="@+id/chip_lang"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/subj_lang_short" />
 
                     </com.google.android.material.chip.ChipGroup>
                 </LinearLayout>
@@ -337,7 +356,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
-                            android:background="@drawable/bg_input"
+                            android:background="@drawable/bg_profile_option"
                             android:padding="16dp"
                             android:text="@string/style_concise"
                             android:textColor="@color/on_surface" />
@@ -347,7 +366,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginBottom="12dp"
-                            android:background="@drawable/bg_input"
+                            android:background="@drawable/bg_profile_option"
                             android:padding="16dp"
                             android:text="@string/style_detailed"
                             android:textColor="@color/on_surface" />
@@ -356,7 +375,7 @@
                             android:id="@+id/style_step_btn"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/bg_input"
+                            android:background="@drawable/bg_profile_option"
                             android:padding="16dp"
                             android:text="@string/style_step"
                             android:textColor="@color/on_surface" />

@@ -49,6 +49,8 @@ dependencies {
     implementation(libs.splashscreen)
     implementation(libs.okhttp)
     implementation(libs.markwon.core)
+    implementation(libs.room.runtime)
+    annotationProcessor(libs.room.compiler)
     testImplementation(libs.junit)
     androidTestImplementation(libs.espresso.core)
     androidTestImplementation(libs.ext.junit)

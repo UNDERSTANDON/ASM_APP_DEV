@@ -24,7 +24,7 @@ public class NavigationHelper {
             } else if (id == R.id.nav_insights) {
                 targetActivity = AIInsightsActivity.class;
             } else if (id == R.id.nav_quiz) {
-                targetActivity = QuizActivity.class;
+                targetActivity = QuizLabActivity.class;
             } else if (id == R.id.nav_saved) {
                 targetActivity = AnswerHistoryActivity.class;
             } else if (id == R.id.nav_alerts) {

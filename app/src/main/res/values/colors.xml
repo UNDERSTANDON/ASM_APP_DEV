@@ -92,4 +92,26 @@
     <color name="st_primary_light">#8b84ff</color>
     <color name="st_gold">#ffd700</color>
     <color name="st_warning">#f59e0b</color>
+
+    <!-- Home Screen EduAI Design -->
+    <color name="home_bg_start">#0D1635</color>
+    <color name="home_bg_end">#1C0B3A</color>
+    <color name="home_hero_bg">#28FFFFFF</color>
+    <color name="home_hero_border">#44FFFFFF</color>
+    <color name="home_featured_bg">#1A2A5E</color>
+    <color name="home_featured_border">#334A7FC4</color>
+    <color name="home_subtitle">#8899BB</color>
+    <color name="home_card_tag">#7DD3FC</color>
+    <color name="home_nav_bg">#E60D1635</color>
+    <color name="home_icon_quiz">#C084FC</color>
+    <color name="home_card_text_secondary">#8899BB</color>
+
+    <!-- Quiz Lab Screen -->
+    <color name="ql_selector_bg">#1E2D6B</color>
+    <color name="ql_selector_border">#445599CC</color>
+    <color name="ql_card_bg">#151E52</color>
+    <color name="ql_card_border">#333C6B99</color>
+    <color name="ql_date_text">#7DD3FC</color>
+    <color name="ql_count_text">#94A3B8</color>
+
 </resources>

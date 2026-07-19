@@ -74,19 +74,31 @@ public class RegisterActivity extends AppCompatActivity {
             String confirmPassword = confirmPasswordEditText.getText().toString().trim();
 
             if (email.isEmpty() || password.isEmpty() || confirmPassword.isEmpty()) {
-                Toast.makeText(this, "Please fill in all fields", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Vui lòng nhập đầy đủ các trường thông tin", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Validate email hợp lệ
+            if (!android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+                Toast.makeText(this, "Email không hợp lệ. Vui lòng kiểm tra lại.", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            // Validate mật khẩu: phải chứa đúng 8 chữ số (chỉ gồm số 0-9)
+            if (password.length() != 8 || !password.matches("[0-9]+")) {
+                Toast.makeText(this, "Mật khẩu bắt buộc phải chứa đúng 8 chữ số.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
             if (!password.equals(confirmPassword)) {
-                Toast.makeText(this, "Passwords do not match", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Mật khẩu xác nhận không trùng khớp.", Toast.LENGTH_SHORT).show();
                 return;
             }
 
-            // Default education level during registration, refined in ProfileSetupActivity
-            long result = dbHelper.registerUser(email, password, "Not set");
+            // Mặc định ban đầu chưa thiết lập cấp học học vấn ("Chưa chọn")
+            long result = dbHelper.registerUser(email, password, "Chưa chọn");
             if (result != -1) {
-                // Store email in session to use in ProfileSetupActivity
+                // Lưu email vào session để ProfileSetupActivity cấu hình tiếp
                 getSharedPreferences("AppPrefs", MODE_PRIVATE)
                         .edit()
                         .putString("user_email", email)
@@ -95,7 +107,7 @@ public class RegisterActivity extends AppCompatActivity {
                 startActivity(new Intent(RegisterActivity.this, ProfileSetupActivity.class));
                 finish();
             } else {
-                Toast.makeText(this, "Registration failed", Toast.LENGTH_SHORT).show();
+                Toast.makeText(this, "Email này đã được đăng ký hoặc đăng ký thất bại.", Toast.LENGTH_SHORT).show();
             }
         });
 

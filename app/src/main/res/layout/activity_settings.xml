@@ -99,6 +99,207 @@
                     android:textSize="14sp" />
             </LinearLayout>
 
+            <!-- Section: Hồ Sơ Học Tập -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:drawableStart="@drawable/ic_graduation_cap"
+                android:drawablePadding="8dp"
+                android:drawableTint="@color/lb_text_secondary"
+                android:text="Hồ Sơ Học Tập"
+                android:textColor="@color/lb_text_secondary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:layout_marginBottom="24dp"
+                android:background="@drawable/bg_glass_panel"
+                android:orientation="vertical">
+
+                <!-- Education Level -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_change_edu_level"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/icon_school_settings"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_school"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/lb_text_secondary" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toStartOf="@+id/chevron_edu_level"
+                        app:layout_constraintStart_toEndOf="@id/icon_school_settings"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cấp học hiện tại"
+                            android:textColor="@color/lb_text_primary"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_current_edu_level"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Đại học"
+                            android:textColor="@color/lb_primary"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/chevron_edu_level"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/lb_text_secondary" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="56dp"
+                    android:background="@color/lb_border" />
+
+                <!-- Favorite Subject -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_change_fav_subject"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/icon_book_settings"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_book_open"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/lb_text_secondary" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toStartOf="@+id/chevron_fav_subject"
+                        app:layout_constraintStart_toEndOf="@id/icon_book_settings"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Môn học yêu thích"
+                            android:textColor="@color/lb_text_primary"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_current_fav_subject"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Toán học"
+                            android:textColor="@color/lb_primary"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/chevron_fav_subject"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/lb_text_secondary" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="56dp"
+                    android:background="@color/lb_border" />
+
+                <!-- Explanation Tone -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_change_explanation_tone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/icon_tone_settings"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_short_text"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/lb_text_secondary" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toStartOf="@+id/chevron_explanation_tone"
+                        app:layout_constraintStart_toEndOf="@id/icon_tone_settings"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Phong cách giải thích"
+                            android:textColor="@color/lb_text_primary"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_current_explanation_tone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Detailed"
+                            android:textColor="@color/lb_primary"
+                            android:textSize="13sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/chevron_explanation_tone"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/lb_text_secondary" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+            </LinearLayout>
+
             <!-- Section: Bảo Mật -->
             <TextView
                 android:layout_width="wrap_content"
@@ -173,8 +374,70 @@
                     android:layout_marginStart="56dp"
                     android:background="@color/lb_border" />
 
+                <!-- Change Email -->
+                <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_change_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:foreground="?attr/selectableItemBackground"
+                    android:padding="16dp">
+
+                    <ImageView
+                        android:id="@+id/icon_mail_notif"
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_mail"
+                        app:layout_constraintStart_toStartOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/lb_text_secondary" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="16dp"
+                        android:layout_marginEnd="16dp"
+                        android:orientation="vertical"
+                        app:layout_constraintEnd_toStartOf="@+id/chevron_mail"
+                        app:layout_constraintStart_toEndOf="@id/icon_mail_notif"
+                        app:layout_constraintTop_toTopOf="parent">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Thay đổi Email"
+                            android:textColor="@color/lb_text_primary"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cập nhật địa chỉ email tài khoản của bạn"
+                            android:textColor="@color/lb_text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/chevron_mail"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/ic_chevron_right"
+                        app:layout_constraintBottom_toBottomOf="parent"
+                        app:layout_constraintEnd_toEndOf="parent"
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/lb_text_secondary" />
+                </androidx.constraintlayout.widget.ConstraintLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginStart="56dp"
+                    android:background="@color/lb_border" />
+
                 <!-- Change Password -->
                 <androidx.constraintlayout.widget.ConstraintLayout
+                    android:id="@+id/layout_change_password"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:clickable="true"
@@ -188,7 +451,8 @@
                         android:layout_height="24dp"
                         android:src="@drawable/ic_key"
                         app:layout_constraintStart_toStartOf="parent"
-                        app:layout_constraintTop_toTopOf="parent" />
+                        app:layout_constraintTop_toTopOf="parent"
+                        app:tint="@color/lb_text_secondary" />
 
                     <LinearLayout
                         android:layout_width="0dp"

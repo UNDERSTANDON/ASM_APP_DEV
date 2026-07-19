@@ -11,6 +11,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import com.example.testui.models.QuizQuestion;
 import com.google.android.material.button.MaterialButton;
 import com.google.android.material.progressindicator.LinearProgressIndicator;
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -21,12 +22,17 @@ public class QuizActivity extends AppCompatActivity {
     private LinearLayout mcqOptions;
     private MaterialButton btnCheckAnswer;
     private View btnClose;
+    private android.widget.LinearLayout llExplanationBox;
+    private TextView tvExplanationContent;
+    private androidx.core.widget.NestedScrollView scrollView;
 
     private List<QuizQuestion> questions;
     private int currentQuestionIndex = 0;
     private int score = 0;
     private int selectedOptionIndex = -1;
     private boolean isAnswerChecked = false;
+    private long questionId = -1;
+    private int[] userAnswers;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,6 +52,9 @@ public class QuizActivity extends AppCompatActivity {
         mcqOptions = findViewById(R.id.mcq_options);
         btnCheckAnswer = findViewById(R.id.btn_check_answer);
         btnClose = findViewById(R.id.btn_close);
+        llExplanationBox = findViewById(R.id.ll_explanation_box);
+        tvExplanationContent = findViewById(R.id.tv_explanation_content);
+        scrollView = findViewById(R.id.scroll_view);
 
         btnCheckAnswer.setOnClickListener(v -> onCheckAnswerClicked());
         btnClose.setOnClickListener(v -> finish());
@@ -53,8 +62,11 @@ public class QuizActivity extends AppCompatActivity {
 
     private void loadQuestions() {
         Intent intent = getIntent();
-        if (intent != null && intent.hasExtra("quiz_questions")) {
-            questions = (List<QuizQuestion>) intent.getSerializableExtra("quiz_questions");
+        if (intent != null) {
+            if (intent.hasExtra("quiz_questions")) {
+                questions = (List<QuizQuestion>) intent.getSerializableExtra("quiz_questions");
+            }
+            questionId = intent.getLongExtra("question_id", -1);
         }
         
         // Fallback for testing if no questions are passed
@@ -65,6 +77,8 @@ public class QuizActivity extends AppCompatActivity {
             questions.add(new QuizQuestion("Đây là câu hỏi kiểm tra giao diện 1?", opts, 0, "Giải thích 1"));
             questions.add(new QuizQuestion("Đây là câu hỏi kiểm tra giao diện 2?", opts, 1, "Giải thích 2"));
         }
+        userAnswers = new int[questions.size()];
+        java.util.Arrays.fill(userAnswers, -1);
     }
 
     private void displayQuestion() {
@@ -73,11 +87,14 @@ public class QuizActivity extends AppCompatActivity {
         isAnswerChecked = false;
         selectedOptionIndex = -1;
         btnCheckAnswer.setText("Kiểm tra");
+        if (llExplanationBox != null) {
+            llExplanationBox.setVisibility(View.GONE);
+        }
 
         QuizQuestion currentQuestion = questions.get(currentQuestionIndex);
 
         tvQuestionCount.setText("Câu " + (currentQuestionIndex + 1) + " / " + questions.size());
-        tvQuestionNumber.setText("Câu " + (currentQuestionIndex + 1));
+        tvQuestionNumber.setText("Câu số: " + (currentQuestionIndex + 1));
         tvQuestionText.setText(currentQuestion.getQuestionText());
         
         int progress = (int) (((currentQuestionIndex) / (float) questions.size()) * 100);
@@ -110,6 +127,7 @@ public class QuizActivity extends AppCompatActivity {
         if (isAnswerChecked) return;
         
         selectedOptionIndex = index;
+        userAnswers[currentQuestionIndex] = index;
         
         for (int i = 0; i < mcqOptions.getChildCount(); i++) {
             View child = mcqOptions.getChildAt(i);
@@ -140,6 +158,17 @@ public class QuizActivity extends AppCompatActivity {
             }
             
             isAnswerChecked = true;
+
+            // Hiển thị phần giải thích đáp án
+            if (llExplanationBox != null && tvExplanationContent != null) {
+                tvExplanationContent.setText(currentQuestion.getFeedback());
+                llExplanationBox.setVisibility(View.VISIBLE);
+
+                // Tự động cuộn xuống dưới cùng để dễ xem giải thích
+                if (scrollView != null) {
+                    scrollView.post(() -> scrollView.fullScroll(View.FOCUS_DOWN));
+                }
+            }
             
             if (currentQuestionIndex == questions.size() - 1) {
                 btnCheckAnswer.setText("Xem kết quả");
@@ -152,9 +181,17 @@ public class QuizActivity extends AppCompatActivity {
             if (currentQuestionIndex < questions.size()) {
                 displayQuestion();
             } else {
+                // Lưu kết quả điểm số vào CSV database nếu có liên kết ID
+                if (questionId != -1) {
+                    com.example.testui.database.DatabaseHelper dbHelper = new com.example.testui.database.DatabaseHelper(this);
+                    dbHelper.completeQuiz(questionId, score);
+                }
+
                 Intent intent = new Intent(QuizActivity.this, QuizResultActivity.class);
                 intent.putExtra("score", score);
                 intent.putExtra("total", questions.size());
+                intent.putExtra("quiz_questions", (Serializable) questions);
+                intent.putExtra("user_answers", userAnswers);
                 startActivity(intent);
                 finish();
             }

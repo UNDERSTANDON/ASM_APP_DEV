@@ -162,6 +162,7 @@
                         app:layout_constraintTop_toBottomOf="@id/card1_desc">
 
                         <TextView
+                            android:id="@+id/tv_tag_subject"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -174,6 +175,7 @@
                             android:textSize="11sp" />
 
                         <TextView
+                            android:id="@+id/tv_tag_efficiency"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginEnd="8dp"
@@ -181,7 +183,7 @@
                             android:backgroundTint="#1A10B981"
                             android:paddingHorizontal="10dp"
                             android:paddingVertical="4dp"
-                            android:text="Efficiency +24%"
+                            android:text="Hiệu suất +24%"
                             android:textColor="@color/insight_success"
                             android:textSize="11sp" />
                     </LinearLayout>
@@ -313,6 +315,7 @@
                         app:layout_constraintTop_toBottomOf="@id/icon_3" />
 
                     <TextView
+                        android:id="@+id/tv_cognitive_badge"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginStart="12dp"
@@ -328,6 +331,7 @@
                         app:layout_constraintTop_toTopOf="@id/cognitive_val" />
 
                     <TextView
+                        android:id="@+id/tv_cognitive_desc"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="8dp"
@@ -388,95 +392,6 @@
                         android:layout_marginTop="16dp"
                         android:orientation="vertical"
                         app:layout_constraintTop_toBottomOf="@id/card4_title">
-
-                        <!-- Math Skill -->
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp">
-                            <TextView
-                                android:id="@+id/s_name_1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/insight_math"
-                                android:textColor="@color/insight_text_primary"
-                                android:textSize="13sp"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:text="@string/skill_math_level"
-                                android:textColor="@color/insight_text_secondary"
-                                android:textSize="11sp"
-                                app:layout_constraintBottom_toBottomOf="@id/s_name_1"
-                                app:layout_constraintStart_toEndOf="@id/s_name_1" />
-                            <TextView
-                                android:id="@+id/s_val_1"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/skill_math_val"
-                                android:textColor="@color/insight_text_primary"
-                                android:textSize="13sp"
-                                android:textStyle="bold"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                            <com.google.android.material.progressindicator.LinearProgressIndicator
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:progress="82"
-                                app:indicatorColor="@color/insight_primary"
-                                app:layout_constraintTop_toBottomOf="@id/s_name_1"
-                                app:trackColor="#1E1E2E"
-                                app:trackCornerRadius="2dp" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
-                        <!-- Physics Skill -->
-                        <androidx.constraintlayout.widget.ConstraintLayout
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginBottom="16dp">
-                            <TextView
-                                android:id="@+id/s_name_2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/insight_physics"
-                                android:textColor="@color/insight_text_primary"
-                                android:textSize="13sp"
-                                app:layout_constraintStart_toStartOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                            <TextView
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:layout_marginStart="8dp"
-                                android:text="@string/skill_physics_level"
-                                android:textColor="@color/insight_text_secondary"
-                                android:textSize="11sp"
-                                app:layout_constraintBottom_toBottomOf="@id/s_name_2"
-                                app:layout_constraintStart_toEndOf="@id/s_name_2" />
-                            <TextView
-                                android:id="@+id/s_val_2"
-                                android:layout_width="wrap_content"
-                                android:layout_height="wrap_content"
-                                android:text="@string/skill_physics_val"
-                                android:textColor="@color/insight_text_primary"
-                                android:textSize="13sp"
-                                android:textStyle="bold"
-                                app:layout_constraintEnd_toEndOf="parent"
-                                app:layout_constraintTop_toTopOf="parent" />
-                            <com.google.android.material.progressindicator.LinearProgressIndicator
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="8dp"
-                                android:progress="65"
-                                app:indicatorColor="@color/insight_accent"
-                                app:layout_constraintTop_toBottomOf="@id/s_name_2"
-                                app:trackColor="#1E1E2E"
-                                app:trackCornerRadius="2dp" />
-                        </androidx.constraintlayout.widget.ConstraintLayout>
-
                     </LinearLayout>
 
                     <Button
@@ -537,6 +452,7 @@
                         app:layout_constraintStart_toEndOf="@id/s_icon_1"
                         app:layout_constraintTop_toTopOf="@id/s_icon_1" />
                     <TextView
+                        android:id="@+id/tv_summary_study_time"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/stat_time_14h"
@@ -573,6 +489,7 @@
                         app:layout_constraintStart_toEndOf="@id/s_icon_2"
                         app:layout_constraintTop_toTopOf="@id/s_icon_2" />
                     <TextView
+                        android:id="@+id/tv_summary_tasks_done"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/stat_done_47"
@@ -609,6 +526,7 @@
                         app:layout_constraintStart_toEndOf="@id/s_icon_3"
                         app:layout_constraintTop_toTopOf="@id/s_icon_3" />
                     <TextView
+                        android:id="@+id/tv_summary_avg_score"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:text="@string/stat_score_8_6"

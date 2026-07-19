@@ -117,8 +117,19 @@ public class AskQuestionActivity extends AppCompatActivity {
                 // Remove thinking indicator
                 removeThinkingMessage();
 
+                // Lấy môn học yêu thích của người dùng để làm mặc định nếu AI không nhận diện được môn học cụ thể
+                String email = getSharedPreferences("AppPrefs", MODE_PRIVATE).getString("user_email", null);
+                String favSubj = "Toán học";
+                if (email != null) {
+                    com.example.testui.models.UserProfile profile = dbHelper.getUserProfile(email);
+                    if (profile != null && profile.getFavoriteSubject() != null) {
+                        favSubj = profile.getFavoriteSubject();
+                    }
+                }
+                int subjectId = getSubjectIdFromAIResponse(result, favSubj);
+
                 // Save to local database
-                long qId = dbHelper.saveQuestion(question, 1, currentSessionId);
+                long qId = dbHelper.saveQuestion(question, subjectId, currentSessionId);
                 dbHelper.saveAIResponse(qId, result);
                 
                 userMessage.setQuestionId(qId);
@@ -144,6 +155,38 @@ public class AskQuestionActivity extends AppCompatActivity {
                 chatRecyclerView.scrollToPosition(messageList.size() - 1);
             }
         });
+    }
+
+    private int getSubjectIdFromAIResponse(AIResponse response, String favoriteSubject) {
+        String aiSubject = response.getSubject();
+        if (aiSubject == null || aiSubject.trim().isEmpty() || aiSubject.equalsIgnoreCase("General") || aiSubject.equalsIgnoreCase("Out of Scope")) {
+            // Không nhận diện được môn cụ thể -> Dùng môn học yêu thích
+            return mapSubjectNameToId(favoriteSubject);
+        }
+        
+        int mappedId = mapSubjectNameToId(aiSubject);
+        if (mappedId == 0) {
+            // Môn lạ -> Dùng môn học yêu thích
+            return mapSubjectNameToId(favoriteSubject);
+        }
+        return mappedId;
+    }
+
+    private int mapSubjectNameToId(String subjectName) {
+        if (subjectName == null) return 1; // Default to Math if null
+        String nameLower = subjectName.toLowerCase();
+        if (nameLower.contains("math") || nameLower.contains("toán")) {
+            return 1;
+        } else if (nameLower.contains("phys") || nameLower.contains("lý") || nameLower.contains("science") || nameLower.contains("khoa học")) {
+            return 2;
+        } else if (nameLower.contains("chem") || nameLower.contains("hóa")) {
+            return 3;
+        } else if (nameLower.contains("program") || nameLower.contains("code") || nameLower.contains("it") || nameLower.contains("tin học") || nameLower.contains("lập trình")) {
+            return 4;
+        } else if (nameLower.contains("hist") || nameLower.contains("sử")) {
+            return 5;
+        }
+        return 1; // Default fallback to Math
     }
 
     private void addAIMessage(ChatMessage message) {
