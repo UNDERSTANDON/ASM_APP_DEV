@@ -83,6 +83,7 @@
                     android:importantForAccessibility="no" />
 
                 <TextView
+                    android:id="@+id/tv_result_msg"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginTop="12dp"
@@ -160,10 +161,11 @@
 
             <!-- Grade Badge -->
             <TextView
+                android:id="@+id/tv_grade_badge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="center"
-                android:layout_marginBottom="32dp"
+                android:layout_marginBottom="24dp"
                 android:background="@drawable/bg_chip"
                 android:backgroundTint="#337C3AED"
                 android:paddingHorizontal="16dp"
@@ -172,6 +174,68 @@
                 android:textColor="@color/quiz_primary"
                 android:textSize="14sp"
                 android:textStyle="bold" />
+
+            <!-- AI Recommendation (Premium Design Card) -->
+            <LinearLayout
+                android:id="@+id/ll_ai_insights_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_glass_panel_elevated"
+                android:backgroundTint="@color/quiz_surface"
+                android:orientation="vertical"
+                android:padding="20dp"
+                android:layout_marginBottom="24dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:src="@drawable/ic_brain"
+                        android:importantForAccessibility="no"
+                        app:tint="@color/quiz_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="Phân tích học tập từ EduAI"
+                        android:textColor="@color/quiz_text_primary"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <View
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_chip"
+                        android:backgroundTint="#26D970FF"
+                        android:paddingHorizontal="8dp"
+                        android:paddingVertical="4dp"
+                        android:text="⚡ AI Insights"
+                        android:textColor="#D970FF"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/ai_recommend_text"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="EduAI đang phân tích kết quả bài làm của bạn..."
+                    android:textColor="@color/quiz_text_secondary"
+                    android:textSize="14sp"
+                    android:lineSpacingExtra="4dp" />
+            </LinearLayout>
 
             <!-- Stats Row -->
             <LinearLayout
@@ -196,6 +260,7 @@
                         android:contentDescription="@string/result_correct_label"
                         app:tint="@color/quiz_success" />
                     <TextView
+                        android:id="@+id/tv_correct_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
@@ -229,6 +294,7 @@
                         android:contentDescription="@string/result_incorrect_label"
                         app:tint="@color/quiz_danger" />
                     <TextView
+                        android:id="@+id/tv_incorrect_count"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="4dp"
@@ -372,6 +438,7 @@
                     android:orientation="horizontal">
 
                     <TextView
+                        android:id="@+id/tv_filter_all"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -384,6 +451,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/tv_filter_correct"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_marginEnd="8dp"
@@ -395,6 +463,7 @@
                         android:textSize="12sp" />
 
                     <TextView
+                        android:id="@+id/tv_filter_incorrect"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:background="@drawable/bg_chip"
@@ -404,278 +473,16 @@
                         android:textColor="@color/quiz_text_secondary"
                         android:textSize="12sp" />
                 </LinearLayout>
-            </HorizontalScrollView>
-
-            <!-- Review Items (Example Accordion List) -->
+            </HorizontalScrollView>            <!-- Review Items container (Loaded dynamically from code) -->
             <LinearLayout
+                android:id="@+id/ll_review_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="vertical"
                 android:layout_marginBottom="32dp">
-
-                <!-- Q1 Correct -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:background="@drawable/bg_glass_panel"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content">
-
-                        <ImageView
-                            android:id="@+id/status_icon_1"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/ic_check_circle"
-                            android:importantForAccessibility="no"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:tint="@color/quiz_success" />
-
-                        <TextView
-                            android:id="@+id/q_ref_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:text="@string/q1_text"
-                            android:textColor="@color/quiz_text_primary"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/status_icon_1"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:ellipsize="end"
-                            android:maxLines="1"
-                            android:text="@string/q1_preview"
-                            android:textColor="@color/quiz_text_secondary"
-                            android:textSize="12sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/badge_1"
-                            app:layout_constraintStart_toEndOf="@id/q_ref_1"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/badge_1"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
-                            android:background="@drawable/bg_chip"
-                            android:backgroundTint="#3310B981"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="Đúng"
-                            android:textColor="@color/quiz_success"
-                            android:textSize="11sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/expand_1"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/expand_1"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/ic_expand_more"
-                            android:importantForAccessibility="no"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:tint="@color/quiz_text_secondary" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-                </LinearLayout>
-
-                <!-- Q2 Incorrect (Expanded) -->
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="12dp"
-                    android:background="@drawable/bg_glass_panel"
-                    android:orientation="vertical"
-                    android:padding="16dp">
-
-                    <androidx.constraintlayout.widget.ConstraintLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp">
-
-                        <ImageView
-                            android:id="@+id/status_icon_2"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/ic_close"
-                            android:importantForAccessibility="no"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toStartOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:tint="@color/quiz_danger" />
-
-                        <TextView
-                            android:id="@+id/q_ref_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="12dp"
-                            android:text="@string/q2_text"
-                            android:textColor="@color/quiz_text_primary"
-                            android:textSize="14sp"
-                            android:textStyle="bold"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintStart_toEndOf="@id/status_icon_2"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <TextView
-                            android:id="@+id/badge_2"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginEnd="12dp"
-                            android:background="@drawable/bg_chip"
-                            android:backgroundTint="#33EF4444"
-                            android:paddingHorizontal="8dp"
-                            android:paddingVertical="2dp"
-                            android:text="Sai"
-                            android:textColor="@color/quiz_danger"
-                            android:textSize="11sp"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toStartOf="@id/expand_2"
-                            app:layout_constraintTop_toTopOf="parent" />
-
-                        <ImageView
-                            android:id="@+id/expand_2"
-                            android:layout_width="20dp"
-                            android:layout_height="20dp"
-                            android:src="@drawable/ic_expand_more"
-                            android:rotation="180"
-                            android:importantForAccessibility="no"
-                            app:layout_constraintBottom_toBottomOf="parent"
-                            app:layout_constraintEnd_toEndOf="parent"
-                            app:layout_constraintTop_toTopOf="parent"
-                            app:tint="@color/quiz_text_secondary" />
-                    </androidx.constraintlayout.widget.ConstraintLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:text="@string/q2_full"
-                        android:textColor="@color/quiz_text_primary"
-                        android:textSize="14sp"
-                        android:textStyle="bold" />
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="12dp"
-                        android:background="@drawable/bg_quiz_option_incorrect"
-                        android:padding="12dp"
-                        android:orientation="horizontal"
-                        android:gravity="center_vertical">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/ans_c"
-                            android:textColor="@color/quiz_text_primary"
-                            android:textSize="13sp" />
-                        <ImageView
-                            android:layout_width="16dp"
-                            android:layout_height="16dp"
-                            android:src="@drawable/ic_close"
-                            android:importantForAccessibility="no"
-                            app:tint="@color/quiz_danger" />
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginBottom="16dp"
-                        android:background="@drawable/bg_quiz_option_correct"
-                        android:padding="12dp">
-                        <TextView
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/ans_b"
-                            android:textColor="@color/quiz_text_primary"
-                            android:textSize="13sp" />
-                    </LinearLayout>
-
-                    <TextView
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:text="@string/exp_q2"
-                        android:textColor="@color/quiz_text_secondary"
-                        android:textSize="12sp"
-                        android:lineSpacingExtra="4dp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:text="@string/learn_more"
-                        android:textColor="@color/quiz_primary"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
             </LinearLayout>
 
-            <!-- AI Recommendation -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:background="@drawable/bg_glass_panel_elevated"
-                android:backgroundTint="@color/quiz_surface"
-                android:orientation="vertical"
-                android:padding="20dp">
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_vertical"
-                    android:orientation="horizontal">
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:src="@drawable/ic_brain"
-                        android:importantForAccessibility="no"
-                        app:tint="@color/quiz_primary" />
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="12dp"
-                        android:text="@string/result_ai_recommend"
-                        android:textColor="@color/quiz_text_primary"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
-                </LinearLayout>
-
-                <TextView
-                    android:id="@+id/ai_recommend_text"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/result_ai_recommend_text"
-                    android:textColor="@color/quiz_text_secondary"
-                    android:textSize="14sp"
-                    android:lineSpacingExtra="4dp" />
-
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="16dp"
-                    android:text="@string/result_practice_now"
-                    android:textColor="@color/quiz_primary"
-                    android:textSize="14sp"
-                    android:textStyle="bold" />
-
-            </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

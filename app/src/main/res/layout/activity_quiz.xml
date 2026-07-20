@@ -89,6 +89,7 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/scroll_view"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:fillViewport="true"
@@ -226,6 +227,36 @@
                     android:visibility="visible">
                 </LinearLayout>
 
+                <!-- Explanation Box (Shown after checking answer) -->
+                <LinearLayout
+                    android:id="@+id/ll_explanation_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/bg_glass_panel_elevated"
+                    android:backgroundTint="@color/quiz_surface"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Giải thích tại sao đúng:"
+                        android:textColor="@color/quiz_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:paddingBottom="8dp" />
+
+                    <TextView
+                        android:id="@+id/tv_explanation_content"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:textColor="@color/quiz_text_secondary"
+                        android:textSize="13sp"
+                        android:lineSpacingExtra="3dp" />
+                </LinearLayout>
+
                 <!-- Fill in the Blank Area -->
                 <LinearLayout
                     android:id="@+id/fib_area"
@@ -293,14 +324,15 @@
 
             </LinearLayout>
 
-            <!-- Question Navigation Dots -->
+            <!-- Question Navigation Dots (Hidden for new clean UI design) -->
             <LinearLayout
                 android:id="@+id/question_nav_dots"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="32dp"
                 android:gravity="center"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:visibility="gone">
 
                 <View android:layout_width="12dp" android:layout_height="12dp" android:layout_marginHorizontal="4dp" android:background="@drawable/bg_quiz_nav_dot_answered" />
                 <View android:layout_width="12dp" android:layout_height="12dp" android:layout_marginHorizontal="4dp" android:background="@drawable/bg_quiz_nav_dot_answered" />

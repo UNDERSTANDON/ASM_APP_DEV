@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    item_quiz_lab_card.xml — Layout cho mỗi quiz card trong danh sách
+    Dùng trong QuizLabActivity.loadQuizList() qua LayoutInflater
+-->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/quiz_card_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/bg_quiz_lab_card"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="horizontal"
+    android:padding="16dp">
+
+    <!-- Icon môn học (set tint theo subject_id trong code) -->
+    <ImageView
+        android:id="@+id/iv_subject_icon"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_gravity="center_vertical"
+        android:contentDescription="Subject icon"
+        android:src="@drawable/ic_school"
+        app:tint="@color/ql_count_text" />
+
+    <!-- Nội dung text bên phải icon -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_vertical"
+        android:layout_marginStart="14dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <!-- Tiêu đề quiz (nội dung câu hỏi đã rút gọn) -->
+        <TextView
+            android:id="@+id/tv_quiz_item_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Tiêu đề quiz"
+            android:textColor="@color/on_surface"
+            android:textSize="15sp"
+            android:textStyle="bold" />
+
+        <!-- Hàng dưới: số câu • ngày tạo -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <!-- Số câu hỏi -->
+            <TextView
+                android:id="@+id/tv_quiz_item_count"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="0 Câu Hỏi"
+                android:textColor="@color/ql_count_text"
+                android:textSize="12sp" />
+
+            <!-- Dấu phân cách -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp"
+                android:text="•"
+                android:textColor="@color/ql_count_text"
+                android:textSize="12sp" />
+
+            <!-- Label "Created Ngày:" -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Created Ngày: "
+                android:textColor="@color/ql_count_text"
+                android:textSize="12sp" />
+
+            <!-- Giá trị ngày tương đối (động) -->
+            <TextView
+                android:id="@+id/tv_quiz_item_date"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Hôm nay"
+                android:textColor="@color/ql_date_text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- Chevron phải -->
+    <ImageView
+        android:layout_width="20dp"
+        android:layout_height="20dp"
+        android:layout_gravity="center_vertical"
+        android:contentDescription="Open quiz"
+        android:src="@drawable/ic_chevron_right"
+        app:tint="@color/ql_count_text" />
+
+</LinearLayout>

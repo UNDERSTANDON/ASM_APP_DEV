@@ -37,11 +37,14 @@
         app:layout_constraintTop_toTopOf="parent">
 
         <ImageView
-            android:id="@+id/logo_icon"
+            android:id="@+id/btn_back"
             android:layout_width="32dp"
             android:layout_height="32dp"
-            android:src="@drawable/ic_ac_unit"
-            android:contentDescription="@string/glacier_edu"
+            android:clickable="true"
+            android:focusable="true"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:src="@drawable/ic_arrow_back"
+            android:contentDescription="Quay lại"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent"
@@ -57,7 +60,7 @@
             android:textSize="20sp"
             android:letterSpacing="0.1"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toEndOf="@id/logo_icon"
+            app:layout_constraintStart_toEndOf="@id/btn_back"
             app:layout_constraintTop_toTopOf="parent" />
 
         <com.google.android.material.imageview.ShapeableImageView
@@ -117,6 +120,7 @@
                     app:layout_constraintTop_toBottomOf="@id/title" />
 
                 <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_mark_all_read"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:backgroundTint="@color/surface_container"
@@ -133,301 +137,15 @@
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <!-- Section: New Alerts -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:text="@string/category_new_alerts"
-                android:textColor="@color/tertiary"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.1" />
-
-            <!-- Notification Item 1: Unread Alert -->
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <!-- Notifications container (Loaded dynamically from code) -->
+            <LinearLayout
+                android:id="@+id/ll_notifications_container"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_glass_panel_elevated"
-                android:padding="16dp">
-
-                <View
-                    android:id="@+id/unread_dot_1"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:background="@drawable/bg_unread_indicator"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <FrameLayout
-                    android:id="@+id/icon_container_1"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="12dp"
-                    android:background="@drawable/bg_circle"
-                    android:backgroundTint="#1AFF6B6B"
-                    app:layout_constraintStart_toEndOf="@id/unread_dot_1"
-                    app:layout_constraintTop_toTopOf="parent">
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_error"
-                        android:contentDescription="@string/category_new_alerts"
-                        app:tint="@color/error" />
-                </FrameLayout>
-
-                <TextView
-                    android:id="@+id/notif_title_1"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="@string/notif_overdue_title"
-                    android:textColor="@color/on_surface"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@id/time_1"
-                    app:layout_constraintStart_toEndOf="@id/icon_container_1"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/time_1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/just_now"
-                    android:textColor="@color/on_surface_variant"
-                    android:textSize="11sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/notif_overdue_msg"
-                    android:textColor="@color/on_surface_variant"
-                    android:textSize="13sp"
-                    android:lineSpacingExtra="2dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/notif_title_1"
-                    app:layout_constraintTop_toBottomOf="@id/notif_title_1" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!-- Notification Item 2: Unread Reminder -->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="24dp"
-                android:background="@drawable/bg_glass_panel_elevated"
-                android:padding="16dp">
-
-                <View
-                    android:id="@+id/unread_dot_2"
-                    android:layout_width="8dp"
-                    android:layout_height="8dp"
-                    android:background="@drawable/bg_unread_indicator"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <FrameLayout
-                    android:id="@+id/icon_container_2"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:layout_marginStart="12dp"
-                    android:background="@drawable/bg_circle"
-                    android:backgroundTint="#1A7DD3FC"
-                    app:layout_constraintStart_toEndOf="@id/unread_dot_2"
-                    app:layout_constraintTop_toTopOf="parent">
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_lightbulb"
-                        android:contentDescription="@string/notif_reminder_title"
-                        app:tint="@color/primary" />
-                </FrameLayout>
-
-                <TextView
-                    android:id="@+id/notif_title_2"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="@string/notif_reminder_title"
-                    android:textColor="@color/on_surface"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@id/time_2"
-                    app:layout_constraintStart_toEndOf="@id/icon_container_2"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/time_2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/time_45m_ago"
-                    android:textColor="@color/on_surface_variant"
-                    android:textSize="11sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/notif_reminder_msg"
-                    android:textColor="@color/on_surface_variant"
-                    android:textSize="13sp"
-                    android:lineSpacingExtra="2dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/notif_title_2"
-                    app:layout_constraintTop_toBottomOf="@id/notif_title_2" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="1dp"
-                android:layout_marginBottom="24dp"
-                android:background="#1A7DD3FC" />
-
-            <!-- Section: Earlier -->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="12dp"
-                android:text="@string/category_earlier"
-                android:textColor="@color/on_surface_variant"
-                android:textSize="12sp"
-                android:textStyle="bold"
-                android:letterSpacing="0.1" />
-
-            <!-- Notification Item 3: Read Summary -->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_glass_panel"
-                android:padding="16dp"
-                android:alpha="0.8">
-
-                <FrameLayout
-                    android:id="@+id/icon_container_3"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/bg_circle"
-                    android:backgroundTint="#1AC8A0F0"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_summarize"
-                        android:contentDescription="@string/notif_summary_title"
-                        app:tint="@color/tertiary" />
-                </FrameLayout>
-
-                <TextView
-                    android:id="@+id/notif_title_3"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="@string/notif_summary_title"
-                    android:textColor="@color/on_surface"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@id/time_3"
-                    app:layout_constraintStart_toEndOf="@id/icon_container_3"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/time_3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/yesterday"
-                    android:textColor="@color/on_surface_variant"
-                    android:textSize="11sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/notif_summary_msg"
-                    android:textColor="@color/on_surface_variant"
-                    android:textSize="13sp"
-                    android:lineSpacingExtra="2dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/notif_title_3"
-                    app:layout_constraintTop_toBottomOf="@id/notif_title_3" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
-
-            <!-- Notification Item 4: Read System -->
-            <androidx.constraintlayout.widget.ConstraintLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="16dp"
-                android:background="@drawable/bg_glass_panel"
-                android:padding="16dp"
-                android:alpha="0.8">
-
-                <FrameLayout
-                    android:id="@+id/icon_container_4"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
-                    android:background="@drawable/bg_circle"
-                    android:backgroundTint="#1AA0B4C4"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent">
-                    <ImageView
-                        android:layout_width="24dp"
-                        android:layout_height="24dp"
-                        android:layout_gravity="center"
-                        android:src="@drawable/ic_notifications"
-                        android:contentDescription="@string/notifications_title"
-                        app:tint="@color/on_surface_variant" />
-                </FrameLayout>
-
-                <TextView
-                    android:id="@+id/notif_title_4"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:text="@string/notif_maintenance_title"
-                    android:textColor="@color/on_surface"
-                    android:textSize="15sp"
-                    android:textStyle="bold"
-                    app:layout_constraintEnd_toStartOf="@id/time_4"
-                    app:layout_constraintStart_toEndOf="@id/icon_container_4"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:id="@+id/time_4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/days_ago_2"
-                    android:textColor="@color/on_surface_variant"
-                    android:textSize="11sp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintTop_toTopOf="parent" />
-
-                <TextView
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="4dp"
-                    android:text="@string/notif_maintenance_msg"
-                    android:textColor="@color/on_surface_variant"
-                    android:textSize="13sp"
-                    android:lineSpacingExtra="2dp"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintStart_toStartOf="@id/notif_title_4"
-                    app:layout_constraintTop_toBottomOf="@id/notif_title_4" />
-
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                android:orientation="vertical"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="32dp">
+            </LinearLayout>
 
         </LinearLayout>
     </androidx.core.widget.NestedScrollView>

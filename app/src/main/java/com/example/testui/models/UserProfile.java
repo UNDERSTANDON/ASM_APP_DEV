@@ -6,11 +6,13 @@ public class UserProfile {
     private String aiCustomization;
     private String aiTone;
     private int xpPoints;
+    private String favoriteSubject; // Môn học yêu thích (Toán, Lý, Hóa...)
 
     public UserProfile(String email, String educationLevel) {
         this.email = email;
         this.educationLevel = educationLevel;
-        this.aiTone = "Friendly"; // Default
+        this.aiTone = "Detailed"; // Default
+        this.favoriteSubject = "Toán học"; // Default
     }
 
     // Getters and Setters
@@ -28,4 +30,7 @@ public class UserProfile {
 
     public int getXpPoints() { return xpPoints; }
     public void setXpPoints(int xpPoints) { this.xpPoints = xpPoints; }
+
+    public String getFavoriteSubject() { return favoriteSubject; }
+    public void setFavoriteSubject(String favoriteSubject) { this.favoriteSubject = favoriteSubject; }
 }

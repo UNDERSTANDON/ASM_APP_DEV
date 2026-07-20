@@ -66,6 +66,10 @@
             android:exported="true" />
 
         <activity
+            android:name=".QuizLabActivity"
+            android:exported="true" />
+
+        <activity
             android:name=".QuizResultActivity"
             android:exported="true" />
 
