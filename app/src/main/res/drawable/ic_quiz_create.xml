@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ic_quiz_create.xml — Icon tạo quiz
+    Viewport: 48x48
+    Layers:
+      1. Tờ giấy/clipboard (nền sáng nhạt)
+      2. Bánh răng gear (xanh nhạt)
+      3. Bút chì pencil (vàng cam, chéo)
+      4. Dấu plus + (trắng, nền tròn xanh)
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+
+    <!-- === Tờ giấy nền === -->
+    <path
+        android:pathData="M10,8 C10,6.9 10.9,6 12,6 L36,6 C37.1,6 38,6.9 38,8 L38,40 C38,41.1 37.1,42 36,42 L12,42 C10.9,42 10,41.1 10,40 Z"
+        android:fillColor="#C8D8F0" />
+    <!-- Các đường kẻ dòng trên tờ giấy -->
+    <path
+        android:pathData="M14,16 L28,16"
+        android:strokeColor="#8899BB"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M14,20 L25,20"
+        android:strokeColor="#8899BB"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round" />
+    <path
+        android:pathData="M14,24 L22,24"
+        android:strokeColor="#8899BB"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round" />
+
+    <!-- === Bánh răng gear (góc trên trái) === -->
+    <!-- Thân gear hình tròn -->
+    <path
+        android:pathData="M17,10 m-5,0 a5,5 0 1,0 10,0 a5,5 0 1,0 -10,0"
+        android:fillColor="#7DD3FC" />
+    <!-- Lỗ tròn giữa gear -->
+    <path
+        android:pathData="M17,10 m-2,0 a2,2 0 1,0 4,0 a2,2 0 1,0 -4,0"
+        android:fillColor="#0D1635" />
+    <!-- Răng gear — 6 răng -->
+    <path
+        android:pathData="M17,4.5 L16,5.5 L18,5.5 Z"
+        android:fillColor="#7DD3FC" />
+    <path
+        android:pathData="M17,15.5 L16,14.5 L18,14.5 Z"
+        android:fillColor="#7DD3FC" />
+    <path
+        android:pathData="M11.5,10 L12.5,9 L12.5,11 Z"
+        android:fillColor="#7DD3FC" />
+    <path
+        android:pathData="M22.5,10 L21.5,9 L21.5,11 Z"
+        android:fillColor="#7DD3FC" />
+    <path
+        android:pathData="M12.7,6.7 L12.7,8.3 L14.3,7.3 Z"
+        android:fillColor="#7DD3FC" />
+    <path
+        android:pathData="M21.3,13.3 L21.3,11.7 L19.7,12.7 Z"
+        android:fillColor="#7DD3FC" />
+
+    <!-- === Bút chì pencil (chéo, giữa tờ giấy) === -->
+    <!-- Thân bút chì -->
+    <path
+        android:pathData="M24,28 L34,18 L38,22 L28,32 Z"
+        android:fillColor="#FCD34D" />
+    <!-- Nắp đầu bút (tẩy) -->
+    <path
+        android:pathData="M34,18 L36,16 C37,15 38,15 38.5,16 L40,17.5 C40.5,18.5 40,19.5 39,20 L38,22 Z"
+        android:fillColor="#FCA5A5" />
+    <!-- Đường kẻ chia giữa thân bút -->
+    <path
+        android:pathData="M35,19 L37,21"
+        android:strokeColor="#F59E0B"
+        android:strokeWidth="1"
+        android:strokeLineCap="round" />
+    <!-- Đầu nhọn bút chì -->
+    <path
+        android:pathData="M24,28 L22,34 L28,32 Z"
+        android:fillColor="#E2E8F0" />
+    <!-- Màu chì graphite -->
+    <path
+        android:pathData="M23.5,30 L24.5,28.5 L26,31 Z"
+        android:fillColor="#475569" />
+
+    <!-- === Dấu Plus + (góc dưới phải, nền tròn xanh) === -->
+    <!-- Vòng tròn nền -->
+    <path
+        android:pathData="M36,34 m-6,0 a6,6 0 1,0 12,0 a6,6 0 1,0 -12,0"
+        android:fillColor="#38BDF8" />
+    <!-- Nét dọc của dấu + -->
+    <path
+        android:pathData="M36,31 L36,37"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round" />
+    <!-- Nét ngang của dấu + -->
+    <path
+        android:pathData="M33,34 L39,34"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="2.5"
+        android:strokeLineCap="round" />
+
+</vector>

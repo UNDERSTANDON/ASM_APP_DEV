@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    ic_ai_bulb.xml — Bóng đèn AI kết hợp não bộ
+    Viewport: 48x48
+    Layers:
+      1. Tia sáng phát ra (vàng nhạt)
+      2. Thân bóng đèn (xanh sky gradient via solidColor)
+      3. Vân não bên trong (tím nhạt)
+      4. Đế bóng đèn (xám nhạt)
+      5. Chữ "AI" text path (trắng)
+-->
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="48"
+    android:viewportHeight="48">
+
+    <!-- === Tia sáng phát ra (8 tia ngắn) === -->
+    <!-- Tia trên -->
+    <path
+        android:pathData="M24,3 L24,7"
+        android:strokeColor="#FDE68A"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+    <!-- Tia trên-phải -->
+    <path
+        android:pathData="M33.5,5.8 L31.7,9.3"
+        android:strokeColor="#FDE68A"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+    <!-- Tia phải -->
+    <path
+        android:pathData="M41,13.5 L37.5,15.3"
+        android:strokeColor="#FDE68A"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+    <!-- Tia trên-trái -->
+    <path
+        android:pathData="M14.5,5.8 L16.3,9.3"
+        android:strokeColor="#FDE68A"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+    <!-- Tia trái -->
+    <path
+        android:pathData="M7,13.5 L10.5,15.3"
+        android:strokeColor="#FDE68A"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+
+    <!-- === Thân bóng đèn — phần tròn phình trên === -->
+    <path
+        android:pathData="M24,8 C16.3,8 10,14.3 10,22 C10,27.2 12.8,31.7 17,34.2 L17,37 C17,37.6 17.4,38 18,38 L30,38 C30.6,38 31,37.6 31,37 L31,34.2 C35.2,31.7 38,27.2 38,22 C38,14.3 31.7,8 24,8 Z"
+        android:fillColor="#7DD3FC" />
+
+    <!-- === Vân não bên trong bóng đèn (gợn sóng tím nhạt) === -->
+    <!-- Đường cong não trung tâm (chia đôi) -->
+    <path
+        android:pathData="M24,14 C24,14 24,28 24,28"
+        android:strokeColor="#1E3A5F"
+        android:strokeWidth="1.2"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+    <!-- Gợn sóng bên trái - trên -->
+    <path
+        android:pathData="M24,16 C21,16 18,18 18,21"
+        android:strokeColor="#C084FC"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+    <!-- Gợn sóng bên trái - dưới -->
+    <path
+        android:pathData="M24,22 C21,22 17,24 17.5,27"
+        android:strokeColor="#C084FC"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+    <!-- Gợn sóng bên phải - trên -->
+    <path
+        android:pathData="M24,16 C27,16 30,18 30,21"
+        android:strokeColor="#C084FC"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+    <!-- Gợn sóng bên phải - dưới -->
+    <path
+        android:pathData="M24,22 C27,22 31,24 30.5,27"
+        android:strokeColor="#C084FC"
+        android:strokeWidth="1.5"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+    <!-- Đường ngang kết nối nhỏ trên -->
+    <path
+        android:pathData="M21,19 C22,18.5 26,18.5 27,19"
+        android:strokeColor="#A855F7"
+        android:strokeWidth="1.2"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+    <!-- Đường ngang kết nối nhỏ dưới -->
+    <path
+        android:pathData="M20,24.5 C22,24 26,24 28,24.5"
+        android:strokeColor="#A855F7"
+        android:strokeWidth="1.2"
+        android:strokeLineCap="round"
+        android:fillColor="#00000000" />
+
+    <!-- === Đế bóng đèn — 3 thanh ngang === -->
+    <!-- Thanh đế 1 (rộng nhất) -->
+    <path
+        android:pathData="M19,38.5 L29,38.5"
+        android:strokeColor="#94A3B8"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+    <!-- Thanh đế 2 -->
+    <path
+        android:pathData="M20,41 L28,41"
+        android:strokeColor="#94A3B8"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+    <!-- Thanh đế 3 (nhỏ nhất — chân đế) -->
+    <path
+        android:pathData="M21.5,43.5 L26.5,43.5"
+        android:strokeColor="#94A3B8"
+        android:strokeWidth="2"
+        android:strokeLineCap="round" />
+
+    <!-- === Chữ "AI" bên trong bóng đèn (stroke trắng mỏng) === -->
+    <!-- Chữ A: hai nét chéo + nét ngang -->
+    <path
+        android:pathData="M21.5,27.5 L23.5,22 L25.5,27.5"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.3"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round"
+        android:fillColor="#00000000" />
+    <path
+        android:pathData="M22.2,25.5 L24.8,25.5"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.3"
+        android:strokeLineCap="round" />
+    <!-- Chữ I: nét đứng thẳng -->
+    <path
+        android:pathData="M27,22 L27,27.5"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="1.3"
+        android:strokeLineCap="round" />
+
+</vector>

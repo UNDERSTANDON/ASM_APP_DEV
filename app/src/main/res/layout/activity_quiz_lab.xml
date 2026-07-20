@@ -1,0 +1,196 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    activity_quiz_lab.xml — Quiz Lab Home Screen
+    Cấu trúc:
+      FrameLayout (root, dùng chung bg_home_gradient với Home)
+      ├── NestedScrollView (nội dung chính, paddingBottom=88dp)
+      │   └── LinearLayout vertical
+      │       ├── Header (title + subtitle)
+      │       ├── Hero Card glassmorphism (icon + nút Tạo Câu Hỏi)
+      │       ├── Subject Selector Row (dropdown)
+      │       ├── Label "Quiz Đã Tạo"
+      │       └── quiz_list_container (LinearLayout — inflate động)
+      └── BottomNavigationView id=bottom_nav
+-->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/quiz_lab_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_home_gradient"
+    tools:context=".QuizLabActivity">
+
+    <!-- ===== MAIN SCROLLABLE CONTENT ===== -->
+    <androidx.core.widget.NestedScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:paddingBottom="88dp"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingBottom="16dp"
+            android:paddingEnd="24dp"
+            android:paddingStart="24dp"
+            android:paddingTop="48dp">
+
+            <!-- ===== HEADER ===== -->
+            <TextView
+                android:id="@+id/tv_quiz_lab_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:letterSpacing="0.01"
+                android:text="EduAI Quiz Lab"
+                android:textColor="@color/on_surface"
+                android:textSize="34sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_quiz_lab_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="6dp"
+                android:text="Create and Manage Your Learning Quizzes"
+                android:textColor="@color/home_subtitle"
+                android:textSize="14sp" />
+
+            <!-- ===== HERO CARD ===== -->
+            <LinearLayout
+                android:id="@+id/card_quiz_hero"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="36dp"
+                android:background="@drawable/bg_hero_card"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingBottom="32dp"
+                android:paddingEnd="28dp"
+                android:paddingStart="28dp"
+                android:paddingTop="36dp">
+
+                <!-- Icon tạo quiz -->
+                <ImageView
+                    android:id="@+id/iv_quiz_create_icon"
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:contentDescription="Create Quiz Icon"
+                    android:src="@drawable/ic_quiz_create" />
+
+                <!-- Nút Tạo Câu Hỏi -->
+                <TextView
+                    android:id="@+id/btn_create_quiz"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="24dp"
+                    android:background="@drawable/bg_ask_ai_button"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="Tạo Câu Hỏi"
+                    android:textColor="@color/background"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </LinearLayout>
+
+            <!-- ===== SUBJECT SELECTOR ===== -->
+            <LinearLayout
+                android:id="@+id/subject_selector_row"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:background="@drawable/bg_subject_selector"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <!-- Icon sách -->
+                <ImageView
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:contentDescription="Subject icon"
+                    android:src="@drawable/ic_menu_book"
+                    app:tint="@color/home_card_tag" />
+
+                <!-- Text môn học + gợi ý -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tv_selected_subject"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Chọn Môn Học"
+                        android:textColor="@color/on_surface"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="(ví dụ: Toán, Lý, Hóa)"
+                        android:textColor="@color/home_subtitle"
+                        android:textSize="12sp" />
+
+                </LinearLayout>
+
+                <!-- Chevron dropdown -->
+                <ImageView
+                    android:id="@+id/iv_selector_chevron"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:contentDescription="Expand"
+                    android:src="@drawable/ic_expand_more"
+                    app:tint="@color/home_card_tag" />
+
+            </LinearLayout>
+
+            <!-- ===== SECTION LABEL ===== -->
+            <TextView
+                android:id="@+id/tv_quiz_list_label"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="28dp"
+                android:text="Quiz Đã Tạo"
+                android:textColor="@color/on_surface"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <!-- ===== QUIZ LIST CONTAINER (inflate động) ===== -->
+            <LinearLayout
+                android:id="@+id/quiz_list_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="vertical" />
+
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- ===== BOTTOM NAVIGATION ===== -->
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="match_parent"
+        android:layout_height="72dp"
+        android:layout_gravity="bottom"
+        android:background="@drawable/bg_home_bottom_nav"
+        android:elevation="0dp"
+        app:itemIconTint="@color/on_surface_variant"
+        app:itemTextColor="@color/on_surface_variant"
+        app:labelVisibilityMode="labeled"
+        app:menu="@menu/bottom_nav_menu" />
+
+</FrameLayout>
