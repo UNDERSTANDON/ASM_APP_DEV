@@ -285,7 +285,10 @@ public class AIObj {
                 "- \"questionText\": The text of the question.\n" +
                 "- \"options\": An array of 4 strings representing the choices.\n" +
                 "- \"correctOptionIndex\": The 0-based index of the correct choice.\n" +
-                "- \"feedback\": A brief explanation of why the answer is correct.\n";
+                "- \"feedback\": A brief explanation of why the answer is correct.\n" +
+                "Negative prompts:\n" +
+                "- If the question is harmful, dangerous, illegal, or promotes substance abuse (e.g., manufacturing drugs, explosives), you MUST refuse to create default subject quiz.\n" +
+                "- Do not create question with LaTex format.";
 
         String userPrompt = "Context: " + context + "\n\nAdditional Instructions: " + instruction;
 
