@@ -142,7 +142,7 @@ public class QuizLabActivity extends AppCompatActivity {
     private void startTargetedQuizGeneration(String subject, int subjectId, String grade, String semester) {
         // Hiển thị Dialog Loading mượt mà
         ProgressDialog progressDialog = new ProgressDialog(this);
-        progressDialog.setTitle("EduAI Quiz Lab");
+        progressDialog.setTitle("Brightpath AI Quiz Lab");
         progressDialog.setMessage("Đang sử dụng AI để tạo 10 câu hỏi trắc nghiệm môn " + subject + " - " + grade + " - " + semester + " bám sát chương trình học...");
         progressDialog.setCancelable(false);
         progressDialog.show();

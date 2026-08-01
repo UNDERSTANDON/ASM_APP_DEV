@@ -254,7 +254,7 @@ public class AIInsightsActivity extends AppCompatActivity {
 
         // 5. AI Suggestions (Optimal Focus Shift) - Phân tích dynamic bằng Gemini
         if (tvCard1Desc != null) {
-            tvCard1Desc.setText("EduAI đang tổng hợp và phân tích báo cáo học tập của bạn...");
+            tvCard1Desc.setText("Brightpath AI đang tổng hợp và phân tích báo cáo học tập của bạn...");
 
             // Lập chuỗi tóm tắt gửi lên AI
             StringBuilder summaryBuilder = new StringBuilder();
