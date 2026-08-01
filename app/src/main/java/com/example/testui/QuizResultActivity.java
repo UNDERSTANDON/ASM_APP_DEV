@@ -131,7 +131,7 @@ public class QuizResultActivity extends AppCompatActivity {
         // 6. Kích hoạt AI Insights động thời gian thực gửi lên Gemini API
         TextView tvAiRecommendText = findViewById(R.id.ai_recommend_text);
         if (tvAiRecommendText != null && questions != null && !questions.isEmpty()) {
-            tvAiRecommendText.setText("EduAI đang phân tích kết quả bài làm của bạn...");
+            tvAiRecommendText.setText("AI Study Mentor đang phân tích kết quả bài làm của bạn...");
             
             // Tìm môn học của Quiz
             String subjectName = "Toán học";
@@ -190,7 +190,7 @@ public class QuizResultActivity extends AppCompatActivity {
                 @Override
                 public void onError(String error) {
                     // Fallback nếu lỗi API (hiển thị khuyên dùng ở local)
-                    tvAiRecommendText.setText("EduAI đề xuất: Hãy tập trung xem lại các câu trả lời sai ở phần dưới và bấm Làm lại (Retake) để củng cố vững chắc lý thuyết nhé!");
+                    tvAiRecommendText.setText("AI Study Mentor đề xuất: Hãy tập trung xem lại các câu trả lời sai ở phần dưới và bấm Làm lại (Retake) để củng cố vững chắc lý thuyết nhé!");
                 }
             });
         }

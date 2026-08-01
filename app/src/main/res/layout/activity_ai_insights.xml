@@ -22,7 +22,7 @@
             app:drawableStartCompat="@drawable/ic_brain"
             android:drawablePadding="8dp"
             app:drawableTint="@color/insight_primary"
-            android:text="EduAI"
+            android:text="AI Study Mentor"
             android:textColor="@color/insight_text_primary"
             android:textSize="20sp"
             android:textStyle="bold"

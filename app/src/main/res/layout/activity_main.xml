@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!--
-    activity_main.xml — Home Screen EduAI redesign
+    activity_main.xml — Home Screen AI Study Mentor redesign
     Cấu trúc:
       FrameLayout (root, gradient background)
       ├── NestedScrollView (nội dung chính, padding bottom cho nav)
@@ -42,7 +42,7 @@
                 android:id="@+id/tv_home_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="EduAI Home"
+                android:text="AI Study Mentor Home"
                 android:textColor="@color/on_surface"
                 android:textSize="34sp"
                 android:textStyle="bold"

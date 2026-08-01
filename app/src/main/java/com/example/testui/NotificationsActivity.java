@@ -232,7 +232,7 @@ public class NotificationsActivity extends AppCompatActivity {
         NotificationModel mWelcome = new NotificationModel();
         mWelcome.id = "sys_welcome";
         mWelcome.type = "SYSTEM";
-        mWelcome.title = "Chào mừng bạn đến với EduAI! 🧠";
+        mWelcome.title = "Chào mừng bạn đến với AI Study Mentor! 🧠";
         mWelcome.message = "Cố vấn học thuật AI đã được thiết lập thành công theo cấp học " + eduLevel + " của bạn và sẵn sàng đồng hành!";
         mWelcome.timeStr = getRelativeTime(welcomeDate, displaySdf);
         mWelcome.rawDate = welcomeDate;

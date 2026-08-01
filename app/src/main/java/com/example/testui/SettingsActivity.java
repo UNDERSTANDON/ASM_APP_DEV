@@ -20,7 +20,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * SettingsActivity — Màn hình Cài đặt của EduAI.
+ * SettingsActivity — Màn hình Cài đặt của AI Study Mentor.
  * - Cho phép thay đổi Email (Cascade Update) đảm bảo không mất lịch sử dữ liệu hỏi đáp.
  * - Cho phép đổi Mật khẩu (Validate đúng 8 chữ số 0-9).
  * - Cho phép chỉnh sửa thông tin Hồ sơ học tập: Cấp học, Môn học yêu thích, Phong cách giải thích.

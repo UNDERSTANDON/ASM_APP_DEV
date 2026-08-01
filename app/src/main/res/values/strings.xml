@@ -15,10 +15,10 @@
     <string name="subject_phys_vn">Vật Lý</string>
     <string name="subject_chem_vn">Hóa Học</string>
     <string name="subject_it_vn">Tin Học</string>
-    <string name="glacier_edu">Glacier Edu</string>
+    <string name="glacier_edu">AI Study Mentor</string>
     <string name="unlock_potential">MỞ KHÓA TIỀM NĂNG</string>
     <string name="checking_session">Đang kiểm tra phiên đăng nhập…</string>
-    <string name="register_title">Khám phá Glacier</string>
+    <string name="register_title">Khám phá AI Study Mentor</string>
     <string name="register_subtitle">Bắt đầu hành trình giáo dục đỉnh cao</string>
     <string name="email_hint">name@example.com</string>
     <string name="password_hint">••••••••</string>
@@ -35,7 +35,7 @@
     <string name="register_button">Đăng ký ngay</string>
     <string name="already_have_account">Đã có tài khoản? Đăng nhập</string>
     <string name="password_mismatch">Mật khẩu không khớp.</string>
-    <string name="login_title">Glacier Edu</string>
+    <string name="login_title">AI Study Mentor</string>
     <string name="login_subtitle">Đăng nhập vào hệ thống học tập</string>
     <string name="email_placeholder">nhap@email.com</string>
     <string name="remember_me">Ghi nhớ đăng nhập</string>
@@ -79,7 +79,7 @@
     <string name="you_label">Bạn</string>
     <string name="question_text">Hãy giải phương trình sau và giải thích từng bước:</string>
     <string name="equation_text">2x² - 5x + 3 = 0</string>
-    <string name="ai_answering">Glacier AI đang trả lời…</string>
+    <string name="ai_answering">AI Study Mentor đang trả lời…</string>
     <string name="intro_method">Để giải phương trình bậc 2 có dạng ax² + bx + c = 0, chúng ta sẽ sử dụng công thức nghiệm (Delta). Dưới đây là các bước giải chi tiết:</string>
     <string name="step_1_title">Xác định các hệ số a, b, c</string>
     <string name="step_1_desc">Từ phương trình đã cho: 2x² - 5x + 3 = 0, ta có:</string>
@@ -102,7 +102,7 @@
     <string name="nav_assistant">Assistant</string>
     <string name="nav_badges">Badges</string>
     <string name="nav_profile">Profile</string>
-    <string name="glacier_ai">Glacier AI</string>
+    <string name="glacier_ai">AI Study Mentor</string>
     <string name="step_1">1</string>
     <string name="step_2">2</string>
     <string name="step_3">3</string>
@@ -169,7 +169,7 @@
     <string name="notif_summary_title">Tóm tắt hiệu suất hàng tuần</string>
     <string name="notif_summary_msg">Bạn đã duy trì tỷ lệ hoàn thành 92% trong tuần này. Sự tập trung tuyệt vời.</string>
     <string name="notif_maintenance_title">Bảo trì hệ thống</string>
-    <string name="notif_maintenance_msg">Glacier Edu sẽ tiến hành bảo trì định kỳ vào Chủ Nhật từ 2 giờ sáng đến 4 giờ sáng EST.</string>
+    <string name="notif_maintenance_msg">AI Study Mentor sẽ tiến hành bảo trì định kỳ vào Chủ Nhật từ 2 giờ sáng đến 4 giờ sáng EST.</string>
     <string name="just_now">Vừa xong</string>
     <string name="time_45m_ago">45 phút trước</string>
     <string name="yesterday">Hôm qua</string>
@@ -179,7 +179,7 @@
     <string name="nav_alerts_label">Thông báo</string>
     <string name="nav_ai_tutor_label">AI Tutor</string>
     <string name="nav_search">Tìm kiếm</string>
-    <string name="home_title">EduAI Home</string>
+    <string name="home_title">AI Study Mentor Home</string>
 
     <!-- Profile Screen -->
     <string name="profile_info_title">Thông tin cá nhân</string>
