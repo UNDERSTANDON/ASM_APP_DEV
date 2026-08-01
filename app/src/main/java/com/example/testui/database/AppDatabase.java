@@ -23,7 +23,7 @@ public abstract class AppDatabase extends RoomDatabase {
             synchronized (AppDatabase.class) {
                 if (INSTANCE == null) {
                     INSTANCE = Room.databaseBuilder(context.getApplicationContext(),
-                                    AppDatabase.class, "eduai_database")
+                                    AppDatabase.class, "Brightpath AI_database")
                             .allowMainThreadQueries() // Cho phép chạy trên Main Thread để tương thích ngược 100% với giao diện cũ
                             .fallbackToDestructiveMigration()
                             .build();

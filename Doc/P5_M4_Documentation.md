@@ -95,3 +95,12 @@ Given the target demographic (including minors), strict security and compliance 
 #### 5. Background Synchronization
 
 A Background Worker thread monitors network state. When the device transitions from offline to an active Wi-Fi/cellular state, it scans the `QUESTION` table for entries with `sync_status = false`, securely transmits the queued payloads to the API, and updates the local interface upon receipt of the AI responses.
+
+#### 6. Development Methodology & Iterative Feedback
+
+While strict Agile (with formal sprint cycles) was not employed, the project utilized an **Iterative Prototyping Methodology**. This approach allowed the team to remain highly adaptable and incorporate continuous user feedback without the overhead of rigid sprint ceremonies.
+
+- **Initial Prototyping**: A Minimum Viable Product (MVP) was developed focusing on core functionalities: text/image question submission and AI processing.
+- **Peer-Review Feedback Loop**: Upon completing the initial prototype, a structured Peer Review Session was conducted involving educators, software engineers, and student end-users. 
+- **Iterative Refinement**: Based on the quantitative and qualitative feedback, the team dynamically adjusted the development trajectory. For example, security vulnerabilities regarding plaintext API key storage were quickly identified by reviewers and resolved by implementing `EncryptedSharedPreferences`. Similarly, UI clutter was reduced to prevent cognitive fatigue. 
+- **Validation**: This rapid, feedback-driven iteration ensured the final application closely aligned with actual student needs and stringent data security standards, demonstrating effective methodology usage tailored to a small, fast-moving development team.
